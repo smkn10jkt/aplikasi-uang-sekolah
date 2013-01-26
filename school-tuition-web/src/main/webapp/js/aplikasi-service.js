@@ -76,21 +76,23 @@ angular.module('belajar.service', ['ngResource'])
             
         return service;
     }])
-    .factory('RoleService', ['$resource', '$http', function($resource, $http){
+    .factory('paymentsService', ['$resource', '$http', function($resource, $http){
         var service = {
-            role: $resource('role/:id'),
-            get: function(param, callback){ return this.role.get(param, callback) }, 
-            query: function(){ return this.role.query() },
-            save: function(obj){
+            payments: $resource('master/payments/:id', {},{
+                queryPage: {method:'GET', isArray: false}
+            }),
+            get: function(param, callback){ return this.payments.get(param, callback) }, 
+           query: function(p, callback){ return this.payments.queryPage({"page.page": p, "page.size": 10}, callback) },
+             save: function(obj){
                 if(obj.id == null){
-                    return $http.post('role', obj);
+                    return $http.post('master/payments', obj);
                 } else {
-                    return $http.put('role/'+obj.id, obj);
+                    return $http.put('master/payments/'+obj.id, obj);
                 }
             }, 
             remove: function(obj){
                 if(obj.id != null){
-                    return $http.delete('role/'+obj.id);
+                    return $http.delete('master/payments/'+obj.id);
                 }
             },
             unselectedPermission: function(obj){
@@ -103,25 +105,5 @@ angular.module('belajar.service', ['ngResource'])
             
         return service;
     }])
-    .factory('UserService', ['$resource', '$http', function($resource, $http){
-        var service = {
-            user: $resource('user/:id'),
-            get: function(param, callback){ return this.user.get(param, callback) }, 
-            query: function(){ return this.user.query() },
-            save: function(obj){
-                if(obj.id == null){
-                    return $http.post('user', obj);
-                } else {
-                    return $http.put('user/'+obj.id, obj);
-                }
-            }, 
-            remove: function(obj){
-                if(obj.id != null){
-                    return $http.delete('user/'+obj.id);
-                }
-            }
-        };
-            
-        return service;
-    }])
+    
 ;
