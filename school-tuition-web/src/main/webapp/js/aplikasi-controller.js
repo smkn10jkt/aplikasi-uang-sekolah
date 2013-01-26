@@ -389,7 +389,11 @@ angular.module('belajar.controller',['belajar.service'])
             }
         }
     }])
+<<<<<<< HEAD
     .controller('PaymentsController', ['$scope', 'PaymentsService', function($scope, PaymentsService){
+=======
+   .controller('PaymentsController', ['$scope', 'PaymentsService', function($scope, PaymentsService){
+>>>>>>> c22c38e111513f4afb5af06fa2afed95024d21cb
         $scope.payments = PaymentsService.query();
         $scope.edit = function(x){
             if(x.id == null){
