@@ -10,6 +10,7 @@ angular.module('belajar', ['ui', 'belajar.controller'])
             .when('/system/permission', {templateUrl: 'pages/system/permission.html', controller: 'PermissionController'})
             .when('/system/menu', {templateUrl: 'pages/system/menu.html', controller: 'SystemMenuController'})
             .when('/master/payments', {templateUrl: 'pages/master/payments.html', controller: 'PaymentsController'})
+            .when('/master/paymenttransactions', {templateUrl: 'pages/master/paymenttransactions.html', controller: 'PaymenttransactionsController'})
             .when('/about', {templateUrl: 'pages/about.html', controller: 'AboutController'})
             .otherwise({templateUrl: 'pages/404.html'});
     }])
