@@ -1,4 +1,41 @@
+<<<<<<< HEAD
+<div class="row-fluid">
 <div class="span5 well-large">
+    <h1>Form Permission</h1>
+    <form class="form-horizontal" name="formEdit">
+        <div class="control-group" ng-class="{error: formEdit.label.$invalid}">
+            <label class="control-label" for="label">Name : &nbsp;</label>
+            <input type="text" id="name" 
+                   name="name" 
+                   placeholder="Payments.Name" 
+                   ng-model="currentPayments.name"
+                   required>
+            <span ng-show="formEdit.label.$error.required" class="help-inline">Harus diisi</span>
+        </div>
+        <div class="control-group" ng-class="{error: formEdit.value.$invalid}">
+            <label class="control-label" for="value">Value : &nbsp;</label>
+            <input type="text" 
+                   id="value" 
+                   name="value" 
+                   placeholder="Payments.Name" 
+                   ng-model="currentPayments.value"
+                   required
+                   ui-validate="{permissionValueAvailable: isPermissionValueAvailable}">
+            <span ng-show="formEdit.value.$error.required" class="help-inline">Required</span>
+            <span ng-show="formEdit.value.$error.permissionValueAvailable" class="help-inline">already in use</span>
+        </div>
+        <div class="form-actions">
+            <button type="submit" class="btn btn-primary" ng-click="simpan()" ng-disabled="isClean() || formEdit.$invalid">Save</button>
+            <button type="button" class="btn" ng-click="baru()">Clear</button>
+        </div>
+    </form>
+</div>    
+</div>
+<div class="row-fluid">
+  <div class="span5 well-large">
+=======
+<div class="span5 well-large">
+>>>>>>> c22c38e111513f4afb5af06fa2afed95024d21cb
     <h1>Payments List</h1>
 
     <a class="btn" ng-click="baru()">
@@ -9,15 +46,23 @@
         <thead>
             <tr>
                 <th>Name</th>
+<<<<<<< HEAD
+=======
                 <th>Type</th>
+>>>>>>> c22c38e111513f4afb5af06fa2afed95024d21cb
                 <th>Value</th>
                 <th></th>
             </tr>
         </thead>
         <tbody>
+<<<<<<< HEAD
+            <tr ng-repeat="x in permissions">
+                <td>{{x.name}}</td>
+=======
             <tr ng-repeat="x in payments">
                 <td>{{x.name}}</td>
                 <td>{{x.type}}</td>
+>>>>>>> c22c38e111513f4afb5af06fa2afed95024d21cb
                 <td>{{x.value}}</td>
                 <td>
                     <a ng-click="edit(x)"><i class="icon-edit"></i></a>
@@ -27,6 +72,12 @@
         </tbody>
     </table>
 
+<<<<<<< HEAD
+</div>  
+</div>
+
+
+=======
 </div>
 
 <div class="span5 well-large">
@@ -71,3 +122,4 @@
         </div>
     </form>
 </div>
+>>>>>>> c22c38e111513f4afb5af06fa2afed95024d21cb
