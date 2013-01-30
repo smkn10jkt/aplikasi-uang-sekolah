@@ -389,28 +389,28 @@ angular.module('belajar.controller',['belajar.service'])
             }
         }
     }])
-    .controller('UserController', ['$scope', 'UserService', 'RoleService', function($scope, UserService, RoleService){
-        $scope.users = UserService.query();
-        $scope.roles = RoleService.query();
+<<<<<<< HEAD
+    .controller('PaymentsController', ['$scope', 'PaymentsService', function($scope, PaymentsService){
+=======
+   .controller('PaymentsController', ['$scope', 'PaymentsService', function($scope, PaymentsService){
+>>>>>>> c22c38e111513f4afb5af06fa2afed95024d21cb
+        $scope.payments = PaymentsService.query();
         $scope.edit = function(x){
             if(x.id == null){
                 return; 
             }
-            $scope.currentUser = UserService.get({id: x.id}, function(data){
+            $scope.currentPayments = PaymentsService.get({id: x.id}, function(data){
                 $scope.original = angular.copy(data);
             });
         };
         $scope.baru = function(){
-            $scope.currentUser = null;
+            $scope.currentPayments = null;
             $scope.original = null;
         }
         $scope.simpan = function(){
-            if($scope.currentUser.active == null){
-                $scope.currentUser.active = false;
-            }
-            UserService.save($scope.currentUser)
+            PaymentsService.save($scope.currentPayments)
             .success(function(){
-                $scope.users = UserService.query();
+                $scope.payments = PaymentsService.query();
                 $scope.baru();
             });
         }
@@ -418,24 +418,12 @@ angular.module('belajar.controller',['belajar.service'])
             if(x.id == null){
                 return;
             }
-            UserService.remove(x).success(function(){
-                $scope.users = UserService.query();
+            PaymentsService.remove(x).success(function(){
+                $scope.payments = PaymentsService.query();
             });
         }
         $scope.isClean = function(){
-            return angular.equals($scope.original, $scope.currentUser);
-        }
-        $scope.isUsernameAvailable = function(value){
-            if($scope.currentUser != null && $scope.currentUser.id != null){
-                return true;
-            }
-            for(var i = 0; i < $scope.users.length; i++){
-                var u = $scope.users[i];
-                if(u.username === value){
-                    return false;
-                }
-            }
-            return true;
+            return angular.equals($scope.original, $scope.currentPayments);
         }
     }])
 ;
