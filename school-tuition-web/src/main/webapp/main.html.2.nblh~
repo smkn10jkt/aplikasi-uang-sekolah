@@ -50,10 +50,15 @@
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Master <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     <li><a href="#/master/payments">Payments</a></li>
-                                    <li><a href="#/master/period">Period</a></li>
+<<<<<<< HEAD
+                                    <li><a href="#">Period</a></li>
+=======
+<<<<<<< HEAD
                                     <li><a href="#/master/paymenttransactions">Payment Transactions</a></li>
-
+=======
                                     <li><a href="#">Customer</a></li>
+>>>>>>> c22c38e111513f4afb5af06fa2afed95024d21cb
+>>>>>>> 1b7347dc00b5df004294a06267ce9fe280d7cdeb
                                 </ul>
                             </li>
                             <li class="dropdown">

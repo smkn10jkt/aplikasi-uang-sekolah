@@ -49,10 +49,11 @@
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Master <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="#/master/payments">Payments</a></li>
-                                    <li><a href="#/master/period">Period</a></li>
-                                    <li><a href="#/master/paymenttransactions">Payment Transactions</a></li>
-
+<<<<<<< HEAD
+                                    <li><a href="#">Produk</a></li>
+=======
+                                    <li><a href="#/master/payments">Payaments</a></li>
+>>>>>>> c22c38e111513f4afb5af06fa2afed95024d21cb
                                     <li><a href="#">Customer</a></li>
                                 </ul>
                             </li>
