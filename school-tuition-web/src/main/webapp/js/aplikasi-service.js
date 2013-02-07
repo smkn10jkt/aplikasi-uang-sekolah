@@ -76,16 +76,6 @@ angular.module('belajar.service', ['ngResource'])
             
         return service;
     }])
-<<<<<<< HEAD
-    .factory('paymentsService', ['$resource', '$http', function($resource, $http){
-        var service = {
-            payments: $resource('master/payments/:id', {},{
-                queryPage: {method:'GET', isArray: false}
-            }),
-            get: function(param, callback){ return this.payments.get(param, callback) }, 
-           query: function(p, callback){ return this.payments.queryPage({"page.page": p, "page.size": 10}, callback) },
-             save: function(obj){
-=======
     .factory('PaymentsService', ['$resource', '$http', function($resource, $http){
         var service = {
             payments: $resource('master/payments/:id', {},{
@@ -94,7 +84,6 @@ angular.module('belajar.service', ['ngResource'])
             get: function(param, callback){ return this.payments.get(param, callback) }, 
             query: function(p, callback){ return this.payments.queryPage({"page.page": p, "page.size": 10}, callback) },
             save: function(obj){
->>>>>>> c22c38e111513f4afb5af06fa2afed95024d21cb
                 if(obj.id == null){
                     return $http.post('master/payments', obj);
                 } else {
@@ -116,8 +105,4 @@ angular.module('belajar.service', ['ngResource'])
             
         return service;
     }])
-<<<<<<< HEAD
-    
-=======
->>>>>>> c22c38e111513f4afb5af06fa2afed95024d21cb
 ;
