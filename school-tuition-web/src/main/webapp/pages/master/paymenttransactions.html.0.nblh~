@@ -82,8 +82,10 @@
         
          <div class="control-group">
               <label class="control-label" for="value">Information : &nbsp;</label>
-              <label>Lunas  &nbsp;</label>
+                <label class="control-label" for="lunas">Lunas : &nbsp;</label>
                 <input type="checkbox" id="active" name="lunas" placeholder="Keterangan" ng-model="currentPaymenttransactions.lunas">
+                <label class="control-label" for="nyicil">Nyicil : &nbsp;</label>
+                <input type="checkbox" id="active" name="nyicil" placeholder="Keterangan" ng-model="currentPaymenttransactions.nyicil">
             </div>
         <div class="form-actions">
             <button type="submit" class="btn btn-primary" ng-click="simpan()" ng-disabled="isClean() || formEdit.$invalid">Simpan</button>
