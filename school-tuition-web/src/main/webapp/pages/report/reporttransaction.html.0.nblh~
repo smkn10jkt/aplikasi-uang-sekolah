@@ -1,0 +1,32 @@
+<div class="span5 well-large">
+    <center><h1>Report Transaction</h1></center>
+<div class="span5 well-large">
+<hr>
+    <table class="table table-striped table-condensed table-bordered">
+        <thead>
+            <tr>
+                <th>Types Of Payment</th>
+                <th>Payment Period</th>
+                <th>Select Students</th>
+                <th>Value Of Payments</th>
+                <th>Information</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="x in permissions">
+                <td>{{x.typesofpayment}}</td>
+                <td>{{x.paymentperiod}}</td>
+                <td>{{x.student}}</td>
+                <td>{{x.value}}</td>
+                <td>{{x.information}}</td>
+                <td>
+                    <a ng-click="edit(x)"><i class="icon-edit"></i></a>
+                    <a ng-click="remove(x)"><i class="icon-remove"></i></a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+</div>
+</div>
