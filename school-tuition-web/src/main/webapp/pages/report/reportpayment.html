@@ -1,0 +1,33 @@
+<div class="span5 well-large">
+    <center><h1>Report Transaction</h1></center>
+<div class="span5 well-large">
+<hr>
+    <table class="table table-striped table-condensed table-bordered">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Value</th>
+                <th>period</th>
+                
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="x in permissions">
+                <td>{{x.name}}</td>
+                <td>{{x.value}}</td>
+                <td>{{x.period}}</td>
+                <td>
+                    <a ng-click="edit(x)"><i class="icon-edit"></i></a>
+                    <a ng-click="remove(x)"><i class="icon-remove"></i></a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+</div>
+     <div class="form-actions">
+            <button type="submit" class="btn btn-primary" ng-click="simpan()" ng-disabled="isClean() || formEdit.$invalid">Save</button>
+            <button type="button" class="btn" ng-click="baru()">Back</button>
+        </div>
+</div>
