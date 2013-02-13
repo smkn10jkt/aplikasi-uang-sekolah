@@ -43,18 +43,10 @@
                     <option ng-repeat="paymenttransaction in typesofpaymentSelection" value="{{paymenttransaction.id}}">{{paymenttransaction.label}}</option>
                 </select>
             </div>
-        <div class="control-group" ng-class="{error: formEdit.value.$invalid}">
-            <label class="control-label" for="value">Payment Period : &nbsp;</label>
-            <input type="text" 
-                   id="value" 
-                   name="paymentperiod" 
-                   placeholder="paymentperiod.Paymentperiod" 
-                   ng-model="currentPaymentperiod.paymentperiod"
-                   required
-                   ui-validate="{permissionValueAvailable: isPermissionValueAvailable}">
-            <span ng-show="formEdit.value.$error.required" class="help-inline">Harus diisi</span>
-            <span ng-show="formEdit.value.$error.permissionValueAvailable" class="help-inline"></span>
-        </div>
+       <div class="control-group">
+                <label class="control-label" for="paymentperiod">Payment Period : &nbsp;</label>
+               <input id="paymentperiod" type="date" value="auto"/>
+            </div>
         <div class="control-group" ng-class="{error: formEdit.value.$invalid}">
             <label class="control-label" for="value">Select Students : &nbsp;</label>
             <input type="text" 

@@ -37,15 +37,11 @@
             </div>
             <div class="control-group">
                 <label class="control-label" for="jatuhtempo">Jatuh Tempo : &nbsp;</label>
-                <input type="text" id="jatuhtempo" name="jatuhtempo" placeholder="Jatuh Tempo Tagihan" ng-model="currentTagihan.jatuhtempo" required ui-validate="{tagihanJatuhTempoAvailable: isTagihanJatuhTempoAvailable}">
-                <span ng-show="formEdit.jatuhtempo.$error.required" class="help-inline">Harus diisi</span>
+               <input id="jatuhtempo" type="date" value="auto"/>
             </div>
             <div class="control-group">
-                <label class="control-label" for="periodetagihan">Peroide Tagihan : &nbsp;</label>
-                <select ui-select2 ng-model="currentTagihan.periodetagihan.id" data-placeholder="-- Select One --">
-                    <option></option>
-                    <option ng-repeat="periodetagihan in periodetagihanSelection" value="{{periodetagihan.id}}">{{periodetagihan.periodetagihan}}</option>
-                </select>
+                <label class="control-label" for="periodtagihan">Periode Tagihan : &nbsp;</label>
+               <input id="periodtagihan" type="date" value="auto"/>
             </div>
           
             <div class="form-actions">
