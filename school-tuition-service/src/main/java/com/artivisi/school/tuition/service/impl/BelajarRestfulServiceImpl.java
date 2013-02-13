@@ -280,13 +280,14 @@ public class BelajarRestfulServiceImpl implements BelajarRestfulService {
     }
 
     @Override
-    public void save(Kelas kelas) {
-         kelasDao.save(kelas);
+    public void save(Kelas k) {
+        kelasDao.save(k);
     }
 
     @Override
-    public void delete(Kelas kelas) {
-          kelasDao.delete(kelas);
+    public void delete(Kelas k) {
+        
+       kelasDao.delete(k);
     }
 
     @Override
@@ -297,13 +298,7 @@ public class BelajarRestfulServiceImpl implements BelajarRestfulService {
         return kelasDao.findOne(id);
     }
 
-    @Override
-    public Kelas findKelasByUsername(String username) {
-       if(!StringUtils.hasText(username)){
-            return null;
-        }
-        return kelasDao.findByUsername(username);
-    }
+   
 
     @Override
     public Page<Kelas> findAllKelas(Pageable pageable) {
@@ -311,8 +306,7 @@ public class BelajarRestfulServiceImpl implements BelajarRestfulService {
     }
 
     @Override
-    public Long countAllKelass() {
+    public Long countAllKelas() {
         return kelasDao.count();
     }
-
 }

@@ -105,4 +105,29 @@ angular.module('belajar.service', ['ngResource'])
             
         return service;
     }])
+
+    .factory('KelasService', ['$resource', '$http', function($resource, $http){
+        var service = {
+            kelas: $resource('master/kelas/:id', {},{
+                queryPage: {method:'GET', isArray:false}
+            }),
+            get: function(param, callback){ return this.kelas.get(param, callback) }, 
+            query: function(p, callback){ return this.kelas.queryPage({"page.page": p, "page.size": 10}, callback) },
+            save: function(obj){
+                if(obj.id == null){
+                    return $http.post('master/kelas', obj);
+                } else {
+                    return $http.put('master/kelas/'+obj.id, obj);
+                }
+            }, 
+            remove: function(obj){
+                if(obj.id != null){
+                    return $http.delete('master/kelas/'+obj.id);
+                }
+            }
+            
+        };
+            
+        return service;
+    }])
 ;

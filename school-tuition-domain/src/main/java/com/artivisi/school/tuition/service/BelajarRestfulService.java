@@ -54,11 +54,12 @@ public interface BelajarRestfulService extends MonitoredService {
     User findUserByUsername(String username);
     Page<User> findAllUsers(Pageable pageable);
     Long countAllUsers();
-   
-    void save(Kelas kelas);
-    void delete(Kelas kelas);
+    
+    // kelas
+    void save(Kelas k);
+    void delete (Kelas k);
     Kelas findKelasById(String id);
-    Kelas findKelasByUsername(String username);
+    
     Page<Kelas> findAllKelas(Pageable pageable);
-    Long countAllKelass();
+    Long countAllKelas();
 }

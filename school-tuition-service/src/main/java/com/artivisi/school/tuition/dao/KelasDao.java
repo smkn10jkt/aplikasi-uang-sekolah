@@ -13,7 +13,5 @@ import org.springframework.data.repository.PagingAndSortingRepository;
  * @author user
  */
 public interface KelasDao extends PagingAndSortingRepository<Kelas, String> {
-
-    public Kelas findByUsername(String username);
     
 }

@@ -87,6 +87,19 @@
                 <constraints nullable="false" />
             </column>
         </createTable>
+        <createTable tableName="t_kelas">
+            <column name="id" type="varchar(255)">
+                    <constraints primaryKey="true" nullable="false" />
+            
+            </column>
+            <column name="kode" type="varchar(255)">
+            </column>
+            <column name="nama" type="varchar(255)">
+            </column>
+            <column name="id_tahun_ajaran" type="varchar(255)">
+            </column>
+        </createTable>
+        
         <modifySql dbms="mysql">
             <append value=" engine innodb" />
         </modifySql>
@@ -185,6 +198,13 @@
             <column header="password" type="STRING"/>
             <column header="active" type="BOOLEAN"/>
             <column header="id_role" type="STRING"/>
+        </loadData>
+       <loadData tableName="t_kelas" file="com/artivisi/school/tuition/db/data/kelas.csv">
+            <column header="id" type="STRING"/>
+            <column header="kode" type="STRING"/>
+            <column header="nama" type="STRING"/>
+            <column header="id_tahun_ajaran" type="STRING"/>
+           
         </loadData>
     </changeSet>
 </databaseChangeLog>
