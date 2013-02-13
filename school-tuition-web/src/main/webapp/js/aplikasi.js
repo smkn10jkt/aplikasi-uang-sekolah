@@ -20,6 +20,8 @@ angular.module('belajar', ['ui', 'belajar.controller'])
             .when('/table/pembayaran', {templateUrl: 'pages/table/pembayaran.html', controller: 'PembayaranController'})
             .when('/table/pembayaran_detail', {templateUrl: 'pages/table/pembayaran_detail.html', controller: 'Pembayaran_detailController'})
             .when('/table/tahun_ajaran', {templateUrl: 'pages/table/tahun_ajaran.html', controller: 'TahunajaranController'})
+            .when('/table/tagihan_detail', {templateUrl: 'pages/table/tagihan_detail.html', controller: 'TagihandetailController'})
+
             .when('/pages/master', {templateUrl: 'pages/master/paymenttransactions.html', controller: 'PaymenttransactionController'})
             .when('/report/reporttransaction', {templateUrl: 'pages/report/reporttransaction.html', controller: 'ReporttransactionController'})
             .when('/report/reportpayment', {templateUrl: 'pages/report/reportpayment.html', controller: 'ReportpaymentController'})
