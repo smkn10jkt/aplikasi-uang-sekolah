@@ -46,7 +46,7 @@
             <input type="text" 
                    id="value" 
                    name="keterangan" 
-                   placeholder="keterangan.Keterangan" 
+                   placeholder="Keterangan" 
                    ng-model="currentKeterangan.keterangan"
                    required
                    ui-validate="{permissionValueAvailable: isPermissionValueAvailable}">
@@ -58,7 +58,7 @@
             <input type="text" 
                    id="value" 
                    name="penerima" 
-                   placeholder="penerima.Penerima" 
+                   placeholder="Penerima" 
                    ng-model="currentPenerima.Penerima"
                    required
                    ui-validate="{permissionValueAvailable: isPermissionValueAvailable}">
@@ -67,57 +67,7 @@
         </div>
         <div class="control-group">
                 <label class="control-label" for="waktu_pembayaran">Waktu Pembayaran : &nbsp;</label>
-                <select ui-select2 ng-model="currentWaktu_pembayaran.waktu_pembayaran.waktu_pembayaran" data-placeholder="-- Pilih Bulan --">
-                    <option>Januari</option>
-                    <option>Februari</option>
-                    <option>Maret</option>
-                    <option>April</option>
-                    <option>Mei</option>
-                    <option>Juni</option>
-                    <option>Juli</option>
-                    <option>Agustus</option>
-                    <option>September</option>
-                    <option>Oktober</option>
-                    <option>November</option>
-                    <option>Desember</option>
-                    <option ng-repeat="waktu_pembayaran in waktu_pembayaranSelection" value="{{waktu_pembayaran.waktu_pembayaran}}">{{waktu_pembayaran.label}}</option>
-                </select>
-                <label class="control-label" for="waktu_pembayaran">   &nbsp;</label>
-                 <select ui-select2 ng-model="currentTanggal_pembayaran.tanggal_pembayaran.Tanggal_pembayaran" data-placeholder="-- Tanggal --">
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
-                    <option>6</option>
-                    <option>7</option>
-                    <option>8</option>
-                    <option>9</option>
-                    <option>10</option>
-                    <option>11</option>
-                    <option>12</option>
-                    <option>13</option>
-                    <option>14</option>
-                    <option>15</option>
-                    <option>16</option>
-                    <option>17</option>
-                    <option>18</option>
-                    <option>19</option>
-                    <option>20</option>
-                    <option>21</option>
-                    <option>22</option>
-                    <option>23</option>
-                    <option>24</option>
-                    <option>25</option>
-                    <option>26</option>
-                    <option>27</option>
-                    <option>28</option>
-                    <option>29</option>
-                    <option>30</option>
-                    <option>31</option>
-                    
-                    <option ng-repeat="tanggal_pembayaran in tanggal_pembayaranSelection" value="{{tanggal_pembayaran.tanggal_pembayaran}}">{{tanggal_pembayaran.label}}</option>
-                </select>
+               <input id="meeting" type="date" value="2011-01-13"/>
             </div>
        <div class="control-group">
                 <label class="control-label" for="id_siswa">Id Siswa : &nbsp;</label>
@@ -128,6 +78,9 @@
             </div>
        
         <div class="form-actions">
+            <button type="submit" class="btn btn-primary" ng-click="simpan()" ng-disabled="isClean() || formEdit.$invalid">Simpan</button>
+            <button type="edit" class="btn btn-primary" ng-click="edit()" ng-disabled="isClean() || formEdit.$invalid">Ubah</button>
+            <button type="search" class="btn btn-primary" ng-click="search()" ng-disabled="isClean() || formEdit.$invalid">Cari</button>
             <button type="submit" class="btn btn-primary" ng-click="simpan()" ng-disabled="isClean() || formEdit.$invalid">Simpan</button>
             <button type="button" class="btn" ng-click="baru()">Batal</button>
         </div>
