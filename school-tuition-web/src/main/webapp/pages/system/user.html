@@ -11,7 +11,6 @@
                 <label class="control-label" for="username">Username : &nbsp;</label>
                 <input type="text" id="username" name="username" placeholder="Nama User" ng-model="currentUser.username" required ui-validate="{usernameAvailable: isUsernameAvailable}">
                 <span ng-show="formEdit.username.$error.required" class="help-inline">Harus diisi</span>
-                <span ng-show="formEdit.username.$error.usernameAvailable" class="help-inline">sudah ada yang pakai</span>
             </div>
             <div class="control-group" ng-class="{error: formEdit.password.$invalid}">
                 <label class="control-label" for="password">Password : &nbsp;</label>

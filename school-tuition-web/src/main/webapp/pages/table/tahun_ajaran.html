@@ -1,0 +1,71 @@
+<div class="span5 well-large">
+    <h1>Daftar Tahun Ajaran</h1>
+
+    <a class="btn" ng-click="baru()">
+        <i class="icon-plus-sign"></i>Tambah Data
+    </a>
+    
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Kode</th>
+                <th>Mulai</th>
+                <th>Nama</th>
+                <th>Selesai</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="c in configs">
+                <td>{{x.id}}</td>
+                <td>{{x.kode}}</td>
+                <td>{{x.mulai}}</td>
+                <td>{{x.nama}}</td>
+                <td>{{x.selesai}}</td>
+                <td>
+                    <a ng-click="edit(c)"><i class="icon-edit"></i></a>
+                    <a ng-click="remove(c)"><i class="icon-remove"></i></a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+</div>
+
+<div class="span5 well-large">
+    <h1>Form Tahun Ajaran</h1>
+    <form class="form-horizontal" name="formEdit">
+        <div class="control-group" ng-class="{error: formEdit.id.$invalid}">
+            <label class="control-label" for="id">Id : &nbsp;</label>
+            <input type="text" id="id" name="id" placeholder="Id Tahun Ajaran" ng-model="currentTahunajaran.id" required ui-validate="{siswaIdAvailable: isSiswaIdAvailable}">
+            <span ng-show="formEdit.id.$error.required" class="help-inline">Harus diisi</span>
+        </div>
+         <div class="control-group" ng-class="{error: formEdit.kode.$invalid}">
+            <label class="control-label" for="kode">Kode : &nbsp;</label>
+            <input type="text" id="kode" name="kode" placeholder="Kode Tahun Ajaran" ng-model="currentTahunajaran.id" required ui-validate="{siswaKodeAvailable: isSiswaKodeAvailable}">
+            <span ng-show="formEdit.kode.$error.required" class="help-inline">Harus diisi</span>
+        </div>
+        <div class="control-group" ng-class="{error: formEdit.mulai.$invalid}">
+            <label class="control-label" for="mulai">Mulai : &nbsp;</label>
+            <input type="text" id="mulai" name="mulai" placeholder="Mulai Tahun Ajaran" ng-model="currentSiswa.mulai" required>
+            <span ng-show="formEdit.mulai.$error.required" class="help-inline">Harus diisi</span>
+        </div>
+        <div class="control-group">
+                <label class="control-label" for="nama">Nama : &nbsp;</label>
+                <select ui-select2 ng-model="currentNama.nama.nama" data-placeholder="-- Select One --">
+                    <option></option>
+                    <option ng-repeat="nama in namaSelection" value="{{nama.nama}}">{{nama.label}}</option>
+                </select>
+            </div>
+         <div class="control-group" ng-class="{error: formEdit.selesai.$invalid}">
+            <label class="control-label" for="selesai">Selesai : &nbsp;</label>
+            <input type="text" id="mulai" name="selesai" placeholder="Selesai Tahun Ajaran" ng-model="currentSiswa.selesai" required>
+            <span ng-show="formEdit.selesai.$error.required" class="help-inline">Harus diisi</span>
+        </div>
+        <div class="form-actions">
+            <button type="submit" class="btn btn-primary" ng-click="simpan()" ng-disabled="isClean() || formEdit.$invalid">Simpan</button>
+            <button type="button" class="btn" ng-click="baru()">Batal</button>
+        </div>
+    </form>
+</div>

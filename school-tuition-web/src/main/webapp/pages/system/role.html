@@ -50,14 +50,14 @@
 </div>
 <div class="row" ng-show="currentRole">
     <div class="span5 well-large">
-        <h1>Menu {{currentRole.name}}</h1>
+        <h1>Menu</h1>
 
         <a class="btn" ng-click="showMenuDialog=true">
             <i class="icon-plus-sign"></i>Tambah Menu
         </a>
         <hr>
         <h3 ng-hide="currentRole.menuSet.length">
-            Tidak ada Menu untuk {{currentRole.name}}
+            Tidak ada Menu untuk
         </h3>
 
         <table class="table table-striped table-condensed table-bordered" 
@@ -81,14 +81,14 @@
         </table>
     </div>
     <div class="span5 well-large">
-        <h1>Permission {{currentRole.name}}</h1>
+        <h1>Permission</h1>
 
         <a class="btn" ng-click="showPermissionDialog=true">
             <i class="icon-plus-sign"></i>Tambah Permission
         </a>
         <hr>
         <h3 ng-hide="currentRole.permissionSet.length">
-            Tidak ada Permission untuk {{currentRole.name}}
+            Tidak ada Permission untuk 
         </h3>
 
         <table class="table table-striped table-condensed table-bordered" 
@@ -162,7 +162,7 @@
         
     <div class="modal-body">
         <h4 ng-hide="unselectedMenu">
-            Tidak ada Menu yang tersedia untuk {{currentRole.name}}
+            Tidak ada Menu yang tersedia untuk
         </h4>
         
         <table class="table table-striped table-condensed table-bordered" 
