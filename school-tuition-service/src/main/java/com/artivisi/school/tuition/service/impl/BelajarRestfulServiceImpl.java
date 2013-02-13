@@ -9,11 +9,13 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
 
 import com.artivisi.school.tuition.dao.ApplicationConfigDao;
+import com.artivisi.school.tuition.dao.KelasDao;
 import com.artivisi.school.tuition.dao.MenuDao;
 import com.artivisi.school.tuition.dao.PermissionDao;
 import com.artivisi.school.tuition.dao.RoleDao;
 import com.artivisi.school.tuition.dao.UserDao;
 import com.artivisi.school.tuition.domain.ApplicationConfig;
+import com.artivisi.school.tuition.domain.Kelas;
 import com.artivisi.school.tuition.domain.Menu;
 import com.artivisi.school.tuition.domain.Permission;
 import com.artivisi.school.tuition.domain.Role;
@@ -38,6 +40,8 @@ public class BelajarRestfulServiceImpl implements BelajarRestfulService {
     private RoleDao roleDao;
     @Autowired
     private UserDao userDao;
+    @Autowired
+    private KelasDao kelasDao;
 
     @Override
     public void save(ApplicationConfig ac) {
@@ -273,6 +277,42 @@ public class BelajarRestfulServiceImpl implements BelajarRestfulService {
     @Override
     public Long countAllUsers() {
         return userDao.count();
+    }
+
+    @Override
+    public void save(Kelas kelas) {
+         kelasDao.save(kelas);
+    }
+
+    @Override
+    public void delete(Kelas kelas) {
+          kelasDao.delete(kelas);
+    }
+
+    @Override
+    public Kelas findKelasById(String id) {
+         if(!StringUtils.hasText(id)){
+            return null;
+        }
+        return kelasDao.findOne(id);
+    }
+
+    @Override
+    public Kelas findKelasByUsername(String username) {
+       if(!StringUtils.hasText(username)){
+            return null;
+        }
+        return kelasDao.findByUsername(username);
+    }
+
+    @Override
+    public Page<Kelas> findAllKelas(Pageable pageable) {
+       return kelasDao.findAll(pageable);
+    }
+
+    @Override
+    public Long countAllKelass() {
+        return kelasDao.count();
     }
 
 }

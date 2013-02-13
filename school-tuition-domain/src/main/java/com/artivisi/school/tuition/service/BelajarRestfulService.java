@@ -3,6 +3,7 @@ package com.artivisi.school.tuition.service;
 import java.util.List;
 
 import com.artivisi.school.tuition.domain.ApplicationConfig;
+import com.artivisi.school.tuition.domain.Kelas;
 import com.artivisi.school.tuition.domain.Menu;
 import com.artivisi.school.tuition.domain.Permission;
 import com.artivisi.school.tuition.domain.Role;
@@ -53,4 +54,11 @@ public interface BelajarRestfulService extends MonitoredService {
     User findUserByUsername(String username);
     Page<User> findAllUsers(Pageable pageable);
     Long countAllUsers();
+   
+    void save(Kelas kelas);
+    void delete(Kelas kelas);
+    Kelas findKelasById(String id);
+    Kelas findKelasByUsername(String username);
+    Page<Kelas> findAllKelas(Pageable pageable);
+    Long countAllKelass();
 }
