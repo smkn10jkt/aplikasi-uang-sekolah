@@ -13,12 +13,18 @@ import com.artivisi.school.tuition.dao.KelasDao;
 import com.artivisi.school.tuition.dao.MenuDao;
 import com.artivisi.school.tuition.dao.PermissionDao;
 import com.artivisi.school.tuition.dao.RoleDao;
+import com.artivisi.school.tuition.dao.SiswaDao;
+import com.artivisi.school.tuition.dao.TagihanDao;
+import com.artivisi.school.tuition.dao.TahunAjaranDao;
 import com.artivisi.school.tuition.dao.UserDao;
 import com.artivisi.school.tuition.domain.ApplicationConfig;
 import com.artivisi.school.tuition.domain.Kelas;
 import com.artivisi.school.tuition.domain.Menu;
 import com.artivisi.school.tuition.domain.Permission;
 import com.artivisi.school.tuition.domain.Role;
+import com.artivisi.school.tuition.domain.Siswa;
+import com.artivisi.school.tuition.domain.Tagihan;
+import com.artivisi.school.tuition.domain.TahunAjaran;
 import com.artivisi.school.tuition.domain.User;
 import com.artivisi.school.tuition.service.BelajarRestfulService;
 import java.util.ArrayList;
@@ -42,6 +48,12 @@ public class BelajarRestfulServiceImpl implements BelajarRestfulService {
     private UserDao userDao;
     @Autowired
     private KelasDao kelasDao;
+    @Autowired 
+    private TahunAjaranDao tahunAjaran;
+    @Autowired
+    private TagihanDao tagihanDao;
+    @Autowired 
+    private SiswaDao siswaDao; 
 
     @Override
     public void save(ApplicationConfig ac) {
@@ -308,5 +320,89 @@ public class BelajarRestfulServiceImpl implements BelajarRestfulService {
     @Override
     public Long countAllKelas() {
         return kelasDao.count();
+    }
+
+    @Override
+    public void save(TahunAjaran t) {
+        tahunAjaran.save(t);
+    }
+
+    @Override
+    public void delete(TahunAjaran t) {
+        tahunAjaran.delete(t);
+    }
+
+    @Override
+    public TahunAjaran findTahunAjaranById(String id) {
+        if(!StringUtils.hasText(id)){
+            return null;
+        }
+        return tahunAjaran.findOne(id);
+    }
+
+    @Override
+    public Page<TahunAjaran> findAllTahunAjaran(Pageable pageable) {
+        return tahunAjaran.findAll(pageable);
+    }
+
+    @Override
+    public Long countAllTahunAjaran() {
+        return tahunAjaran.count();
+    }
+
+    @Override
+    public void save(Tagihan ta) {
+         tagihanDao.save(ta);
+    }
+
+    @Override
+    public void delete(Tagihan ta) {
+         tagihanDao.delete(ta);
+    }
+
+    @Override
+    public Tagihan findTagihanById(String id) {
+       if(!StringUtils.hasText(id)){
+            return null;
+        }
+        return tagihanDao.findOne(id);
+    }
+
+    @Override
+    public Page<Tagihan> findAllTagihan(Pageable pageable) {
+       return tagihanDao.findAll(pageable); 
+    }
+
+    @Override
+    public Long countAllTagihann() {
+         return tagihanDao.count();
+    }
+
+    @Override
+    public void save(Siswa s) {
+        siswaDao.save(s);
+    }
+
+    @Override
+    public void delete(Siswa s) {
+        siswaDao.delete(s);
+    }
+
+    @Override
+    public Siswa findSiswaById(String id) {
+        if(!StringUtils.hasText(id)){
+            return null;
+        }
+        return siswaDao.findOne(id);
+    }
+
+    @Override
+    public Page<Siswa> findAllSiswa(Pageable pageable) {
+         return siswaDao.findAll(pageable);
+    }
+
+    @Override
+    public Long countAllSiswa() {
+        return siswaDao.count();
     }
 }

@@ -27,4 +27,37 @@ public class Tagihan {
 
     @OneToMany(mappedBy = "tagihan", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<TagihanDetail> daftarTagihanDetail = new ArrayList<TagihanDetail>();
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public Date getPeriodeTagihan() {
+        return periodeTagihan;
+    }
+
+    public void setPeriodeTagihan(Date periodeTagihan) {
+        this.periodeTagihan = periodeTagihan;
+    }
+
+    public Date getJatuhTempo() {
+        return jatuhTempo;
+    }
+
+    public void setJatuhTempo(Date jatuhTempo) {
+        this.jatuhTempo = jatuhTempo;
+    }
+
+    public List<TagihanDetail> getDaftarTagihanDetail() {
+        return daftarTagihanDetail;
+    }
+
+    public void setDaftarTagihanDetail(List<TagihanDetail> daftarTagihanDetail) {
+        this.daftarTagihanDetail = daftarTagihanDetail;
+    }
+    
 }

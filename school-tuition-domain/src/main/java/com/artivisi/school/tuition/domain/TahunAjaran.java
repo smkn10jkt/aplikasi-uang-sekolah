@@ -34,4 +34,44 @@ public class TahunAjaran {
     @Column(nullable = false)
     @Temporal(TemporalType.DATE)
     private Date selesai;
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getKode() {
+        return kode;
+    }
+
+    public void setKode(String kode) {
+        this.kode = kode;
+    }
+
+    public String getNama() {
+        return nama;
+    }
+
+    public void setNama(String nama) {
+        this.nama = nama;
+    }
+
+    public Date getMulai() {
+        return mulai;
+    }
+
+    public void setMulai(Date mulai) {
+        this.mulai = mulai;
+    }
+
+    public Date getSelesai() {
+        return selesai;
+    }
+
+    public void setSelesai(Date selesai) {
+        this.selesai = selesai;
+    }
 }

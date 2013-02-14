@@ -455,4 +455,103 @@ angular.module('belajar.controller',['belajar.service'])
             return angular.equals($scope.original, $scope.currentKelas);
         }
     }])
+.controller('TahunAjaranController', ['$scope', 'TahunAjaranService', function($scope, TahunAjaranService){
+        $scope.tahunAjaran = TahunAjaranService.query();
+        $scope.edit = function(x){
+            if(x.id == null){
+                return; 
+            }
+            $scope.currentTahunAjaran = TahunAjaranService.get({id: x.id}, function(data){
+                $scope.original = angular.copy(data);
+            });
+        };
+        $scope.baru = function(){
+            $scope.currentTahunAjaran = null;
+            $scope.original = null;
+        }
+        $scope.simpan = function(){
+            TahunAjaranService.save($scope.currentTahunAjaran)
+            .success(function(){
+                $scope.tahunAjaran = TahunAjaranService.query();
+                $scope.baru();
+            });
+        }
+        $scope.remove = function(x){
+            if(x.id == null){
+                return;
+            }
+            TahunAjaranService.remove(x).success(function(){
+                $scope.tahunAjaran = TahunAjaranService.query();
+            });
+        }
+        $scope.isClean = function(){
+            return angular.equals($scope.original, $scope.currentTahunAjaran);
+        }
+    }])
+.controller('TagihanController', ['$scope', 'TagihanService', function($scope, TagihanService){
+        $scope.tagihan = TagihanService.query();
+        $scope.edit = function(x){
+            if(x.id == null){
+                return; 
+            }
+            $scope.currentTagihan = TagihanService.get({id: x.id}, function(data){
+                $scope.original = angular.copy(data);
+            });
+        };
+        $scope.baru = function(){
+            $scope.currentTagihan = null;
+            $scope.original = null;
+        }
+        $scope.simpan = function(){
+            TagihanService.save($scope.currentTagihan)
+            .success(function(){
+                $scope.tagihan = TagihanService.query();
+                $scope.baru();
+            });
+        }
+        $scope.remove = function(x){
+            if(x.id == null){
+                return;
+            }
+            TagihanService.remove(x).success(function(){
+                $scope.tagihan = TagihanService.query();
+            });
+        }
+        $scope.isClean = function(){
+            return angular.equals($scope.original, $scope.currentTagihan);
+        }
+    }])
+.controller('SiswaController', ['$scope', 'SiswaService', function($scope, SiswaService){
+        $scope.siswa = SiswaService.query();
+        $scope.edit = function(x){
+            if(x.id == null){
+                return; 
+            }
+            $scope.currentSiswa = SiswaService.get({id: x.id}, function(data){
+                $scope.original = angular.copy(data);
+            });
+        };
+        $scope.baru = function(){
+            $scope.currentSiswa = null;
+            $scope.original = null;
+        }
+        $scope.simpan = function(){
+            SiswaService.save($scope.currentSiswa)
+            .success(function(){
+                $scope.siswa = SiswaService.query();
+                $scope.baru();
+            });
+        }
+        $scope.remove = function(x){
+            if(x.id == null){
+                return;
+            }
+            SiswaService.remove(x).success(function(){
+                $scope.siswa = SiswaService.query();
+            });
+        }
+        $scope.isClean = function(){
+            return angular.equals($scope.original, $scope.currentSiswa);
+        }
+    }])
 ;

@@ -108,21 +108,93 @@ angular.module('belajar.service', ['ngResource'])
 
     .factory('KelasService', ['$resource', '$http', function($resource, $http){
         var service = {
-            kelas: $resource('master/kelas/:id', {},{
+            kelas: $resource('table/kelas/:id', {},{
                 queryPage: {method:'GET', isArray:false}
             }),
             get: function(param, callback){ return this.kelas.get(param, callback) }, 
             query: function(p, callback){ return this.kelas.queryPage({"page.page": p, "page.size": 10}, callback) },
             save: function(obj){
                 if(obj.id == null){
-                    return $http.post('master/kelas', obj);
+                    return $http.post('table/kelas', obj);
                 } else {
-                    return $http.put('master/kelas/'+obj.id, obj);
+                    return $http.put('table/kelas/'+obj.id, obj);
                 }
             }, 
             remove: function(obj){
                 if(obj.id != null){
-                    return $http.delete('master/kelas/'+obj.id);
+                    return $http.delete('table/kelas/'+obj.id);
+                }
+            }
+            
+        };
+            
+        return service;
+    }])
+.factory('TahunAjaranService', ['$resource', '$http', function($resource, $http){
+        var service = {
+            tahunAjaran: $resource('table/tahunAjaran/:id', {},{
+                queryPage: {method:'GET', isArray:false}
+            }),
+            get: function(param, callback){ return this.tahunAjaran.get(param, callback) }, 
+            query: function(p, callback){ return this.tahunAjaran.queryPage({"page.page": p, "page.size": 10}, callback) },
+            save: function(obj){
+                if(obj.id == null){
+                    return $http.post('table/tahunAjaran', obj);
+                } else {
+                    return $http.put('table/tahunAjaran/'+obj.id, obj);
+                }
+            }, 
+            remove: function(obj){
+                if(obj.id != null){
+                    return $http.delete('table/tahunAjaran/'+obj.id);
+                }
+            }
+            
+        };
+            
+        return service;
+    }])
+.factory('TagihanService', ['$resource', '$http', function($resource, $http){
+        var service = {
+            tagihan: $resource('table/tagihan/:id', {},{
+                queryPage: {method:'GET', isArray:false}
+            }),
+            get: function(param, callback){ return this.Tagihan.get(param, callback) }, 
+            query: function(p, callback){ return this.tagihan.queryPage({"page.page": p, "page.size": 10}, callback) },
+            save: function(obj){
+                if(obj.id == null){
+                    return $http.post('table/tagihan', obj);
+                } else {
+                    return $http.put('table/tagihan/'+obj.id, obj);
+                }
+            }, 
+            remove: function(obj){
+                if(obj.id != null){
+                    return $http.delete('table/tagihan/'+obj.id);
+                }
+            }
+            
+        };
+            
+        return service;
+    }])
+.factory('SiswaService', ['$resource', '$http', function($resource, $http){
+        var service = {
+           siswa: $resource('table/siswa/:id', {},{
+                queryPage: {method:'GET', isArray:false}
+            }),
+            get: function(param, callback){ return this.siswa.get(param, callback) }, 
+            query: function(p, callback){ return this.siswa.queryPage({"page.page": p, "page.size": 10}, callback) },
+            save: function(obj){
+                if(obj.id == null){
+                    return $http.post('table/siswa', obj);
+                } else {
+                    return $http.put('table/siswa/'+obj.id, obj);
+                }
+            }, 
+            remove: function(obj){
+                if(obj.id != null){
+                    return $http.delete('table/siswa/'+obj.id);
                 }
             }
             

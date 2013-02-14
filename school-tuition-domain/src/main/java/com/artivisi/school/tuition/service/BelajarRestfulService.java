@@ -7,6 +7,9 @@ import com.artivisi.school.tuition.domain.Kelas;
 import com.artivisi.school.tuition.domain.Menu;
 import com.artivisi.school.tuition.domain.Permission;
 import com.artivisi.school.tuition.domain.Role;
+import com.artivisi.school.tuition.domain.Siswa;
+import com.artivisi.school.tuition.domain.Tagihan;
+import com.artivisi.school.tuition.domain.TahunAjaran;
 import com.artivisi.school.tuition.domain.User;
 import java.util.List;
 import org.springframework.data.domain.Page;
@@ -58,8 +61,26 @@ public interface BelajarRestfulService extends MonitoredService {
     // kelas
     void save(Kelas k);
     void delete (Kelas k);
-    Kelas findKelasById(String id);
-    
+    Kelas findKelasById(String id); 
     Page<Kelas> findAllKelas(Pageable pageable);
     Long countAllKelas();
+    
+     void save(TahunAjaran t);
+    void delete (TahunAjaran t);
+    TahunAjaran findTahunAjaranById(String id); 
+    Page<TahunAjaran> findAllTahunAjaran(Pageable pageable);
+    Long countAllTahunAjaran();
+    
+    void save(Tagihan ta);
+    void delete (Tagihan ta);
+    Tagihan findTagihanById(String id); 
+    Page<Tagihan> findAllTagihan(Pageable pageable);
+    Long countAllTagihann();
+    
+    void save(Siswa s);
+    void delete (Siswa s);
+    Siswa findSiswaById(String id); 
+    Page<Siswa> findAllSiswa(Pageable pageable);
+    Long countAllSiswa();
+    
 }

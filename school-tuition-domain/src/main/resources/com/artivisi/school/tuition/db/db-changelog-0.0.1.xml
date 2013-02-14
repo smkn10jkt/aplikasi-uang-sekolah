@@ -93,13 +93,59 @@
             
             </column>
             <column name="kode" type="varchar(255)">
+                <constraints unique="true" nullable="false"/> 
             </column>
             <column name="nama" type="varchar(255)">
             </column>
             <column name="id_tahun_ajaran" type="varchar(255)">
+                <constraints nullable="false"/> 
             </column>
         </createTable>
-        
+        <createTable tableName="t_tahun_ajaran">
+            <column name="id" type="varchar(255)">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="kode" type="varchar(255)">
+            <constraints unique="true" nullable="false"/>    
+            </column>
+            <column name="nama" type="varchar(255)">
+            </column>
+            <column name="mulai" type="date">
+            <constraints nullable="false"/>    
+            </column>
+            <column name="selesai" type="date">
+            <constraints nullable="false"/>    
+            </column>
+            
+        </createTable>
+        <createTable tableName="t_tagihan">
+            <column name="id" type="varchar(255)">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+           
+            <column name="periode_tagihan" type="date">
+            <constraints nullable="false"/>    
+            </column>
+            <column name="jatuh_tempo" type="date">
+            <constraints nullable="false"/>    
+            </column>
+            
+        </createTable>
+       
+        <createTable tableName="t_siswa">
+            <column name="id" type="varchar(255)">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+           <column name="nomer" type="varchar(255)">
+            <constraints unique="true" nullable="false"/>    
+            </column>
+            <column name="nama" type="varchar(255)">
+            </column>
+            
+            <column name="id_kelas" type="varchar(255)">
+            </column>
+            
+        </createTable>
         <modifySql dbms="mysql">
             <append value=" engine innodb" />
         </modifySql>
@@ -205,6 +251,26 @@
             <column header="nama" type="STRING"/>
             <column header="id_tahun_ajaran" type="STRING"/>
            
+        </loadData>
+        <loadData tableName="t_tahun_ajaran" file="com/artivisi/school/tuition/db/data/tahun_ajaran.csv">
+            <column header="id" type="STRING"/>
+            <column header="kode" type="STRING"/>
+            <column header="nama" type="STRING"/>
+            <column header="mulai" type="DATE"/>
+           <column header="selesai" type="DATE"/>
+        </loadData>
+        <loadData tableName="t_tagihan" file="com/artivisi/school/tuition/db/data/tagihan.csv">
+            <column header="id" type="STRING"/>
+            
+            <column header="periode_tagihan" type="DATE"/>
+           <column header="jatuh_tempo" type="DATE"/>
+        </loadData>
+        <loadData tableName="t_siswa" file="com/artivisi/school/tuition/db/data/siswa.csv">
+            <column header="id" type="STRING"/>
+            <column header="nomer" type="STRING"/>
+            <column header="nama" type="STRING"/>
+            <column header="id_kelas" type="STRING"/>
+         
         </loadData>
     </changeSet>
 </databaseChangeLog>
