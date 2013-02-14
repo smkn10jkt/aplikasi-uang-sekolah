@@ -1,6 +1,5 @@
  <div class="span10 well-large">
         <h1>Daftar Tagihan</h1>
-
         <a class="btn" ng-click="#/kelas">
             <i class="icon-plus-sign"></i>Tambah Data
         </a>
@@ -31,15 +30,15 @@
         <h1>Form Tagihan</h1>
         <form class="form-horizontal" name="formEdit">
             <div class="control-group" ng-class="{error: formEdit.id.$invalid}">
-                <label class="control-label" for="label">Id : &nbsp;</label>
-                <input type="text" id="id" name="id" placeholder="Id Tagihan" ng-model="currentTagihan.id" required ui-validate="{tagihanIdAvailable: isTagihanIdAvailable}">
+                <label class="control-label" for="id">Id : &nbsp;</label>
+                <input type="text" id="id" name="id" placeholder="Id Tagihan" ng-model="currentTagihan.id" required>
                 <span ng-show="formEdit.id.$error.required" class="help-inline">Harus diisi</span>
             </div>
-            <div class="control-group">
+            <div class="control-group" ng-class="{error: formEdit.jatuhtempo.$invalid}">
                 <label class="control-label" for="jatuhtempo">Jatuh Tempo : &nbsp;</label>
                <input id="jatuhtempo" type="date" value="auto"/>
             </div>
-            <div class="control-group">
+            <div class="control-group" ng-class="{error: formEdit.periodtagihan.$invalid}">
                 <label class="control-label" for="periodtagihan">Periode Tagihan : &nbsp;</label>
                <input id="periodtagihan" type="date" value="auto"/>
             </div>
