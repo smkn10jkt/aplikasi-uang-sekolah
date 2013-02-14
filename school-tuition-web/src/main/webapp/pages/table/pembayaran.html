@@ -38,32 +38,23 @@
     <form class="form-horizontal" name="formEdit">
         <div class="control-group" ng-class="{error: formEdit.id.$invalid}">
             <label class="control-label" for="id">Id : &nbsp;</label>
-            <input type="text" id="id" name="id" placeholder="Id Siswa" ng-model="currentSiswa.id" required ui-validate="{siswaIdAvailable: isSiswaIdAvailable}">
+            <input type="text" id="id" name="id" placeholder="Id Pembayaran" ng-model="currentPembayaran.id" required>
             <span ng-show="formEdit.id.$error.required" class="help-inline">Harus diisi</span>
         </div>
         <div class="control-group" ng-class="{error: formEdit.value.$invalid}">
             <label class="control-label" for="value">Keterangan : &nbsp;</label>
-            <input type="text" 
-                   id="value" 
-                   name="keterangan" 
-                   placeholder="Keterangan" 
-                   ng-model="currentKeterangan.keterangan"
-                   required
-                   ui-validate="{permissionValueAvailable: isPermissionValueAvailable}">
-            <span ng-show="formEdit.value.$error.required" class="help-inline">Harus diisi</span>
-            <span ng-show="formEdit.value.$error.permissionValueAvailable" class="help-inline"></span>
+            <label class="control-label">Lunas : &nbsp;</label>
+             <input type="checkbox" id="value" name="value" placeholder="Keterangan" ng-model="currentUser.value">
         </div>
-         <div class="control-group" ng-class="{error: formEdit.value.$invalid}">
-            <label class="control-label" for="value">Penerima : &nbsp;</label>
+         <div class="control-group" ng-class="{error: formEdit.penerima.$invalid}">
+            <label class="control-label" for="penerima">Penerima : &nbsp;</label>
             <input type="text" 
-                   id="value" 
+                   id="penerima" 
                    name="penerima" 
                    placeholder="Penerima" 
                    ng-model="currentPenerima.Penerima"
-                   required
-                   ui-validate="{permissionValueAvailable: isPermissionValueAvailable}">
-            <span ng-show="formEdit.value.$error.required" class="help-inline">Harus diisi</span>
-            <span ng-show="formEdit.value.$error.permissionValueAvailable" class="help-inline"></span>
+                   required>
+            <span ng-show="formEdit.penerima.$error.required" class="help-inline">Harus diisi</span>
         </div>
         <div class="control-group">
                 <label class="control-label" for="waktu_pembayaran">Waktu Pembayaran : &nbsp;</label>
@@ -78,7 +69,7 @@
             </div>
        
         <div class="form-actions">
-            <button type="submit" class="btn btn-primary" ng-click="simpan()" ng-disabled="isClean() || formEdit.$invalid">Simpan</button>
+            <button type="delete" class="btn btn-primary" ng-click="hapus()" ng-disabled="isClean() || formEdit.$invalid">Hapus</button>
             <button type="edit" class="btn btn-primary" ng-click="edit()" ng-disabled="isClean() || formEdit.$invalid">Ubah</button>
             <button type="search" class="btn btn-primary" ng-click="search()" ng-disabled="isClean() || formEdit.$invalid">Cari</button>
             <button type="submit" class="btn btn-primary" ng-click="simpan()" ng-disabled="isClean() || formEdit.$invalid">Simpan</button>

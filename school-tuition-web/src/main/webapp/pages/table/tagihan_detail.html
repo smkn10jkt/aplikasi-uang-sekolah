@@ -12,7 +12,7 @@
                 <th>Keterangan</th>
                 <th>Nilai Bayar</th>
                 <th>Nilai Tagihan</th>
-                <th>id jenis Biaya</th>
+                <th>id Jenis Biaya</th>
                 <th>Id Tagihan </th>
                 <th></th>
             </tr>
@@ -40,46 +40,40 @@
     <form class="form-horizontal" name="formEdit">
         <div class="control-group" ng-class="{error: formEdit.id.$invalid}">
             <label class="control-label" for="id">Id : &nbsp;</label>
-            <input type="text" id="id" name="id" placeholder="Id Siswa" ng-model="currentSiswa.id" required ui-validate="{siswaIdAvailable: isSiswaIdAvailable}">
+            <input type="text" id="id" name="id" placeholder="Id Siswa" ng-model="currentSiswa.id" required>
             <span ng-show="formEdit.id.$error.required" class="help-inline">Harus diisi</span>
         </div>
-        <div class="control-group" ng-class="{error: formEdit.value.$invalid}">
+        <div class="control-group" ng-class="{error: formEdit.keterangan.$invalid}">
             <label class="control-label" for="value">Keterangan : &nbsp;</label>
             <input type="text" 
-                   id="value" 
+                   id="keterangan" 
                    name="keterangan" 
                    placeholder="Keterangan" 
                    ng-model="currentKeterangan.keterangan"
-                   required
-                   ui-validate="{permissionValueAvailable: isPermissionValueAvailable}">
+                   required>
             <span ng-show="formEdit.value.$error.required" class="help-inline">Harus diisi</span>
-            <span ng-show="formEdit.value.$error.permissionValueAvailable" class="help-inline"></span>
         </div>
-         <div class="control-group" ng-class="{error: formEdit.value.$invalid}">
-            <label class="control-label" for="value">Nilai Bayar : &nbsp;</label>
+         <div class="control-group" ng-class="{error: formEdit.nilai.$invalid}">
+            <label class="control-label" for="nilai">Nilai Bayar : &nbsp;</label>
             <input type="text" 
-                   id="value" 
+                   id="nilai" 
                    name="nilai" 
                    placeholder="Nilai Bayar" 
                    ng-model="currentNilai.Nilai"
-                   required
-                   ui-validate="{permissionValueAvailable: isPermissionValueAvailable}">
-            <span ng-show="formEdit.value.$error.required" class="help-inline">Harus diisi</span>
-            <span ng-show="formEdit.value.$error.permissionValueAvailable" class="help-inline"></span>
+                   required>
+            <span ng-show="formEdit.nilai.$error.required" class="help-inline">Harus diisi</span>
         </div>
-        <div class="control-group" ng-class="{error: formEdit.value.$invalid}">
-            <label class="control-label" for="value">Nilai Tagihan : &nbsp;</label>
+        <div class="control-group" ng-class="{error: formEdit.tagihan.$invalid}">
+            <label class="control-label" for="tagihan">Nilai Tagihan : &nbsp;</label>
             <input type="text" 
-                   id="value" 
-                   name="nilai" 
+                   id="tagihan" 
+                   name="tagihan" 
                    placeholder="Nilai Tagihan" 
-                   ng-model="currentNilai.Nilai"
-                   required
-                   ui-validate="{permissionValueAvailable: isPermissionValueAvailable}">
-            <span ng-show="formEdit.value.$error.required" class="help-inline">Harus diisi</span>
-            <span ng-show="formEdit.value.$error.permissionValueAvailable" class="help-inline"></span>
+                   ng-model="currentTagihan.Tagihan"
+                   required>
+            <span ng-show="formEdit.tagihan.$error.required" class="help-inline">Harus diisi</span>
         </div>
-        <div class="control-group">
+        <div class="control-group" ng-class="{error: formEdit.id_jenis_biaya.$invalid}">
                 <label class="control-label" for="id_jenis_biaya">Id Jenis Biaya : &nbsp;</label>
                 <select ui-select2 ng-model="currentId_jenis_biaya.id_jenis_biaya.id_jenis_biaya" data-placeholder="-- Select One --">
                     <option></option>

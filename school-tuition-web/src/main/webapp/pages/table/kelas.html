@@ -34,24 +34,25 @@
         <form class="form-horizontal" name="formEdit">
             <div class="control-group" ng-class="{error: formEdit.id.$invalid}">
                 <label class="control-label" for="label">Id : &nbsp;</label>
-                <input type="text" id="id" name="id" placeholder="Id Kelas" ng-model="currentKelas.id" required ui-validate="{kelasIdAvailable: isKelasIdAvailable}">
+                <input type="text" id="id" name="id" placeholder="Id Kelas" ng-model="currentKelas.id" required>
                 <span ng-show="formEdit.id.$error.required" class="help-inline">Harus diisi</span>
             </div>
-            <div class="control-group">
+            <div class="control-group" ng-class="{error: formEdit.kode.$invalid}">
                 <label class="control-label" for="kode">Kode : &nbsp;</label>
-                <input type="text" id="kode" name="kode" placeholder="Kode Kelas" ng-model="currentKelas.kode" required ui-validate="{kelasKodeAvailable: isKelasKodeAvailable}">
+                <input type="text" id="kode" name="kode" placeholder="Kode Kelas" ng-model="currentKelas.kode" required>
                 <span ng-show="formEdit.kode.$error.required" class="help-inline">Harus diisi</span>
             </div>
-            <div class="control-group">
+            <div class="control-group" ng-class="{error: formEdit.nama.$invalid}">
                 <label class="control-label" for="nama">Nama : &nbsp;</label>
                 <select ui-select2 ng-model="currentKelas.nama.id" data-placeholder="-- Select One --">
                     <option></option>
                     <option ng-repeat="nama in namaSelection" value="{{nama.id}}">{{nama.nama}}</option>
-                </select>
+                    </select>
+                <span ng-show="formEdit.nama.$error.required" class="help-inline">Harus diisi</span>   
             </div>
             <div class="control-group" ng-class="{error: formEdit.id_tahun_ajaran.$invalid}">
                 <label class="control-label" for="id_tahun_ajaran">Id Tahun Ajaran : &nbsp;</label>
-                <input type="text" id="level" name="level" placeholder="Level" ng-model="currentKelas.id_tahun_ajaran" required ui-validate="{kelasNamaAvailable: isKelasNamaAvailable}">
+                <input type="text" id="level" name="id_tahun_ajaran" placeholder="Id Tahun Ajaran" ng-model="currentKelas.id_tahun_ajaran" required>
                 <span ng-show="formEdit.id_tahun_ajaran.$error.required" class="help-inline">Harus diisi</span>
             </div>
             <div class="form-actions">
