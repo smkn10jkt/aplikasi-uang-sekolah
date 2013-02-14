@@ -18,9 +18,9 @@
                    name="nilai" 
                    placeholder="Nilai Value" 
                    ng-model="currentNilai.value"
-                   required>
+                   required
+                   ui-validate="{konfigurasiNilaiAvailable: isKonfigurasiNilaiAvailable}">
             <span ng-show="formEdit.nilai.$error.required" class="help-inline">Required</span>
-        </div>
           <div class="control-group">
                 <label class="control-label" for="id_kelas">Id Jenis Barang : &nbsp;</label>
                 <select ui-select2 ng-model="currentNama.id_jenis_barang.id" data-placeholder="-- Select One --">

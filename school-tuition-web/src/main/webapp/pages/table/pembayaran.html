@@ -18,11 +18,11 @@
         </thead>
         <tbody>
             <tr ng-repeat="c in configs">
-                <td>{{x.id}}</td>
-                <td>{{x.keterangan}}</td>
-                <td>{{x.penerima}}</td>
-                <td>{{x.waktu_pembayaran}}</td>
-                <td>{{x.id_siswa}}</td>
+                <td>{{c.id}}</td>
+                <td>{{c.keterangan}}</td>
+                <td>{{c.penerima}}</td>
+                <td>{{c.waktu_pembayaran}}</td>
+                <td>{{c.id_siswa}}</td>
                 <td>
                     <a ng-click="edit(c)"><i class="icon-edit"></i></a>
                     <a ng-click="remove(c)"><i class="icon-remove"></i></a>
