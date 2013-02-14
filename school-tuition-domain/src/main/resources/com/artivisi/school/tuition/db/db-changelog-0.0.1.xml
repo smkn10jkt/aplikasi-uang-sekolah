@@ -208,6 +208,21 @@
             referencedTableName="c_security_role"
             referencedColumnNames="id"
         />
+        <addForeignKeyConstraint
+            constraintName="fk_kelas_siswa"
+            baseColumnNames="id_kelas"
+            baseTableName="t_siswa"
+            referencedTableName="t_kelas"
+            referencedColumnNames="id"
+        />
+<!--        <addForeignKeyConstraint
+            constraintName="fk_kelas_tahunAjaran"
+            baseColumnNames="id_tahun_ajaran"
+            baseTableName="t_kelas"
+            referencedTableName="t_tahun_ajaran"
+            referencedColumnNames="id"
+        />
+        -->
     </changeSet>
     <changeSet id="3" author="endy">
         <loadData tableName="c_security_menu" file="com/artivisi/school/tuition/db/data/menu.csv">
