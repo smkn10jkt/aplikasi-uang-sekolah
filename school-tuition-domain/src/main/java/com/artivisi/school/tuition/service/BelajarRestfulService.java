@@ -5,6 +5,7 @@ import java.util.List;
 import com.artivisi.school.tuition.domain.ApplicationConfig;
 import com.artivisi.school.tuition.domain.Kelas;
 import com.artivisi.school.tuition.domain.Menu;
+import com.artivisi.school.tuition.domain.Pembayaran;
 import com.artivisi.school.tuition.domain.Permission;
 import com.artivisi.school.tuition.domain.Role;
 import com.artivisi.school.tuition.domain.Siswa;
@@ -82,5 +83,11 @@ public interface BelajarRestfulService extends MonitoredService {
     Siswa findSiswaById(String id); 
     Page<Siswa> findAllSiswa(Pageable pageable);
     Long countAllSiswa();
+    
+    void save(Pembayaran p);
+    void delete (Pembayaran p);
+    Pembayaran findPembayaranById(String id); 
+    Page<Pembayaran> findAllPembayaran(Pageable pageable);
+    Long countAllPembayaran();
     
 }

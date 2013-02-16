@@ -554,4 +554,38 @@ angular.module('belajar.controller',['belajar.service'])
             return angular.equals($scope.original, $scope.currentSiswa);
         }
     }])
+
+.controller('PembayaranController', ['$scope', 'PembayaranService', function($scope, PembayaranService){
+        $scope.pembayaran = PembayaranService.query();
+        $scope.edit = function(x){
+            if(x.id == null){
+                return; 
+            }
+            $scope.currentPembayaran = PembayaranService.get({id: x.id}, function(data){
+                $scope.original = angular.copy(data);
+            });
+        };
+        $scope.baru = function(){
+            $scope.currentPembayaran = null;
+            $scope.original = null;
+        }
+        $scope.simpan = function(){
+            PembayaranService.save($scope.currentPembayaran)
+            .success(function(){
+                $scope.pembayaran = PembayaranService.query();
+                $scope.baru();
+            });
+        }
+        $scope.remove = function(x){
+            if(x.id == null){
+                return;
+            }
+            PembayaranService.remove(x).success(function(){
+                $scope.pembayaran = PembayaranService.query();
+            });
+        }
+        $scope.isClean = function(){
+            return angular.equals($scope.original, $scope.currentPembayaran);
+        }
+    }])
 ;

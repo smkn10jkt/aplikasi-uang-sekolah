@@ -202,4 +202,29 @@ angular.module('belajar.service', ['ngResource'])
             
         return service;
     }])
+.factory('PembayaranService', ['$resource', '$http', function($resource, $http){
+        var service = {
+           pembayaran: $resource('table/pembayaran/:id', {},{
+                queryPage: {method:'GET', isArray:false}
+            }),
+            get: function(param, callback){ return this.pembayaran.get(param, callback) }, 
+            query: function(p, callback){ return this.pembayaran.queryPage({"page.page": p, "page.size": 10}, callback) },
+            save: function(obj){
+                if(obj.id == null){
+                    return $http.post('table/pembayaran', obj);
+                } else {
+                    return $http.put('table/pembayaran/'+obj.id, obj);
+                }
+            }, 
+            remove: function(obj){
+                if(obj.id != null){
+                    return $http.delete('table/pembayaran/'+obj.id);
+                }
+            }
+            
+        };
+            
+        return service;
+    }])
+
 ;

@@ -36,4 +36,54 @@ public class Pembayaran {
 
     @OneToMany(mappedBy = "pembayaran", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<PembayaranDetail> daftarPembayaranDetail = new ArrayList<PembayaranDetail>();
+
+    public List<PembayaranDetail> getDaftarPembayaranDetail() {
+        return daftarPembayaranDetail;
+    }
+
+    public void setDaftarPembayaranDetail(List<PembayaranDetail> daftarPembayaranDetail) {
+        this.daftarPembayaranDetail = daftarPembayaranDetail;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getKeterangan() {
+        return keterangan;
+    }
+
+    public void setKeterangan(String keterangan) {
+        this.keterangan = keterangan;
+    }
+
+    public String getPenerima() {
+        return penerima;
+    }
+
+    public void setPenerima(String penerima) {
+        this.penerima = penerima;
+    }
+
+    public Siswa getSiswa() {
+        return siswa;
+    }
+
+    public void setSiswa(Siswa siswa) {
+        this.siswa = siswa;
+    }
+
+    public Date getWaktuPembayaran() {
+        return waktuPembayaran;
+    }
+
+    public void setWaktuPembayaran(Date waktuPembayaran) {
+        this.waktuPembayaran = waktuPembayaran;
+    }
+    
+    
 }

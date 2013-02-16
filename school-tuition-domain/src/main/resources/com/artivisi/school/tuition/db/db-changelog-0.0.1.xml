@@ -146,6 +146,28 @@
             </column>
             
         </createTable>
+        
+         <createTable tableName="t_pembayaran">
+            <column name="id" type="varchar(255)">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+           <column name="keterangan" type="varchar(255)">
+                
+            </column>
+            <column name="penerima" type="varchar(255)">
+            <constraints nullable="false"/>
+            </column>
+            
+            <column name="waktu_pembayaran" type="datetime">
+                 <constraints nullable="false"/>
+            </column>
+            
+            <column name="id_siswa" type="varchar(255)">
+                 <constraints nullable="false"/>
+            </column>
+            
+        </createTable>
+        
         <modifySql dbms="mysql">
             <append value=" engine innodb" />
         </modifySql>
@@ -270,6 +292,14 @@
             <column header="nomer" type="STRING"/>
             <column header="nama" type="STRING"/>
             <column header="id_kelas" type="STRING"/>
+         
+        </loadData>
+         <loadData tableName="t_pembayaran" file="com/artivisi/school/tuition/db/data/pembayaran.csv">
+            <column header="id" type="STRING"/>
+            <column header="keterangan" type="STRING"/>
+            <column header="penerima" type="STRING"/>
+            <column header="waktu_pembayaran" type="DATE"/>
+            <column header="id_siswa" type="STRING"/>
          
         </loadData>
     </changeSet>

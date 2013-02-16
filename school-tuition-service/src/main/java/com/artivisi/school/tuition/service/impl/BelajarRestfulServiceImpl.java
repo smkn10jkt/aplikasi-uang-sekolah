@@ -1,5 +1,6 @@
 package com.artivisi.school.tuition.service.impl;
 
+import com.artivisi.school.tuition.domain.Pembayaran;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +12,7 @@ import org.springframework.util.StringUtils;
 import com.artivisi.school.tuition.dao.ApplicationConfigDao;
 import com.artivisi.school.tuition.dao.KelasDao;
 import com.artivisi.school.tuition.dao.MenuDao;
+import com.artivisi.school.tuition.dao.PembayaranDao;
 import com.artivisi.school.tuition.dao.PermissionDao;
 import com.artivisi.school.tuition.dao.RoleDao;
 import com.artivisi.school.tuition.dao.SiswaDao;
@@ -54,6 +56,8 @@ public class BelajarRestfulServiceImpl implements BelajarRestfulService {
     private TagihanDao tagihanDao;
     @Autowired 
     private SiswaDao siswaDao; 
+     @Autowired 
+    private PembayaranDao pembayaranDao;
 
     @Override
     public void save(ApplicationConfig ac) {
@@ -404,5 +408,33 @@ public class BelajarRestfulServiceImpl implements BelajarRestfulService {
     @Override
     public Long countAllSiswa() {
         return siswaDao.count();
+    }
+
+    @Override
+    public void save(Pembayaran p) {
+        pembayaranDao.save(p);
+    }
+
+    @Override
+    public void delete(Pembayaran p) {
+        pembayaranDao.delete(p);
+    }
+
+    @Override
+    public Pembayaran findPembayaranById(String id) {
+        if(!StringUtils.hasText(id)){
+            return null;
+        }
+        return pembayaranDao.findOne(id);
+    }
+
+    @Override
+    public Page<Pembayaran> findAllPembayaran(Pageable pageable) {
+        return pembayaranDao.findAll(pageable);
+    }
+
+    @Override
+    public Long countAllPembayaran() {
+        return pembayaranDao.count();
     }
 }
