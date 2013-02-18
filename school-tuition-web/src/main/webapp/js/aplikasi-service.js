@@ -227,4 +227,79 @@ angular.module('belajar.service', ['ngResource'])
         return service;
     }])
 
+.factory('JenisBiayaService', ['$resource', '$http', function($resource, $http){
+        var service = {
+           jenisbiaya: $resource('table/jenisbiaya/:id', {},{
+                queryPage: {method:'GET', isArray:false}
+            }),
+            get: function(param, callback){ return this.jenisbiaya.get(param, callback) }, 
+            query: function(p, callback){ return this.jenisbiaya.queryPage({"page.page": p, "page.size": 10}, callback) },
+            save: function(obj){
+                if(obj.id == null){
+                    return $http.post('table/jenisbiaya', obj);
+                } else {
+                    return $http.put('table/jenisbiaya/'+obj.id, obj);
+                }
+            }, 
+            remove: function(obj){
+                if(obj.id != null){
+                    return $http.delete('table/jenisbiaya/'+obj.id);
+                }
+            }
+            
+        };
+            
+        return service;
+    }])
+
+.factory('KonfigurasiTagihanService', ['$resource', '$http', function($resource, $http){
+        var service = {
+           konfigurasitagihan: $resource('table/konfigurasitagihan/:id', {},{
+                queryPage: {method:'GET', isArray:false}
+            }),
+            get: function(param, callback){ return this.konfigurasitagihan.get(param, callback) }, 
+            query: function(p, callback){ return this.konfigurasitagihan.queryPage({"page.page": p, "page.size": 10}, callback) },
+            save: function(obj){
+                if(obj.id == null){
+                    return $http.post('master/konfigurasitagihan', obj);
+                } else {
+                    return $http.put('master/konfigurasitagihan/'+obj.id, obj);
+                }
+            }, 
+            remove: function(obj){
+                if(obj.id != null){
+                    return $http.delete('master/konfigurasitagihan/'+obj.id);
+                }
+            }
+            
+        };
+            
+        return service;
+    }])
+
+.factory('TagihanDetailService', ['$resource', '$http', function($resource, $http){
+        var service = {
+           tagihandetail: $resource('table/tagihandetail/:id', {},{
+                queryPage: {method:'GET', isArray:false}
+            }),
+            get: function(param, callback){ return this.tagihandetail.get(param, callback) }, 
+            query: function(p, callback){ return this.tagihandetail.queryPage({"page.page": p, "page.size": 10}, callback) },
+            save: function(obj){
+                if(obj.id == null){
+                    return $http.post('table/tagihandetail', obj);
+                } else {
+                    return $http.put('table/tagihandetail/'+obj.id, obj);
+                }
+            }, 
+            remove: function(obj){
+                if(obj.id != null){
+                    return $http.delete('table/tagihandetail/'+obj.id);
+                }
+            }
+            
+        };
+            
+        return service;
+    }])
+
 ;

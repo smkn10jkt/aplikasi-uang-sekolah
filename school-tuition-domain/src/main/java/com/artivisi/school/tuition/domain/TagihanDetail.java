@@ -34,4 +34,52 @@ public class TagihanDetail {
     @NotNull
     @Column(nullable = false)
     private Boolean lunas = Boolean.FALSE;
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public JenisBiaya getJenisBiaya() {
+        return jenisBiaya;
+    }
+
+    public void setJenisBiaya(JenisBiaya jenisBiaya) {
+        this.jenisBiaya = jenisBiaya;
+    }
+
+    public Boolean getLunas() {
+        return lunas;
+    }
+
+    public void setLunas(Boolean lunas) {
+        this.lunas = lunas;
+    }
+
+    public BigDecimal getNilaiDibayar() {
+        return nilaiDibayar;
+    }
+
+    public void setNilaiDibayar(BigDecimal nilaiDibayar) {
+        this.nilaiDibayar = nilaiDibayar;
+    }
+
+    public BigDecimal getNilaiTagihan() {
+        return nilaiTagihan;
+    }
+
+    public void setNilaiTagihan(BigDecimal nilaiTagihan) {
+        this.nilaiTagihan = nilaiTagihan;
+    }
+
+    public Tagihan getTagihan() {
+        return tagihan;
+    }
+
+    public void setTagihan(Tagihan tagihan) {
+        this.tagihan = tagihan;
+    }
 }

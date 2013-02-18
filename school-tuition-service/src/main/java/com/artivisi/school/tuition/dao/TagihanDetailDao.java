@@ -4,13 +4,14 @@
  */
 package com.artivisi.school.tuition.dao;
 
-import com.artivisi.school.tuition.domain.Kelas;
+import com.artivisi.school.tuition.domain.TagihanDetail;
+import java.io.Serializable;
 import org.springframework.data.repository.PagingAndSortingRepository;
 
 /**
  *
- * @author user
+ * @author axioo
  */
-public interface KelasDao extends PagingAndSortingRepository<Kelas, String> {
+public interface  TagihanDetailDao extends PagingAndSortingRepository<TagihanDetail, String>{
     
 }

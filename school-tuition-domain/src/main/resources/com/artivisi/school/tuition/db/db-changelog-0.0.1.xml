@@ -168,6 +168,58 @@
             
         </createTable>
         
+            <createTable tableName="m_jenis_biaya">
+            <column name="id" type="varchar(255)">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+           <column name="kode" type="varchar(255)">
+                
+            </column>
+            <column name="nama" type="varchar(255)">
+            <constraints nullable="false"/>
+          </column>  
+            
+        </createTable>
+        
+        <createTable tableName="m_konfigurasi_tagihan">
+            <column name="id" type="varchar(255)">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+           <column name="kode" type="varchar(255)">
+                
+            </column>
+            <column name="nama" type="varchar(255)">
+            <constraints nullable="false"/>
+            </column>
+            
+            <column name="id_kelas" type="varchar(255)">
+                 <constraints nullable="false"/>
+            </column>
+            
+        </createTable>
+          <createTable tableName="t_tagihan_detail">
+            <column name="id" type="varchar(255)">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+           <column name="keterangan" type="varchar(255)">
+                
+            </column>
+            <column name="nilai_bayar" type="varchar(255)">
+            <constraints nullable="false"/>
+            </column>
+            
+            <column name="nilai_tagihan" type="varchar(255)">
+                 <constraints nullable="false"/>
+            </column>
+             <column name="id_jenis_biaya" type="varchar(255)">
+            <constraints nullable="false"/>
+            </column>
+            
+            <column name="id_tagihan" type="varchar(255)">
+                 <constraints nullable="false"/>
+            </column>
+        </createTable>
+        
         <modifySql dbms="mysql">
             <append value=" engine innodb" />
         </modifySql>
@@ -237,6 +289,7 @@
             referencedTableName="t_kelas"
             referencedColumnNames="id"
         />
+        
 <!--        <addForeignKeyConstraint
             constraintName="fk_kelas_tahunAjaran"
             baseColumnNames="id_tahun_ajaran"
@@ -316,6 +369,29 @@
             <column header="waktu_pembayaran" type="DATE"/>
             <column header="id_siswa" type="STRING"/>
          
+        </loadData>
+        
+         <loadData tableName="m_jenis_biaya" file="com/artivisi/school/tuition/db/data/jenisbiaya.csv">
+            <column header="id" type="STRING"/>
+            <column header="kode" type="STRING"/>
+            <column header="nama" type="STRING"/>
+         
+        </loadData>
+        
+         <loadData tableName="m_konfigurasi_tagihan" file="com/artivisi/school/tuition/db/data/konfigurasitagihan.csv">
+            <column header="id" type="STRING"/>
+            <column header="kode" type="STRING"/>
+            <column header="nama" type="STRING"/>
+            <column header="id_kelas" type="STRING"/>
+        </loadData>
+        
+        <loadData tableName="t_tagihan_detail" file="com/artivisi/school/tuition/db/data/tagihandetail.csv">
+            <column header="id" type="STRING"/>
+            <column header="keterangan" type="STRING"/>
+            <column header="nilai_bayar" type="STRING"/>
+            <column header="nilai_tagihan" type="STRING"/>
+            <column header="id_jenis_biaya" type="STRING"/>
+            <column header="id_tagihan" type="STRING"/>
         </loadData>
     </changeSet>
 </databaseChangeLog>

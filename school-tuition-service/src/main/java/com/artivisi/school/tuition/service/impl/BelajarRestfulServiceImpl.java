@@ -1,6 +1,9 @@
 package com.artivisi.school.tuition.service.impl;
 
+import com.artivisi.school.tuition.domain.JenisBiaya;
+import com.artivisi.school.tuition.domain.KonfigurasiTagihan;
 import com.artivisi.school.tuition.domain.Pembayaran;
+import com.artivisi.school.tuition.domain.TagihanDetail;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,13 +13,16 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
 
 import com.artivisi.school.tuition.dao.ApplicationConfigDao;
+import com.artivisi.school.tuition.dao.JenisBiayaDao;
 import com.artivisi.school.tuition.dao.KelasDao;
+import com.artivisi.school.tuition.dao.KonfigurasiTagihanDao;
 import com.artivisi.school.tuition.dao.MenuDao;
 import com.artivisi.school.tuition.dao.PembayaranDao;
 import com.artivisi.school.tuition.dao.PermissionDao;
 import com.artivisi.school.tuition.dao.RoleDao;
 import com.artivisi.school.tuition.dao.SiswaDao;
 import com.artivisi.school.tuition.dao.TagihanDao;
+import com.artivisi.school.tuition.dao.TagihanDetailDao;
 import com.artivisi.school.tuition.dao.TahunAjaranDao;
 import com.artivisi.school.tuition.dao.UserDao;
 import com.artivisi.school.tuition.domain.ApplicationConfig;
@@ -58,6 +64,13 @@ public class BelajarRestfulServiceImpl implements BelajarRestfulService {
     private SiswaDao siswaDao; 
      @Autowired 
     private PembayaranDao pembayaranDao;
+     @Autowired
+    private JenisBiayaDao jenisbiayaDao;
+     @Autowired
+    private KonfigurasiTagihanDao konfigurasitagihan;
+      @Autowired
+    private TagihanDetailDao tagihandetail;
+     
 
     @Override
     public void save(ApplicationConfig ac) {
@@ -437,4 +450,88 @@ public class BelajarRestfulServiceImpl implements BelajarRestfulService {
     public Long countAllPembayaran() {
         return pembayaranDao.count();
     }
+
+    @Override
+    public void save(JenisBiaya j) {
+        jenisbiayaDao.save(j);
+    }
+
+    @Override
+    public void delete(JenisBiaya j) {
+        jenisbiayaDao.delete(j);
+    }
+
+    @Override
+    public JenisBiaya findJenisBiayaById(String id) {
+           if(!StringUtils.hasText(id)){
+            return null;
+        }
+        return jenisbiayaDao.findOne(id);
+    }
+
+    @Override
+    public Page<JenisBiaya> findAllJenisBiaya(Pageable pageable) {
+        return jenisbiayaDao.findAll(pageable);
+    }
+
+    @Override
+    public Long countAllJenisBiaya() {
+        return jenisbiayaDao.count();
+    }
+
+    @Override
+    public void save(KonfigurasiTagihan k) {
+        konfigurasitagihan.save(k);
+    }
+
+    @Override
+    public void delete(KonfigurasiTagihan k) {
+        konfigurasitagihan.delete(k);
+    }
+
+    @Override
+    public KonfigurasiTagihan findKonfigurasiTagihanById(String id) {
+        if(!StringUtils.hasText(id)){
+            return null;
+        }
+        return konfigurasitagihan.findOne(id);
+    }
+
+    @Override
+    public Page<KonfigurasiTagihan> findAllKonfigurasiTagihan(Pageable pageable) {
+        return konfigurasitagihan.findAll(pageable);
+    }
+
+    @Override
+    public Long countAllKonfigurasiTagihan() {
+        return konfigurasitagihan.count();
+    }
+
+    @Override
+    public void save(TagihanDetail t) {
+        tagihandetail.save(t);
+    }
+
+    @Override
+    public void delete(TagihanDetail t) {
+        tagihandetail.delete(t);
+    }
+
+    @Override
+    public TagihanDetail findTagihanDetailById(String id) {
+        if(!StringUtils.hasText(id)){
+            return null;
+        }
+        return tagihandetail.findOne(id);
+    }
+
+    @Override
+    public Page<TagihanDetail> findAllTagihanDetail(Pageable pageable) {
+        return tagihandetail.findAll(pageable);
+    }
+
+    @Override
+    public Long countAllTagihanDetail() {
+        return tagihandetail.count();
+                }
 }

@@ -588,4 +588,105 @@ angular.module('belajar.controller',['belajar.service'])
             return angular.equals($scope.original, $scope.currentPembayaran);
         }
     }])
+
+.controller('KonfigurasiTagihanController', ['$scope', 'KonfigurasiTagihanService', function($scope, KonfigurasiTagihanService){
+        $scope.konfigurasitagihan = KonfigurasiTagihanService.query();
+        $scope.edit = function(x){
+            if(x.id == null){
+                return; 
+            }
+            $scope.currentKOnfigurasiTagihan = KonfigurasiTagihanService.get({id: x.id}, function(data){
+                $scope.original = angular.copy(data);
+            });
+        };
+        $scope.baru = function(){
+            $scope.currentKonfigurasiTagihan = null;
+            $scope.original = null;
+        }
+        $scope.simpan = function(){
+            KonfigurasiTagihanService.save($scope.currentKonfigurasiTagihan)
+            .success(function(){
+                $scope.konfigurasitagihan = KonfigurasiTagihanService.query();
+                $scope.baru();
+            });
+        }
+        $scope.remove = function(x){
+            if(x.id == null){
+                return;
+            }
+            KonfigurasiTagihanService.remove(x).success(function(){
+                $scope.konfigurasitagihan = KonfigurasiTagihanService.query();
+            });
+        }
+        $scope.isClean = function(){
+            return angular.equals($scope.original, $scope.currentKonfigurasiTagihan);
+        }
+    }])
+.controller('JenisBiayaController', ['$scope', 'JenisBiayaService', function($scope, JenisBiayaService){
+        $scope.jenisbiaya = JenisBiayaService.query();
+        $scope.edit = function(x){
+            if(x.id == null){
+                return; 
+            }
+            $scope.currentJenisBiaya = JenisBiayaService.get({id: x.id}, function(data){
+                $scope.original = angular.copy(data);
+            });
+        };
+        $scope.baru = function(){
+            $scope.currentJenisBiaya = null;
+            $scope.original = null;
+        }
+        $scope.simpan = function(){
+            JenisBiayaService.save($scope.currentJenisBiaya)
+            .success(function(){
+                $scope.jenisbiaya = JenisBiayaService.query();
+                $scope.baru();
+            });
+        }
+        $scope.remove = function(x){
+            if(x.id == null){
+                return;
+            }
+            JenisBiayaService.remove(x).success(function(){
+                $scope.jenisbiaya = JenisBIayaService.query();
+            });
+        }
+        $scope.isClean = function(){
+            return angular.equals($scope.original, $scope.currentJenisBiaya);
+        }
+    }])
+
+.controller('TagihanDetailController', ['$scope', 'TagihanDetailService', function($scope, TagihanDetailService){
+        $scope.tagihandetail = TagihanDetailService.query();
+        $scope.edit = function(x){
+            if(x.id == null){
+                return; 
+            }
+            $scope.currentTagihanDetail = TagihanDetailService.get({id: x.id}, function(data){
+                $scope.original = angular.copy(data);
+            });
+        };
+        $scope.baru = function(){
+            $scope.currentTagihanDetail = null;
+            $scope.original = null;
+        }
+        $scope.simpan = function(){
+            TagihanDetailService.save($scope.currentTagihanDetail)
+            .success(function(){
+                $scope.tagihandetail = TagihanDetailService.query();
+                $scope.baru();
+            });
+        }
+        $scope.remove = function(x){
+            if(x.id == null){
+                return;
+            }
+            TagihanDetailService.remove(x).success(function(){
+                $scope.tagihandetail = TagihanDetailService.query();
+            });
+        }
+        $scope.isClean = function(){
+            return angular.equals($scope.original, $scope.currentTagihanDetail);
+        }
+    }])
 ;

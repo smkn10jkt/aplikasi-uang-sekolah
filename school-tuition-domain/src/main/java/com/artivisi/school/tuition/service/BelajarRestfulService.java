@@ -3,13 +3,16 @@ package com.artivisi.school.tuition.service;
 import java.util.List;
 
 import com.artivisi.school.tuition.domain.ApplicationConfig;
+import com.artivisi.school.tuition.domain.JenisBiaya;
 import com.artivisi.school.tuition.domain.Kelas;
+import com.artivisi.school.tuition.domain.KonfigurasiTagihan;
 import com.artivisi.school.tuition.domain.Menu;
 import com.artivisi.school.tuition.domain.Pembayaran;
 import com.artivisi.school.tuition.domain.Permission;
 import com.artivisi.school.tuition.domain.Role;
 import com.artivisi.school.tuition.domain.Siswa;
 import com.artivisi.school.tuition.domain.Tagihan;
+import com.artivisi.school.tuition.domain.TagihanDetail;
 import com.artivisi.school.tuition.domain.TahunAjaran;
 import com.artivisi.school.tuition.domain.User;
 import java.util.List;
@@ -90,4 +93,21 @@ public interface BelajarRestfulService extends MonitoredService {
     Page<Pembayaran> findAllPembayaran(Pageable pageable);
     Long countAllPembayaran();
     
+    void save(JenisBiaya j);
+    void delete (JenisBiaya j);
+    JenisBiaya findJenisBiayaById(String id); 
+    Page<JenisBiaya> findAllJenisBiaya(Pageable pageable);
+    Long countAllJenisBiaya();
+    
+    void save(KonfigurasiTagihan k);
+    void delete (KonfigurasiTagihan k);
+    KonfigurasiTagihan findKonfigurasiTagihanById(String id); 
+    Page<KonfigurasiTagihan> findAllKonfigurasiTagihan(Pageable pageable);
+    Long countAllKonfigurasiTagihan();
+    
+    void save(TagihanDetail t);
+    void delete (TagihanDetail t);
+    TagihanDetail findTagihanDetailById(String id); 
+    Page<TagihanDetail> findAllTagihanDetail(Pageable pageable);
+    Long countAllTagihanDetail();
 }
