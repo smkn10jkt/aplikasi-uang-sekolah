@@ -220,6 +220,28 @@
             </column>
         </createTable>
         
+         <createTable tableName="t_pembayaran_detail">
+            <column name="id" type="varchar(255)">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+           <column name="keterangan" type="varchar(255)">
+                
+            </column>
+            <column name="nilai" type="decimal(19,2)">
+            <constraints nullable="false"/>
+            </column>
+            
+            <column name="id_pembayaran" type="varchar(255)">
+                 <constraints nullable="false"/>
+            </column>
+            
+            <column name="id_tagihan_detail" type="varchar(255)">
+                 <constraints nullable="false"/>
+            </column>
+          </createTable>   
+        
+        
+        
         <modifySql dbms="mysql">
             <append value=" engine innodb" />
         </modifySql>
@@ -392,6 +414,15 @@
             <column header="nilai_tagihan" type="STRING"/>
             <column header="id_jenis_biaya" type="STRING"/>
             <column header="id_tagihan" type="STRING"/>
+        </loadData>
+        
+        <loadData tableName="t_pembayaran_detail" file="com/artivisi/school/tuition/db/data/pembayaran_detail.csv">
+            <column header="id" type="STRING"/>
+            <column header="keterangan" type="STRING"/>
+            <column header="nilai" type="DECIMAL"/>
+            <column header="id_pembayaran" type="STRING"/>
+            <column header="id_tagihan_detail" type="STRING"/>
+         
         </loadData>
     </changeSet>
 </databaseChangeLog>

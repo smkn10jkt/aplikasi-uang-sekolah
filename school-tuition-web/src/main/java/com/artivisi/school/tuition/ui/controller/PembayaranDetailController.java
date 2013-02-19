@@ -6,6 +6,7 @@ package com.artivisi.school.tuition.ui.controller;
 
 import com.artivisi.school.tuition.domain.Kelas;
 import com.artivisi.school.tuition.domain.Pembayaran;
+import com.artivisi.school.tuition.domain.PembayaranDetail;
 import com.artivisi.school.tuition.domain.User;
 import com.artivisi.school.tuition.service.BelajarRestfulService;
 import java.net.URI;
@@ -33,57 +34,57 @@ import org.springframework.web.util.UriTemplate;
  * @author pembayarandetail
  */
 @Controller
-public class PembayaranController {
+public class PembayaranDetailController {
     
      @Autowired
     private BelajarRestfulService belajarRestfulService;
     private Logger logger = LoggerFactory.getLogger(this.getClass());
 
-    @RequestMapping("/Pembayaran/{id}")
+    @RequestMapping("/PembayaranDetail/{id}")
     @ResponseBody
-     public Pembayaran findByIdPembayaran(@PathVariable String id) {
-       Pembayaran x = belajarRestfulService.findPembayaranById(id);
+     public PembayaranDetail findByIdPembayaranDetail(@PathVariable String id) {
+       PembayaranDetail x = belajarRestfulService.findPembayaranDetailById(id);
         if (x == null) {
             throw new IllegalStateException();
         }
        return null;
         
     }
-    @RequestMapping(value = "/pembayaran", method = RequestMethod.POST)
+    @RequestMapping(value = "/pembayaran_detail", method = RequestMethod.POST)
     @ResponseStatus(HttpStatus.CREATED)
-    public void create(@RequestBody @Valid Pembayaran x, HttpServletRequest request, HttpServletResponse response) {
+    public void create(@RequestBody @Valid PembayaranDetail x, HttpServletRequest request, HttpServletResponse response) {
         belajarRestfulService.save(x);
         String requestUrl = request.getRequestURL().toString();
         URI uri = new UriTemplate("{requestUrl}/{id}").expand(requestUrl, x.getId());
         response.setHeader("Location", uri.toASCIIString());
     }
-    @RequestMapping(method = RequestMethod.PUT, value = "/pembayaran/{id}")
+    @RequestMapping(method = RequestMethod.PUT, value = "/pembayaran_detail/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public void update(@PathVariable String id, @RequestBody @Valid Pembayaran x) {
-        Pembayaran a = belajarRestfulService.findPembayaranById(id);
+    public void update(@PathVariable String id, @RequestBody @Valid PembayaranDetail x) {
+        PembayaranDetail a = belajarRestfulService.findPembayaranDetailById(id);
         if (a == null) {
-            logger.warn("Pembayaran dengan id [{}] tidak ditemukan", id);
+            logger.warn("PembayaranDetail dengan id [{}] tidak ditemukan", id);
             throw new IllegalStateException();
         }
         x.setId(a.getId());
         belajarRestfulService.save(x);
     }
-    @RequestMapping(method = RequestMethod.DELETE, value = "/pembayaran/{id}")
+    @RequestMapping(method = RequestMethod.DELETE, value = "/pembayaran_detail/{id}")
     @ResponseStatus(HttpStatus.OK)
     public void delete(@PathVariable String id) {
-        Pembayaran a = belajarRestfulService.findPembayaranById(id);
+        PembayaranDetail a = belajarRestfulService.findPembayaranDetailById(id);
         if (a == null) {
-            logger.warn("Pembayaran dengan id [{}] tidak ditemukan", id);
+            logger.warn("PembayaranDetail dengan id [{}] tidak ditemukan", id);
             throw new IllegalStateException();
         }
         belajarRestfulService.delete(a);
     }
-       @RequestMapping(value = "/pembayaran", method = RequestMethod.GET)
+       @RequestMapping(value = "/pembayaran_detail", method = RequestMethod.GET)
     @ResponseBody
-    public List<Pembayaran> findAll(
+    public List<PembayaranDetail> findAll(
             Pageable pageable,
             HttpServletResponse response) {
-        List<Pembayaran> hasil = belajarRestfulService.findAllPembayaran(pageable).getContent();
+        List<PembayaranDetail> hasil = belajarRestfulService.findAllPembayaranDetail(pageable).getContent();
 
       
 
