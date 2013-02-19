@@ -273,11 +273,11 @@ angular.module('belajar.service', ['ngResource'])
 
 .factory('TagihanDetailService', ['$resource', '$http', function($resource, $http){
         var service = {
-            jenisbiaya: $resource('master/tagihan_detail/:id', {}, {
+            tagihandetail: $resource('master/tagihan_detail/:id', {}, {
                 queryPage: {method:'GET', isArray: false}
             }),
-            get: function(param, callback){ return this.jenisbiaya.get(param, callback) }, 
-            query: function(p, callback){ return this.jenisbiaya.queryPage({"page.page": p, "page.size": 10}, callback) },
+            get: function(param, callback){ return this.tagihandetail.get(param, callback) }, 
+            query: function(p, callback){ return this.tagihandetail.queryPage({"page.page": p, "page.size": 10}, callback) },
             save: function(obj){
                 if(obj.id == null){
                     return $http.post('table/tagihan_detail', obj);
