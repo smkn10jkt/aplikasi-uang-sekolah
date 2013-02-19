@@ -6,6 +6,7 @@ import com.artivisi.school.tuition.domain.Kelas;
 import com.artivisi.school.tuition.domain.KonfigurasiTagihan;
 import com.artivisi.school.tuition.domain.Menu;
 import com.artivisi.school.tuition.domain.Pembayaran;
+import com.artivisi.school.tuition.domain.PembayaranDetail;
 import com.artivisi.school.tuition.domain.Permission;
 import com.artivisi.school.tuition.domain.Role;
 import com.artivisi.school.tuition.domain.Siswa;
@@ -108,4 +109,10 @@ public interface BelajarRestfulService extends MonitoredService {
     TagihanDetail findTagihanDetailById(String id); 
     Page<TagihanDetail> findAllTagihanDetail(Pageable pageable);
     Long countAllTagihanDetail();
+    
+     void save(PembayaranDetail pd);
+    void delete (PembayaranDetail pd);
+    PembayaranDetail findPembayaranDetailById(String id); 
+    Page<PembayaranDetail> findAllPembayaranDetail(Pageable pageable);
+    Long countAllPembayaranDetail();
 }

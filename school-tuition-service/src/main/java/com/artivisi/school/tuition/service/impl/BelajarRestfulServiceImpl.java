@@ -3,6 +3,7 @@ package com.artivisi.school.tuition.service.impl;
 import com.artivisi.school.tuition.domain.JenisBiaya;
 import com.artivisi.school.tuition.domain.KonfigurasiTagihan;
 import com.artivisi.school.tuition.domain.Pembayaran;
+import com.artivisi.school.tuition.domain.PembayaranDetail;
 import com.artivisi.school.tuition.domain.TagihanDetail;
 import java.util.List;
 
@@ -18,6 +19,7 @@ import com.artivisi.school.tuition.dao.KelasDao;
 import com.artivisi.school.tuition.dao.KonfigurasiTagihanDao;
 import com.artivisi.school.tuition.dao.MenuDao;
 import com.artivisi.school.tuition.dao.PembayaranDao;
+import com.artivisi.school.tuition.dao.PembayaranDetailDao;
 import com.artivisi.school.tuition.dao.PermissionDao;
 import com.artivisi.school.tuition.dao.RoleDao;
 import com.artivisi.school.tuition.dao.SiswaDao;
@@ -70,6 +72,9 @@ public class BelajarRestfulServiceImpl implements BelajarRestfulService {
     private KonfigurasiTagihanDao konfigurasitagihan;
       @Autowired
     private TagihanDetailDao tagihandetail;
+      @Autowired
+    private PembayaranDetailDao pembayarandetailDao;
+    
      
 
     @Override
@@ -534,4 +539,32 @@ public class BelajarRestfulServiceImpl implements BelajarRestfulService {
     public Long countAllTagihanDetail() {
         return tagihandetail.count();
                 }
+
+    @Override
+    public void save(PembayaranDetail pd) {
+        pembayarandetailDao.save(pd);;
+    }
+
+    @Override
+    public void delete(PembayaranDetail pd) {
+        pembayarandetailDao.delete(pd);
+    }
+
+    @Override
+    public PembayaranDetail findPembayaranDetailById(String id) {
+         if(!StringUtils.hasText(id)){
+            return null;
+        }
+        return pembayarandetailDao.findOne(id);
+    }
+
+    @Override
+    public Page<PembayaranDetail> findAllPembayaranDetail(Pageable pageable) {
+         return pembayarandetailDao.findAll(pageable);
+    }
+
+    @Override
+    public Long countAllPembayaranDetail() {
+       return pembayarandetailDao.count();
+    }
 }
