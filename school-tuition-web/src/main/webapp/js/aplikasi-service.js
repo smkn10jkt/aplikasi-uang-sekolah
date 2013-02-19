@@ -130,16 +130,16 @@ angular.module('belajar.service', ['ngResource'])
             
         return service;
     }])
-.factory('SiswaService', ['$resource', '$http', function($resource, $http){
+ .factory('SiswaService', ['$resource', '$http', function($resource, $http){
         var service = {
-            siswa: $resource('master/siswa/:id', {}, {
+            siswa: $resource('table/siswa/:id', {}, {
                 queryPage: {method:'GET', isArray: false}
             }),
             get: function(param, callback){ return this.siswa.get(param, callback) }, 
             query: function(p, callback){ return this.siswa.queryPage({"page.page": p, "page.size": 10}, callback) },
             save: function(obj){
                 if(obj.id == null){
-                    return $http.post('table/siswa', obj);
+                    return $http.post('table/siswa/', obj);
                 } else {
                     return $http.put('table/siswa/'+obj.id, obj);
                 }
@@ -232,7 +232,7 @@ angular.module('belajar.service', ['ngResource'])
             query: function(p, callback){ return this.jenisbiaya.queryPage({"page.page": p, "page.size": 10}, callback) },
             save: function(obj){
                 if(obj.id == null){
-                    return $http.post('master/jenisbiaya', obj);
+                    return $http.post('master/jenisbiaya/', obj);
                 } else {
                     return $http.put('master/jenisbiaya/'+obj.id, obj);
                 }

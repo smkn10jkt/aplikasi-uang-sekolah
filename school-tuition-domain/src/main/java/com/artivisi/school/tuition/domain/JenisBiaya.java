@@ -1,7 +1,4 @@
 package com.artivisi.school.tuition.domain;
-
-import java.util.ArrayList;
-import java.util.List;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.validator.constraints.NotEmpty;
 

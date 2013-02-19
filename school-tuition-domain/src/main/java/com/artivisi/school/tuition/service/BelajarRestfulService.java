@@ -1,7 +1,5 @@
 package com.artivisi.school.tuition.service;
 
-import java.util.List;
-
 import com.artivisi.school.tuition.domain.ApplicationConfig;
 import com.artivisi.school.tuition.domain.JenisBiaya;
 import com.artivisi.school.tuition.domain.Kelas;

@@ -17,8 +17,8 @@ public class Siswa {
 
     @NotNull
     @NotEmpty
-    @Column(name = "nomor", nullable = false, unique = true)
-    private String nomor;
+    @Column(name = "nomer", nullable = false, unique = true)
+    private String nomer;
 
     @NotNull
     @NotEmpty
@@ -38,12 +38,12 @@ public class Siswa {
         this.id = id;
     }
 
-    public String getNomor() {
-        return nomor;
+    public Kelas getKelas() {
+        return kelas;
     }
 
-    public void setNomor(String nomor) {
-        this.nomor = nomor;
+    public void setKelas(Kelas kelas) {
+        this.kelas = kelas;
     }
 
     public String getNama() {
@@ -54,11 +54,11 @@ public class Siswa {
         this.nama = nama;
     }
 
-    public Kelas getKelas() {
-        return kelas;
+    public String getNomer() {
+        return nomer;
     }
 
-    public void setKelas(Kelas kelas) {
-        this.kelas = kelas;
+    public void setNomer(String nomer) {
+        this.nomer = nomer;
     }
 }

@@ -572,7 +572,7 @@ angular.module('belajar.controller',['belajar.service'])
             return angular.equals($scope.original, $scope.currentTagihan);
         }
     }])
-.controller('SiswaController', ['$scope', 'SiswaService', function($scope, SiswaService){
+ .controller('SiswaController', ['$scope', 'SiswaService', function($scope, SiswaService){
         $scope.siswa = SiswaService.query();
         $scope.edit = function(x){
             if(x.id == null){
@@ -605,7 +605,6 @@ angular.module('belajar.controller',['belajar.service'])
             return angular.equals($scope.original, $scope.currentSiswa);
         }
     }])
-
 .controller('PembayaranController', ['$scope', 'PembayaranService', function($scope, PembayaranService){
         $scope.pembayaran = PembayaranService.query();
         $scope.edit = function(x){
@@ -699,7 +698,7 @@ angular.module('belajar.controller',['belajar.service'])
                 return;
             }
             JenisBiayaService.remove(x).success(function(){
-                $scope.jenisbiaya = JenisBIayaService.query();
+                $scope.jenisbiya = JenisBiyaService.query();
             });
         }
         $scope.isClean = function(){
