@@ -17,6 +17,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -30,6 +31,7 @@ import org.springframework.web.util.UriTemplate;
  *
  * @author user
  */
+@Controller
 public class TahunAjaranController {
      @Autowired
     private BelajarRestfulService belajarRestfulService;
@@ -45,7 +47,7 @@ public class TahunAjaranController {
        return null;
         
     }
-     @RequestMapping(value = "/tahunAjaran", method = RequestMethod.POST)
+     @RequestMapping(value = "/tahun_ajaran", method = RequestMethod.POST)
     @ResponseStatus(HttpStatus.CREATED)
     public void create(@RequestBody @Valid TahunAjaran x, HttpServletRequest request, HttpServletResponse response) {
         belajarRestfulService.save(x);
@@ -53,7 +55,7 @@ public class TahunAjaranController {
         URI uri = new UriTemplate("{requestUrl}/{id}").expand(requestUrl, x.getId());
         response.setHeader("Location", uri.toASCIIString());
     }
-      @RequestMapping(method = RequestMethod.PUT, value = "/tahunAjaran/{id}")
+      @RequestMapping(method = RequestMethod.PUT, value = "/tahun_ajaran/{id}")
     @ResponseStatus(HttpStatus.OK)
     public void update(@PathVariable String id, @RequestBody @Valid TahunAjaran x) {
         TahunAjaran a = belajarRestfulService.findTahunAjaranById(id);
@@ -64,7 +66,7 @@ public class TahunAjaranController {
         x.setId(a.getId());
         belajarRestfulService.save(x);
     }
-        @RequestMapping(method = RequestMethod.DELETE, value = "/tahunAjaran/{id}")
+        @RequestMapping(method = RequestMethod.DELETE, value = "/tahun_ajaran/{id}")
     @ResponseStatus(HttpStatus.OK)
     public void delete(@PathVariable String id) {
         TahunAjaran a = belajarRestfulService.findTahunAjaranById(id);
@@ -74,7 +76,7 @@ public class TahunAjaranController {
         }
         belajarRestfulService.delete(a);
     }
-       @RequestMapping(value = "/tahunAjaran", method = RequestMethod.GET)
+       @RequestMapping(value = "/tahun_ajaran", method = RequestMethod.GET)
     @ResponseBody
     public List<TahunAjaran> findAll(
             Pageable pageable,

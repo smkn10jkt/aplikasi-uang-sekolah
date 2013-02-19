@@ -28,47 +28,34 @@ import org.springframework.web.util.UriTemplate;
  */
 @Controller
 public class KelasController {
+    @Autowired
+    private BelajarRestfulService belajarRestfulService;
     
- @Autowired private BelajarRestfulService belajarRestfulService;
-    
-    @RequestMapping(value="/table/kelas", method= RequestMethod.POST)
+    @RequestMapping(value="/table/kelas", method=RequestMethod.POST)
     @ResponseStatus(HttpStatus.CREATED)
-    public void save(@RequestBody @Valid Kelas kelas, HttpServletRequest request, HttpServletResponse response){
-      belajarRestfulService.save(kelas);
-       String requestUrl = request.getRequestURL().toString();
-        URI uri = new UriTemplate("{requestUrl}/{id}").expand(requestUrl, kelas.getId());
+    public void save(@RequestBody @Valid Kelas k, HttpServletRequest request, HttpServletResponse response){
+    belajarRestfulService.save(k);
+    String requestUrl = request.getRequestURL().toString();
+        URI uri = new UriTemplate("{requestUrl}/{id}").expand(requestUrl, k.getId());
         response.setHeader("Location", uri.toASCIIString());
-    }
-    
-    @RequestMapping(value="/table/kelas{id}", method= RequestMethod.PUT)
-    @ResponseStatus(HttpStatus.OK)
-    public void update(@PathVariable String id, @RequestBody @Valid Kelas kelas){
-        Kelas soalDb = belajarRestfulService.findKelasById(id);
-        if(soalDb !=null){
-            belajarRestfulService.save(kelas);
-        }
-    }
-    
-    @RequestMapping(value="/table/kelas{id}", method= RequestMethod.DELETE)
-    @ResponseStatus(HttpStatus.OK)
+       }
+      @RequestMapping(value="/table/kelas/{id}", method=RequestMethod.DELETE)
+      @ResponseStatus(HttpStatus.OK)
     public void delete(@PathVariable String id){
-        Kelas kelas = belajarRestfulService.findKelasById(id);
-        if(kelas !=null){
-            belajarRestfulService.delete(kelas);
-        }
-    }
+    Kelas kelasDb = belajarRestfulService.findKelasById(id);
+    if(kelasDb !=null)
+    belajarRestfulService.delete(kelasDb);
     
-    @RequestMapping(value="/table/kelas{id}", method= RequestMethod.GET)
-    @ResponseBody
-    public Kelas findSoalById(@PathVariable String id){
+       }
+      @RequestMapping(value="/table/kelas/{id}", method=RequestMethod.GET)
+      @ResponseBody
+    public Kelas findById(@PathVariable String id){
         return belajarRestfulService.findKelasById(id);
-        
     }
-    
-    @RequestMapping(value="/master/soal", method= RequestMethod.GET)
-    @ResponseBody
-    public Page<Kelas> findSoal(Pageable pagination){
+      @RequestMapping(value="/table/kelas", method=RequestMethod.GET)
+      @ResponseBody
+    public Page<Kelas> findKelases( Pageable pagination){
         return belajarRestfulService.findAllKelas(pagination);
-    }
+       }
 }
 
