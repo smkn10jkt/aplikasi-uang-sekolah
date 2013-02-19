@@ -5,7 +5,6 @@
 package com.artivisi.school.tuition.dao;
 
 import com.artivisi.school.tuition.domain.Tagihan;
-import com.artivisi.school.tuition.domain.TahunAjaran;
 import org.springframework.data.repository.PagingAndSortingRepository;
 
 /**

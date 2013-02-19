@@ -2,35 +2,31 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.artivisi.school.tuition.ui.controller;
+package com.artivisi.school.tuition.service.impl;
 
-import com.artivisi.school.tuition.domain.Tagihan;
-import com.artivisi.school.tuition.service.BelajarRestfulService;
-import java.net.URI;
-import java.util.List;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.validation.Valid;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
+import com.artivisi.school.tuition.service.BelajarRestfulService;
+import javax.validation.Valid;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
+import com.artivisi.school.tuition.domain.Tagihan;
+import java.net.URI;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.util.UriTemplate;
-
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 /**
  *
- * @author user
+ * @author axioo
  */
-public class TagihanController {
+public class TagihanServiceTestIT {
+    
      @Autowired private BelajarRestfulService belajarRestfulService;
     
     @RequestMapping(value="/table/tagihan", method= RequestMethod.POST)

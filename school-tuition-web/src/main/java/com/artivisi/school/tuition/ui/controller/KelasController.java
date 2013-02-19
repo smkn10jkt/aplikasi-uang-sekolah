@@ -4,29 +4,24 @@
  */
 package com.artivisi.school.tuition.ui.controller;
 
-import com.artivisi.school.tuition.domain.Kelas;
-import com.artivisi.school.tuition.domain.User;
 import com.artivisi.school.tuition.service.BelajarRestfulService;
-import java.net.URI;
-import java.util.List;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.validation.Valid;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
+import com.artivisi.school.tuition.domain.Kelas;
+import java.net.URI;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.validation.Valid;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.util.UriTemplate;
-
 /**
  *
  * @author kelas
@@ -34,65 +29,46 @@ import org.springframework.web.util.UriTemplate;
 @Controller
 public class KelasController {
     
-     @Autowired
-    private BelajarRestfulService belajarRestfulService;
-    private Logger logger = LoggerFactory.getLogger(this.getClass());
-
-    @RequestMapping("/Kelas/{id}")
-    @ResponseBody
-     public Kelas findByIdKelas(@PathVariable String id) {
-       Kelas x = belajarRestfulService.findKelasById(id);
-        if (x == null) {
-            throw new IllegalStateException();
-        }
-       return null;
-        
-    }
-    @RequestMapping(value = "/kelas", method = RequestMethod.POST)
+ @Autowired private BelajarRestfulService belajarRestfulService;
+    
+    @RequestMapping(value="/table/kelas", method= RequestMethod.POST)
     @ResponseStatus(HttpStatus.CREATED)
-    public void create(@RequestBody @Valid Kelas x, HttpServletRequest request, HttpServletResponse response) {
-        belajarRestfulService.save(x);
-        String requestUrl = request.getRequestURL().toString();
-        URI uri = new UriTemplate("{requestUrl}/{id}").expand(requestUrl, x.getId());
+    public void save(@RequestBody @Valid Kelas kelas, HttpServletRequest request, HttpServletResponse response){
+      belajarRestfulService.save(kelas);
+       String requestUrl = request.getRequestURL().toString();
+        URI uri = new UriTemplate("{requestUrl}/{id}").expand(requestUrl, kelas.getId());
         response.setHeader("Location", uri.toASCIIString());
     }
-    @RequestMapping(method = RequestMethod.PUT, value = "/kelas/{id}")
+    
+    @RequestMapping(value="/table/kelas{id}", method= RequestMethod.PUT)
     @ResponseStatus(HttpStatus.OK)
-    public void update(@PathVariable String id, @RequestBody @Valid Kelas x) {
-        Kelas a = belajarRestfulService.findKelasById(id);
-        if (a == null) {
-            logger.warn("Kelas dengan id [{}] tidak ditemukan", id);
-            throw new IllegalStateException();
+    public void update(@PathVariable String id, @RequestBody @Valid Kelas kelas){
+        Kelas soalDb = belajarRestfulService.findKelasById(id);
+        if(soalDb !=null){
+            belajarRestfulService.save(kelas);
         }
-        x.setId(a.getId());
-        belajarRestfulService.save(x);
     }
-    @RequestMapping(method = RequestMethod.DELETE, value = "/kelas/{id}")
+    
+    @RequestMapping(value="/table/kelas{id}", method= RequestMethod.DELETE)
     @ResponseStatus(HttpStatus.OK)
-    public void delete(@PathVariable String id) {
-        Kelas a = belajarRestfulService.findKelasById(id);
-        if (a == null) {
-            logger.warn("Kelas dengan id [{}] tidak ditemukan", id);
-            throw new IllegalStateException();
+    public void delete(@PathVariable String id){
+        Kelas kelas = belajarRestfulService.findKelasById(id);
+        if(kelas !=null){
+            belajarRestfulService.delete(kelas);
         }
-        belajarRestfulService.delete(a);
     }
-       @RequestMapping(value = "/kelas", method = RequestMethod.GET)
+    
+    @RequestMapping(value="/table/kelas{id}", method= RequestMethod.GET)
     @ResponseBody
-    public List<Kelas> findAll(
-            Pageable pageable,
-            HttpServletResponse response) {
-        List<Kelas> hasil = belajarRestfulService.findAllKelas(pageable).getContent();
-
-      
-
-        return hasil;
+    public Kelas findSoalById(@PathVariable String id){
+        return belajarRestfulService.findKelasById(id);
+        
     }
-       @ResponseStatus(HttpStatus.NOT_FOUND)
-    @ExceptionHandler({IllegalStateException.class})
-    public void handle() {
-        logger.debug("Resource dengan URI tersebut tidak ditemukan");
+    
+    @RequestMapping(value="/master/soal", method= RequestMethod.GET)
+    @ResponseBody
+    public Page<Kelas> findSoal(Pageable pagination){
+        return belajarRestfulService.findAllKelas(pagination);
     }
-
-   
 }
+

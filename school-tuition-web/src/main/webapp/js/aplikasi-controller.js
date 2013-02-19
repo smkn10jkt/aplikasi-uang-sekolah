@@ -389,6 +389,57 @@ angular.module('belajar.controller',['belajar.service'])
             }
         }
     }])
+
+    .controller('UserController', ['$scope', 'UserService', 'RoleService', function($scope, UserService, RoleService){
+        $scope.users = UserService.query();
+        $scope.roles = RoleService.query();
+        $scope.edit = function(x){
+            if(x.id == null){
+                return; 
+            }
+            $scope.currentUser = UserService.get({id: x.id}, function(data){
+                $scope.original = angular.copy(data);
+            });
+        };
+        $scope.baru = function(){
+            $scope.currentUser = null;
+            $scope.original = null;
+        }
+        $scope.simpan = function(){
+            if($scope.currentUser.active == null){
+                $scope.currentUser.active = false;
+            }
+            UserService.save($scope.currentUser)
+            .success(function(){
+                $scope.users = UserService.query();
+                $scope.baru();
+            });
+        }
+        $scope.remove = function(x){
+            if(x.id == null){
+                return;
+            }
+            UserService.remove(x).success(function(){
+                $scope.users = UserService.query();
+            });
+        }
+        $scope.isClean = function(){
+            return angular.equals($scope.original, $scope.currentUser);
+        }
+        $scope.isUsernameAvailable = function(value){
+            if($scope.currentUser != null && $scope.currentUser.id != null){
+                return true;
+            }
+            for(var i = 0; i < $scope.users.length; i++){
+                var u = $scope.users[i];
+                if(u.username === value){
+                    return false;
+                }
+            }
+            return true;
+        }
+    }])
+
    .controller('PaymentsController', ['$scope', 'PaymentsService', function($scope, PaymentsService){
         $scope.payments = PaymentsService.query();
         $scope.edit = function(x){
@@ -422,7 +473,7 @@ angular.module('belajar.controller',['belajar.service'])
             return angular.equals($scope.original, $scope.currentPayments);
         }
     }])
-   .controller('KelasController', ['$scope', 'KelasService', function($scope, KelasService){
+    .controller('KelasController', ['$scope', 'KelasService', function($scope, KelasService){
         $scope.kelas = KelasService.query();
         $scope.edit = function(x){
             if(x.id == null){
@@ -452,7 +503,7 @@ angular.module('belajar.controller',['belajar.service'])
             });
         }
         $scope.isClean = function(){
-            return angular.equals($scope.original, $scope.currentKelas);
+            return angular.equals($scope.original, $scope.currentTagihan);
         }
     }])
 .controller('TahunAjaranController', ['$scope', 'TahunAjaranService', function($scope, TahunAjaranService){
@@ -488,7 +539,7 @@ angular.module('belajar.controller',['belajar.service'])
             return angular.equals($scope.original, $scope.currentTahunAjaran);
         }
     }])
-.controller('TagihanController', ['$scope', 'TagihanService', function($scope, TagihanService){
+ .controller('TagihanController', ['$scope', 'TagihanService', function($scope, TagihanService){
         $scope.tagihan = TagihanService.query();
         $scope.edit = function(x){
             if(x.id == null){

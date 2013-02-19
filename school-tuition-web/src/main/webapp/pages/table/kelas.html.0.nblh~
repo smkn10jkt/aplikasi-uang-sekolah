@@ -17,10 +17,10 @@
             </thead>
             <tbody>
                 <tr ng-repeat="x in kelas.content">
-                    <td>{{x.id}}</td>
-                    <td>{{x.kode}}</td>
-                    <td>{{x.nama}}</td>
-                    <td>{{x.tahunAjaran}}</td>
+                    <td>{{c.id}}</td>
+                    <td>{{c.kode}}</td>
+                    <td>{{c.nama}}</td>
+                    <td>{{c.tahunAjaran}}</td>
                     <td>
                         <a ng-click="edit(c)"><i class="icon-edit"></i></a>
                         <a ng-click="remove(c)"><i class="icon-remove"></i></a>
