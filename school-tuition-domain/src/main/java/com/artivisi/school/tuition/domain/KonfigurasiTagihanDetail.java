@@ -28,4 +28,35 @@ public class KonfigurasiTagihanDetail {
     @Column(nullable = false)
     private BigDecimal nilai;
 
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public JenisBiaya getJenisBiaya() {
+        return jenisBiaya;
+    }
+
+    public void setJenisBiaya(JenisBiaya jenisBiaya) {
+        this.jenisBiaya = jenisBiaya;
+    }
+
+    public KonfigurasiTagihan getKonfigurasiTagihan() {
+        return konfigurasiTagihan;
+    }
+
+    public void setKonfigurasiTagihan(KonfigurasiTagihan konfigurasiTagihan) {
+        this.konfigurasiTagihan = konfigurasiTagihan;
+    }
+
+    public BigDecimal getNilai() {
+        return nilai;
+    }
+
+    public void setNilai(BigDecimal nilai) {
+        this.nilai = nilai;
+    }
 }

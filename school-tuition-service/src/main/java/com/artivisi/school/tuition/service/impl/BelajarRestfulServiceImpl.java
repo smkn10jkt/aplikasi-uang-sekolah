@@ -2,6 +2,7 @@ package com.artivisi.school.tuition.service.impl;
 
 import com.artivisi.school.tuition.domain.JenisBiaya;
 import com.artivisi.school.tuition.domain.KonfigurasiTagihan;
+import com.artivisi.school.tuition.domain.KonfigurasiTagihanDetail;
 import com.artivisi.school.tuition.domain.Pembayaran;
 import com.artivisi.school.tuition.domain.PembayaranDetail;
 import com.artivisi.school.tuition.domain.TagihanDetail;
@@ -17,6 +18,7 @@ import com.artivisi.school.tuition.dao.ApplicationConfigDao;
 import com.artivisi.school.tuition.dao.JenisBiayaDao;
 import com.artivisi.school.tuition.dao.KelasDao;
 import com.artivisi.school.tuition.dao.KonfigurasiTagihanDao;
+import com.artivisi.school.tuition.dao.KonfigurasiTagihanDetailDao;
 import com.artivisi.school.tuition.dao.MenuDao;
 import com.artivisi.school.tuition.dao.PembayaranDao;
 import com.artivisi.school.tuition.dao.PembayaranDetailDao;
@@ -69,12 +71,13 @@ public class BelajarRestfulServiceImpl implements BelajarRestfulService {
      @Autowired
     private JenisBiayaDao jenisbiayaDao;
      @Autowired
-    private KonfigurasiTagihanDao konfigurasitagihan;
+    private KonfigurasiTagihanDao konfigurasitagihanDao;
       @Autowired
     private TagihanDetailDao tagihandetail;
       @Autowired
     private PembayaranDetailDao pembayarandetailDao;
-    
+    @Autowired
+    private KonfigurasiTagihanDetailDao konfigurasitagihandetailDao;
      
 
     @Override
@@ -486,12 +489,12 @@ public class BelajarRestfulServiceImpl implements BelajarRestfulService {
 
     @Override
     public void save(KonfigurasiTagihan k) {
-        konfigurasitagihan.save(k);
+        konfigurasitagihanDao.save(k);
     }
 
     @Override
     public void delete(KonfigurasiTagihan k) {
-        konfigurasitagihan.delete(k);
+        konfigurasitagihanDao.delete(k);
     }
 
     @Override
@@ -499,17 +502,17 @@ public class BelajarRestfulServiceImpl implements BelajarRestfulService {
         if(!StringUtils.hasText(id)){
             return null;
         }
-        return konfigurasitagihan.findOne(id);
+        return konfigurasitagihanDao.findOne(id);
     }
 
     @Override
     public Page<KonfigurasiTagihan> findAllKonfigurasiTagihan(Pageable pageable) {
-        return konfigurasitagihan.findAll(pageable);
+        return konfigurasitagihanDao.findAll(pageable);
     }
 
     @Override
     public Long countAllKonfigurasiTagihan() {
-        return konfigurasitagihan.count();
+        return konfigurasitagihanDao.count();
     }
 
     @Override
@@ -542,7 +545,7 @@ public class BelajarRestfulServiceImpl implements BelajarRestfulService {
 
     @Override
     public void save(PembayaranDetail pd) {
-        pembayarandetailDao.save(pd);;
+        pembayarandetailDao.save(pd);
     }
 
     @Override
@@ -566,5 +569,33 @@ public class BelajarRestfulServiceImpl implements BelajarRestfulService {
     @Override
     public Long countAllPembayaranDetail() {
        return pembayarandetailDao.count();
+    }
+
+    @Override
+    public void save(KonfigurasiTagihanDetail kt) {
+        konfigurasitagihandetailDao.save(kt);
+    }
+
+    @Override
+    public void delete(KonfigurasiTagihanDetail kt) {
+        konfigurasitagihandetailDao.delete(kt);
+    }
+
+    @Override
+    public KonfigurasiTagihanDetail findKonfigurasiTagihanDetailById(String id) {
+        if(!StringUtils.hasText(id)){
+            return null;
+        }
+        return konfigurasitagihandetailDao.findOne(id);
+    }
+
+    @Override
+    public Page<KonfigurasiTagihanDetail> findAllKonfigurasiTagihanDetail(Pageable pageable) {
+        return konfigurasitagihandetailDao.findAll(pageable);
+    }
+
+    @Override
+    public Long countAllKonfigurasiTagihanDetail() {
+        return konfigurasitagihandetailDao.count();
     }
 }

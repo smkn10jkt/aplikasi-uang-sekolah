@@ -57,9 +57,5 @@ public class Tagihan {
     public void setJatuhTempo(Date jatuhTempo) {
         this.jatuhTempo = jatuhTempo;
     }
-
-    
-
-  
     
 }

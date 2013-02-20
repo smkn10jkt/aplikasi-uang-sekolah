@@ -1,28 +1,28 @@
 <div class="span5 well-large">
-    <h1>Payment Transactions List</h1>
+    <h1>Daftar Transaksi Pembayaran</h1>
 
     <a class="btn" ng-click="baru()">
-        <i class="icon-plus-sign"></i>Create New Payment Transactions
+        <i class="icon-plus-sign"></i>Tambah Data
     </a>
     <hr>
     <table class="table table-striped table-condensed table-bordered">
         <thead>
             <tr>
-                <th>Types Of Payment</th>
-                <th>Payment Period</th>
-                <th>Select Students</th>
-                <th>Value Of Payments</th>
-                <th>Information</th>
+                <th>Jenis Pembayaran</th>
+                <th>Periode Pembayaran</th>
+                <th>Nama Siswa</th>
+                <th>Nilai Pembayaran</th>
+                <th>Informatsi</th>
                 <th></th>
             </tr>
         </thead>
         <tbody>
-            <tr ng-repeat="x in paymenttransactions">
-                <td>{{x.typesofpayment}}</td>
-                <td>{{x.paymentperiod}}</td>
-                <td>{{x.selectstudents}}</td>
-                <td>{{x.valueofpayments}}</td>
-                <td>{{x.information}}</td>
+            <tr ng-repeat="x in paymenttransactions.content">
+                <td>{{x.jenispembayaran}}</td>
+                <td>{{x.periodepembayaran}}</td>
+                <td>{{x.namasiswa}}</td>
+                <td>{{x.nilaipembayaran}}</td>
+                <td>{{x.informasi}}</td>
                 <td>
                     <a ng-click="edit(x)"><i class="icon-edit"></i></a>
                     <a ng-click="remove(x)"><i class="icon-remove"></i></a>
@@ -34,48 +34,44 @@
 </div>
 
 <div class="span5 well-large">
-    <h1>Form Payment Transactions</h1>
+    <h1>Form Transaksi Pembayaran</h1>
     <form class="form-horizontal" name="formEdit">
-         <div class="control-group">
-                <label class="control-label" for="typesofpayment">Types Of Payment : &nbsp;</label>
-                <select ui-select2 ng-model="currentPaymenttransaction.typesofpayment.id" data-placeholder="-- Select One --">
+         <div class="control-group" ng-class="{error: formEdit.typesofpayment.$invalid}">
+                <label class="control-label" for="typesofpayment">Jenis Pembayaran : &nbsp;</label>
+                <select ui-select2 ng-model="currentPaymenttransaction.typesofpayment" data-placeholder="-- Select One --">
                     <option></option>
                     <option ng-repeat="paymenttransaction in typesofpaymentSelection" value="{{paymenttransaction.id}}">{{paymenttransaction.label}}</option>
                 </select>
             </div>
-       <div class="control-group">
-                <label class="control-label" for="paymentperiod">Payment Period : &nbsp;</label>
+       <div class="control-group" ng-class="{error: formEdit.paymentperiod.$invalid}">
+                <label class="control-label" for="paymentperiod">Periode Pembayaran : &nbsp;</label>
                <input id="paymentperiod" type="date" value="auto"/>
             </div>
-        <div class="control-group" ng-class="{error: formEdit.value.$invalid}">
-            <label class="control-label" for="value">Select Students : &nbsp;</label>
+        <div class="control-group" ng-class="{error: formEdit.nama.$invalid}">
+            <label class="control-label" for="nama">Nama Siswa : &nbsp;</label>
             <input type="text" 
                    id="value" 
-                   name="selectstudents" 
-                   placeholder="selectstudents.Selectstudents" 
-                   ng-model="currentSelectstudents.selectstudents"
-                   required
-                   ui-validate="{permissionValueAvailable: isPermissionValueAvailable}">
-            <span ng-show="formEdit.value.$error.required" class="help-inline">Harus diisi</span>
-            <span ng-show="formEdit.value.$error.permissionValueAvailable" class="help-inline"></span>
+                   name="nama" 
+                   placeholder="Nama Siswa" 
+                   ng-model="currentPaymenttransaction.nama"
+                   required>
+            <span ng-show="formEdit.nama.$error.required" class="help-inline">Harus diisi</span>
         </div>
-        <div class="control-group" ng-class="{error: formEdit.value.$invalid}">
-            <label class="control-label" for="value">Value Of Payments : &nbsp;</label>
+        <div class="control-group" ng-class="{error: formEdit.nilai.$invalid}">
+            <label class="control-label" for="nilai">Nilai Pembayaran : &nbsp;</label>
             <input type="text" 
-                   id="value" 
-                   name="valueofpayments" 
-                   placeholder="valueofpayments.Valueofpayments" 
-                   ng-model="currentValueofpayments.valueofpayments"
-                   required
-                   ui-validate="{permissionValueAvailable: isPermissionValueAvailable}">
-            <span ng-show="formEdit.value.$error.required" class="help-inline">Harus diisi</span>
-            <span ng-show="formEdit.value.$error.permissionValueAvailable" class="help-inline"></span>
+                   id="nilai" 
+                   name="nilai" 
+                   placeholder="Nilai" 
+                   ng-model="currentPaymenttransaction.nilai"
+                   required>
+            <span ng-show="formEdit.nilai.$error.required" class="help-inline">Harus diisi</span>
         </div>
         
          <div class="control-group">
-              <label class="control-label" for="value">Information : &nbsp;</label>
+              <label class="control-label" for="value">Informatsi : &nbsp;</label>
               <label>Lunas  &nbsp;</label>
-                <input type="checkbox" id="active" name="lunas" placeholder="Keterangan" ng-model="currentPaymenttransactions.lunas">
+                <input type="checkbox" id="active" name="lunas" placeholder="Informatsi" ng-model="currentPaymenttransactions.informatsi">
             </div>
         <div class="form-actions">
             <button type="submit" class="btn btn-primary" ng-click="simpan()" ng-disabled="isClean() || formEdit.$invalid">Simpan</button>

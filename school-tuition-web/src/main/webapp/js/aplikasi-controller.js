@@ -779,4 +779,38 @@ angular.module('belajar.controller',['belajar.service'])
             return angular.equals($scope.original, $scope.currentPembayaranDetail);
         }
     }])
+
+.controller('KonfigurasiTagihanDetailController', ['$scope', 'KonfigurasiTagihanDetailService', function($scope, KonfigurasiTagihanDetailService){
+        $scope.konfigurasitagihandetail = KonfigurasiTagihanDetailService.query();
+        $scope.edit = function(x){
+            if(x.id == null){
+                return; 
+            }
+            $scope.currentKonfigurasiTagihanDetail = KonfigurasiTagihanDetailService.get({id: x.id}, function(data){
+                $scope.original = angular.copy(data);
+            });
+        };
+        $scope.baru = function(){
+            $scope.currentKonfigurasiTagihanDetail = null;
+            $scope.original = null;
+        }
+        $scope.simpan = function(){
+            KonfigurasiTagihanDetailService.save($scope.currentKonfigurasiTagihanDetail)
+            .success(function(){
+                $scope.konfigurasitagihandetail = KonfigurasiTagihanDetailService.query();
+                $scope.baru();
+            });
+        }
+        $scope.remove = function(x){
+            if(x.id == null){
+                return;
+            }
+            KonfigurasiTagihanDetailService.remove(x).success(function(){
+                $scope.konfigurasitagihandetail = KonfigurasiTagihanDetailService.query();
+            });
+        }
+        $scope.isClean = function(){
+            return angular.equals($scope.original, $scope.currentKonfigurasiTagihanDetail);
+        }
+    }])
 ;

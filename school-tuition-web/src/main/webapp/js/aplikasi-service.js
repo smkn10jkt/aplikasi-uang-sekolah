@@ -271,6 +271,31 @@ angular.module('belajar.service', ['ngResource'])
         return service;
     }])
 
+.factory('KonfigurasiTagihanDetailService', ['$resource', '$http', function($resource, $http){
+        var service = {
+           konfigurasitagihandetail: $resource('table/konfigurasitagihandetail/:id', {},{
+                queryPage: {method:'GET', isArray:false}
+            }),
+            get: function(param, callback){ return this.konfigurasitagihandetail.get(param, callback) }, 
+            query: function(p, callback){ return this.konfigurasitagihandetail.queryPage({"page.page": p, "page.size": 10}, callback) },
+            save: function(obj){
+                if(obj.id == null){
+                    return $http.post('master/konfigurasitagihandetail', obj);
+                } else {
+                    return $http.put('master/konfigurasitagihandetail/'+obj.id, obj);
+                }
+            }, 
+            remove: function(obj){
+                if(obj.id != null){
+                    return $http.delete('master/konfigurasitagihandetail/'+obj.id);
+                }
+            }
+            
+        };
+            
+        return service;
+    }])
+
 .factory('TagihanDetailService', ['$resource', '$http', function($resource, $http){
         var service = {
             tagihandetail: $resource('master/tagihan_detail/:id', {}, {

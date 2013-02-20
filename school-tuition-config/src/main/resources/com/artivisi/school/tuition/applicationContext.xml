@@ -7,8 +7,7 @@
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
 
 	<context:property-placeholder location="
-	classpath*:jdbc.properties,
-	classpath*:jdbc.${spring.profiles.active}.properties
+	classpath*:jdbc.properties
 	" />
 
 	<tx:annotation-driven />

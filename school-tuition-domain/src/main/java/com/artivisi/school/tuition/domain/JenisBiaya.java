@@ -23,9 +23,6 @@ public class JenisBiaya {
     @Column(name = "nama")
     private String nama;
     
-    
-
-    
     public String getId() {
         return id;
     }
