@@ -345,13 +345,13 @@ public class BelajarRestfulServiceImpl implements BelajarRestfulService {
     }
 
     @Override
-    public void save(TahunAjaran t) {
-        tahunAjaran.save(t);
+    public void save(TahunAjaran ta) {
+        tahunAjaran.save(ta);
     }
 
     @Override
-    public void delete(TahunAjaran t) {
-        tahunAjaran.delete(t);
+    public void delete(TahunAjaran ta) {
+        tahunAjaran.delete(ta);
     }
 
     @Override
@@ -373,13 +373,13 @@ public class BelajarRestfulServiceImpl implements BelajarRestfulService {
     }
 
     @Override
-    public void save(Tagihan ta) {
-         tagihanDao.save(ta);
+    public void save(Tagihan t) {
+         tagihanDao.save(t);
     }
 
     @Override
-    public void delete(Tagihan ta) {
-         tagihanDao.delete(ta);
+    public void delete(Tagihan t) {
+         tagihanDao.delete(t);
     }
 
     @Override

@@ -155,11 +155,11 @@ angular.module('belajar.service', ['ngResource'])
     }])
 .factory('TagihanService', ['$resource', '$http', function($resource, $http){
         var service = {
-            tagihan: $resource('master/tagihan/:id', {}, {
+            tagihan: $resource('table/tagihan/:id', {}, {
                 queryPage: {method:'GET', isArray: false}
             }),
             get: function(param, callback){ return this.tagihan.get(param, callback) }, 
-            query: function(p, callback){ return this.tagihan.queryPage({"page.page": p, "page.size": 10}, callback) },
+            query: function(p, callback){ return this.tagihan.queryPage },
             save: function(obj){
                 if(obj.id == null){
                     return $http.post('table/tagihan', obj);
@@ -178,11 +178,11 @@ angular.module('belajar.service', ['ngResource'])
     }])
 .factory('TahunAjaranService', ['$resource', '$http', function($resource, $http){
         var service = {
-            tahun_ajaran: $resource('master/tahun_ajaran/:id', {}, {
+            tahun_ajaran: $resource('table/tahun_ajaran/:id', {}, {
                 queryPage: {method:'GET', isArray: false}
             }),
             get: function(param, callback){ return this.tahun_ajaran.get(param, callback) }, 
-            query: function(p, callback){ return this.tahun_ajaran.queryPage({"page.page": p, "page.size": 10}, callback) },
+            query: function(p, callback){ return this.tahun_ajaran.queryPage ({"page.page": p, "page.size": 10}, callback)},
             save: function(obj){
                 if(obj.id == null){
                     return $http.post('table/tahun_ajaran', obj);
