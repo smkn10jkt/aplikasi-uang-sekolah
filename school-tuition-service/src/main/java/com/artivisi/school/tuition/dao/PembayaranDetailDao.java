@@ -3,13 +3,14 @@
  * and open the template in the editor.
  */
 package com.artivisi.school.tuition.dao;
-import com.artivisi.school.tuition.domain.Siswa;
+
+import com.artivisi.school.tuition.domain.PembayaranDetail;
 import org.springframework.data.repository.PagingAndSortingRepository;
 
 /**
  *
- * @author user
+ * @author Presario CQ43
  */
-public interface SiswaDao extends PagingAndSortingRepository<Siswa, String>{
-    
+public interface PembayaranDetailDao extends PagingAndSortingRepository<PembayaranDetail, String> {
+ 
 }

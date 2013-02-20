@@ -572,7 +572,7 @@ angular.module('belajar.controller',['belajar.service'])
             return angular.equals($scope.original, $scope.currentTagihan);
         }
     }])
-.controller('SiswaController', ['$scope', 'SiswaService', function($scope, SiswaService){
+ .controller('SiswaController', ['$scope', 'SiswaService', function($scope, SiswaService){
         $scope.siswa = SiswaService.query();
         $scope.edit = function(x){
             if(x.id == null){
@@ -605,7 +605,6 @@ angular.module('belajar.controller',['belajar.service'])
             return angular.equals($scope.original, $scope.currentSiswa);
         }
     }])
-
 .controller('PembayaranController', ['$scope', 'PembayaranService', function($scope, PembayaranService){
         $scope.pembayaran = PembayaranService.query();
         $scope.edit = function(x){
@@ -699,7 +698,7 @@ angular.module('belajar.controller',['belajar.service'])
                 return;
             }
             JenisBiayaService.remove(x).success(function(){
-                $scope.jenisbiaya = JenisBIayaService.query();
+                $scope.jenisbiya = JenisBiyaService.query();
             });
         }
         $scope.isClean = function(){
@@ -738,6 +737,40 @@ angular.module('belajar.controller',['belajar.service'])
         }
         $scope.isClean = function(){
             return angular.equals($scope.original, $scope.currentTagihanDetail);
+        }
+    }])
+
+.controller('PembayaranDetailController', ['$scope', 'PembayaranDetailService', function($scope, PembayaranDetailService){
+        $scope.pembayarandetail = PembayaranDetailService.query();
+        $scope.edit = function(x){
+            if(x.id == null){
+                return; 
+            }
+            $scope.currentPembayaranDetail = PembayaranDetailService.get({id: x.id}, function(data){
+                $scope.original = angular.copy(data);
+            });
+        };
+        $scope.baru = function(){
+            $scope.currentPembayaranDetail = null;
+            $scope.original = null;
+        }
+        $scope.simpan = function(){
+            PembayaranDetailService.save($scope.currentPembayaranDetail)
+            .success(function(){
+                $scope.Pembayarandetail = PembayaranDetailService.query();
+                $scope.baru();
+            });
+        }
+        $scope.remove = function(x){
+            if(x.id == null){
+                return;
+            }
+            PembayaranDetailService.remove(x).success(function(){
+                $scope.Pembayarandetail = PembayaranDetailService.query();
+            });
+        }
+        $scope.isClean = function(){
+            return angular.equals($scope.original, $scope.currentPembayaranDetail);
         }
     }])
 ;

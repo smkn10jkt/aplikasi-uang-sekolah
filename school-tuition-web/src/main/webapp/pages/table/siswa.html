@@ -10,16 +10,16 @@
             <tr>
                 <th>Id</th>
                 <th>Nama</th>
-                <th>Nomor</th>
+                <th>Nomer</th>
                 <th>Id Kelas</th>
                 <th></th>
             </tr>
         </thead>
         <tbody>
-            <tr ng-repeat="c in menupage.content">
+            <tr ng-repeat="x in siswa.content">
                 <td>{{x.id}}</td>
                 <td>{{x.nama}}</td>
-                <td>{{x.nomor}}</td>
+                <td>{{x.nomer}}</td>
                 <td>{{x.id_kelas}}</td>
                 <td>
                     <a ng-click="edit(c)"><i class="icon-edit"></i></a>
@@ -47,7 +47,7 @@
                 <span ng-show="formEdit.nama.$error.required" class="help-inline">Harus diisi</span>
             </div>
         <div class="control-group" ng-class="{error: formEdit.nomor.$invalid}">
-            <label class="control-label" for="nomor">Nomor : &nbsp;</label>
+            <label class="control-label" for="nomor">Nomer : &nbsp;</label>
             <input type="text" id="nomor" name="nomor" placeholder="Nomor Siswa" ng-model="currentSiswa.nomor" required>
             <span ng-show="formEdit.nomor.$error.required" class="help-inline">Harus diisi</span>
         </div>

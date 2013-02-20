@@ -30,4 +30,46 @@ public class PembayaranDetail {
 
     private String keterangan;
 
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getKeterangan() {
+        return keterangan;
+    }
+
+    public void setKeterangan(String keterangan) {
+        this.keterangan = keterangan;
+    }
+
+    public BigDecimal getNilai() {
+        return nilai;
+    }
+
+    public void setNilai(BigDecimal nilai) {
+        this.nilai = nilai;
+    }
+
+    public Pembayaran getPembayaran() {
+        return pembayaran;
+    }
+
+    public void setPembayaran(Pembayaran pembayaran) {
+        this.pembayaran = pembayaran;
+    }
+
+    public TagihanDetail getTagihanDetail() {
+        return tagihanDetail;
+    }
+
+    public void setTagihanDetail(TagihanDetail tagihanDetail) {
+        this.tagihanDetail = tagihanDetail;
+    }
+    
+    
+
 }
