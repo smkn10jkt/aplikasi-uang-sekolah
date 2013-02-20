@@ -507,7 +507,7 @@ angular.module('belajar.controller',['belajar.service'])
         }
     }])
 .controller('TahunAjaranController', ['$scope', 'TahunAjaranService', function($scope, TahunAjaranService){
-        $scope.tahunAjaran = TahunAjaranService.query();
+        $scope.tahun_ajaran = TahunAjaranService.query();
         $scope.edit = function(x){
             if(x.id == null){
                 return; 
@@ -523,7 +523,7 @@ angular.module('belajar.controller',['belajar.service'])
         $scope.simpan = function(){
             TahunAjaranService.save($scope.currentTahunAjaran)
             .success(function(){
-                $scope.tahunAjaran = TahunAjaranService.query();
+                $scope.tahun_ajaran = TahunAjaranService.query();
                 $scope.baru();
             });
         }
@@ -532,7 +532,7 @@ angular.module('belajar.controller',['belajar.service'])
                 return;
             }
             TahunAjaranService.remove(x).success(function(){
-                $scope.tahunAjaran = TahunAjaranService.query();
+                $scope.tahun_ajaran = TahunAjaranService.query();
             });
         }
         $scope.isClean = function(){

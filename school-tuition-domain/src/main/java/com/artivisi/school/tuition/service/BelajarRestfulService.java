@@ -65,19 +65,19 @@ public interface BelajarRestfulService extends MonitoredService {
     void save(Kelas k);
     void delete (Kelas k);
     Kelas findKelasById(String id); 
-    Page<Kelas> findAllKelas(Pageable pageable);
+    Page<Kelas> findAllKelas(Pageable pagination);
     Long countAllKelas();
     
-     void save(TahunAjaran t);
-    void delete (TahunAjaran t);
+     void save(TahunAjaran ta);
+    void delete (TahunAjaran ta);
     TahunAjaran findTahunAjaranById(String id); 
-    Page<TahunAjaran> findAllTahunAjaran(Pageable pageable);
+    Page<TahunAjaran> findAllTahunAjaran(Pageable pagination);
     Long countAllTahunAjaran();
     
-    void save(Tagihan ta);
-    void delete (Tagihan ta);
+    void save(Tagihan t);
+    void delete (Tagihan t);
     Tagihan findTagihanById(String id); 
-    Page<Tagihan> findAllTagihan(Pageable pageable);
+    Page<Tagihan> findAllTagihan(Pageable pagination);
     Long countAllTagihann();
     
     void save(Siswa s);
