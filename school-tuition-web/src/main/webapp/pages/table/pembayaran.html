@@ -3,9 +3,9 @@
     <h1>Daftar Pembayaran</h1>
 
     <a class="btn" ng-click="baru()">
-        <i class="icon-plus-sign"></i>Tambah pembayaran
+        <i class="icon-plus-sign"></i>Tambah Data
     </a>
-    
+    <hr>
     <table class="table table-striped">
         <thead>
             <tr>
@@ -18,12 +18,12 @@
             </tr>
         </thead>
         <tbody>
-            <tr ng-repeat="c in configs">
-                <td>{{c.id}}</td>
-                <td>{{c.keterangan}}</td>
-                <td>{{c.penerima}}</td>
-                <td>{{c.waktu_pembayaran}}</td>
-                <td>{{c.id_siswa}}</td>
+            <tr ng-repeat="x in pembayaran.content">
+                <td>{{x.id}}</td>
+                <td>{{x.keterangan}}</td>
+                <td>{{x.penerima}}</td>
+                <td>{{x.waktu_pembayaran}}</td>
+                <td>{{x.id_siswa}}</td>
                 <td>
                     <a ng-click="edit(c)"><i class="icon-edit"></i></a>
                     <a ng-click="remove(c)"><i class="icon-remove"></i></a>
@@ -43,10 +43,10 @@
             <input type="text" id="id" name="id" placeholder="Id Pembayaran" ng-model="currentPembayaran.id" required>
             <span ng-show="formEdit.id.$error.required" class="help-inline">Harus diisi</span>
         </div>
-        <div class="control-group" ng-class="{error: formEdit.value.$invalid}">
-            <label class="control-label" for="value">Keterangan : &nbsp;</label>
+        <div class="control-group" ng-class="{error: formEdit.keterangan.$invalid}">
+            <label class="control-label" for="keterangan">Keterangan : &nbsp;</label>
             <label class="control-label">Lunas : &nbsp;</label>
-             <input type="checkbox" id="value" name="value" placeholder="Keterangan" ng-model="currentUser.value">
+             <input type="checkbox" id="keterangan" name="keterangan" placeholder="Keterangan" ng-model="currentPembayaran.keterangan">
         </div>
          <div class="control-group" ng-class="{error: formEdit.penerima.$invalid}">
             <label class="control-label" for="penerima">Penerima : &nbsp;</label>
@@ -64,7 +64,7 @@
             </div>
        <div class="control-group">
                 <label class="control-label" for="id_siswa">Id Siswa : &nbsp;</label>
-                <select ui-select2 ng-model="currentId_siswa.id_siswa.id_siswa" data-placeholder="-- Select One --">
+                <select ui-select2 ng-model="currentPembayaran.id_siswa" data-placeholder="-- Select One --">
                     <option></option>
                     <option ng-repeat="id_siswa in id_siswaSelection" value="{{id_siswa.id_siswa}}">{{id_siswa.label}}</option>
                 </select>

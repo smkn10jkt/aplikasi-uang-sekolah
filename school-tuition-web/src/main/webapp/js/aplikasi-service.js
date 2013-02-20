@@ -297,11 +297,11 @@ angular.module('belajar.service', ['ngResource'])
 
 .factory('PembayaranDetailService', ['$resource', '$http', function($resource, $http){
         var service = {
-            jenisbiaya: $resource('table/pembayaran_detail/:id', {}, {
+            pembayarandetail: $resource('table/pembayaran_detail/:id', {}, {
                 queryPage: {method:'GET', isArray: false}
             }),
-            get: function(param, callback){ return this.jenisbiaya.get(param, callback) }, 
-            query: function(p, callback){ return this.jenisbiaya.queryPage({"page.page": p, "page.size": 10}, callback) },
+            get: function(param, callback){ return this.pembayarandetail.get(param, callback) }, 
+            query: function(p, callback){ return this.pembayarandetail.queryPage({"page.page": p, "page.size": 10}, callback) },
             save: function(obj){
                 if(obj.id == null){
                     return $http.post('table/pembayaran_detail', obj);
