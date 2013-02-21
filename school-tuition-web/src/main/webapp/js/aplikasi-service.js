@@ -159,10 +159,10 @@ angular.module('belajar.service', ['ngResource'])
                 queryPage: {method:'GET', isArray: false}
             }),
             get: function(param, callback){ return this.tagihan.get(param, callback) }, 
-            query: function(p, callback){ return this.tagihan.queryPage },
+            query: function(p, callback){ return this.tagihan.queryPage({"page.page": p, "page.size": 10}, callback) },
             save: function(obj){
                 if(obj.id == null){
-                    return $http.post('table/tagihan', obj);
+                    return $http.post('table/tagihan/', obj);
                 } else {
                     return $http.put('table/tagihan/'+obj.id, obj);
                 }
@@ -298,11 +298,11 @@ angular.module('belajar.service', ['ngResource'])
 
 .factory('TagihanDetailService', ['$resource', '$http', function($resource, $http){
         var service = {
-            tagihandetail: $resource('table/tagihan_detail/:id', {}, {
+            tagihan_detail: $resource('table/tagihan_detail/:id', {}, {
                 queryPage: {method:'GET', isArray: false}
             }),
-            get: function(param, callback){ return this.tagihandetail.get(param, callback) }, 
-            query: function(p, callback){ return this.tagihandetail.queryPage({"page.page": p, "page.size": 10}, callback) },
+            get: function(param, callback){ return this.tagihan_detail.get(param, callback) }, 
+            query: function(p, callback){ return this.tagihan_detail.queryPage({"page.page": p, "page.size": 10}, callback) },
             save: function(obj){
                 if(obj.id == null){
                     return $http.post('table/tagihan_detail', obj);

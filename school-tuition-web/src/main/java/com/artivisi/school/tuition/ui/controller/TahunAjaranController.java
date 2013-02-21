@@ -44,7 +44,9 @@ public class TahunAjaranController {
       @ResponseStatus(HttpStatus.OK)
     public void delete(@PathVariable String id){
     TahunAjaran tahun_ajaranDb = belajarRestfulService.findTahunAjaranById(id);
-    if(tahun_ajaranDb !=null)
+    if(tahun_ajaranDb ==null){
+        throw new IllegalStateException();
+    }
     belajarRestfulService.delete(tahun_ajaranDb);
     
        }
@@ -55,7 +57,7 @@ public class TahunAjaranController {
     }
       @RequestMapping(value="/table/tahun_ajaran", method=RequestMethod.GET)
       @ResponseBody
-    public Page<TahunAjaran> findTahunAjarans( Pageable pagination){
+    public Page<TahunAjaran> findTahunAjarans(Pageable pagination){
         return belajarRestfulService.findAllTahunAjaran(pagination);
        }
 }

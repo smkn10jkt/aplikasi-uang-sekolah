@@ -218,6 +218,12 @@
             <column name="id_tagihan" type="varchar(255)">
                  <constraints nullable="false"/>
             </column>
+             <column name="lunas" type="varchar(255)">
+              
+             </column> 
+             <column name="nilai_dibayar" type="varchar(255)">
+                 <constraints nullable="false"/>  
+            </column>
         </createTable>
         
          <createTable tableName="t_pembayaran_detail">
@@ -238,13 +244,14 @@
             <column name="id_tagihan_detail" type="varchar(255)">
                  <constraints nullable="false"/>
             </column>
+            
           </createTable>   
         
         <createTable tableName="m_konfigurasi_tagihan_detail">
             <column name="id" type="varchar(255)">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-           <column name="nilai" type="decimal(19,2)">
+           <column name="nilai" type="varchar(255)">
                 
             </column>
             <column name="id_jenis_biaya" type="varchar(255)">
@@ -429,6 +436,8 @@
             <column header="nilai_tagihan" type="STRING"/>
             <column header="id_jenis_biaya" type="STRING"/>
             <column header="id_tagihan" type="STRING"/>
+            <column header="lunas" type="STRING"/>
+            <column header="nilai_dibayar" type="STRING"/>
         </loadData>
         
         <loadData tableName="t_pembayaran_detail" file="com/artivisi/school/tuition/db/data/pembayaran_detail.csv">
@@ -442,7 +451,7 @@
         
         <loadData tableName="m_konfigurasi_tagihan_detail" file="com/artivisi/school/tuition/db/data/konfigurasi_tagihan_detail.csv">
             <column header="id" type="STRING"/>
-            <column header="nilai" type="DECIMAL"/>
+            <column header="nilai" type="STRING"/>
             <column header="id_jenis_biaya" type="STRING"/>
             <column header="id_konfigurasi_tagihan" type="STRING"/>
          
