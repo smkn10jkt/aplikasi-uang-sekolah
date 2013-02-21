@@ -34,16 +34,7 @@ public class Pembayaran {
 
     private String keterangan;
 
-    @OneToMany(mappedBy = "pembayaran", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<PembayaranDetail> daftarPembayaranDetail = new ArrayList<PembayaranDetail>();
-
-    public List<PembayaranDetail> getDaftarPembayaranDetail() {
-        return daftarPembayaranDetail;
-    }
-
-    public void setDaftarPembayaranDetail(List<PembayaranDetail> daftarPembayaranDetail) {
-        this.daftarPembayaranDetail = daftarPembayaranDetail;
-    }
+   
 
     public String getId() {
         return id;

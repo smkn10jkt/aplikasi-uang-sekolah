@@ -39,12 +39,9 @@
                 <input type="text" id="id" name="id" placeholder="Id Siswa" ng-model="currentSiswa.id" required>
                 <span ng-show="formEdit.id.$error.required" class="help-inline">Harus diisi</span>
             </div>
-        <div class="control-group" ng-class="{error: formEdit.nama.$invalid}">
-                <label class="control-label" for="nama">Nama : &nbsp;</label>
-                <select ui-select2 ng-model="currentNama.nama.nama" data-placeholder="-- Select One --">
-                    <option></option>
-                    <option ng-repeat="nama in namaSelection" value="{{nama.nama}}">{{nama.label}}</option>
-                </select>
+            <div class="control-group" ng-class="{error: formEdit.nama.$invalid}">
+                <label class="control-label" for="label">Nama: &nbsp;</label>
+                <input type="text" id="nama" name="name" placeholder="Nama Siswa" ng-model="currentSiswa.nama" required>
                 <span ng-show="formEdit.nama.$error.required" class="help-inline">Harus diisi</span>
             </div>
         <div class="control-group" ng-class="{error: formEdit.nomor.$invalid}">

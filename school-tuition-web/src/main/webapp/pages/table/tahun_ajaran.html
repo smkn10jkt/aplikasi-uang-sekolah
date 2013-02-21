@@ -1,5 +1,9 @@
   <div class="span5 well-large">
+<<<<<<< HEAD
       <img border="0" src="/img/paymentSchoolJenisBiaya.png" alt="Pulpit rock" width="200" height="200"/>
+=======
+      <img border="0" src="/img/paymentSchoolTahunajaran.png" alt="Pulpit rock" width="200" height="200"/>
+>>>>>>> 82bd2d73838f6d96d371624c054ebac0cb88965f
     <h1>Daftar Tahun Ajaran</h1>
 
     <a class="btn" ng-click="baru()">
@@ -9,21 +13,21 @@
     <table class="table table-striped table-condensed table-bordered">
         <thead>
             <tr>
-               <th>Id</th>
+                <th>Id</th>
                 <th>Kode</th>
-                <th>Mulai</th>
-                <th>Nama</th>
-                <th>Selesai</th>
-                <th></th>
+                 <th>Mulai</th>
+                 <th>Nama</th>
+                 <th>Selesai</th>
+                <th>action</th>
             </tr>
         </thead>
         <tbody>
             <tr ng-repeat="x in tahun_ajaran.content">
-               <td>{{x.id}}</td>
                 <td>{{x.kode}}</td>
                 <td>{{x.mulai}}</td>
                 <td>{{x.nama}}</td>
                 <td>{{x.selesai}}</td>
+                
                 <td>
                     <a ng-click="edit(x)"><i class="icon-edit"></i></a>
                     <a ng-click="remove(x)"><i class="icon-remove"></i></a>
@@ -35,11 +39,6 @@
 <div class="span5 well-large">
     <h1>Form Tahun Ajaran</h1>
     <form class="form-horizontal" name="formEdit">
-         <div class="control-group" ng-class="{error: formEdit.id.$invalid}">
-                <label class="control-label" for="label">Id : &nbsp;</label>
-                <input type="text" id="id" name="id" placeholder="Id Tahunajaran" ng-model="currentTahunajaran.id" required>
-                <span ng-show="formEdit.id.$error.required" class="help-inline">Harus diisi</span>
-            </div>
          <div class="control-group" ng-class="{error: formEdit.kode.$invalid}">
             <label class="control-label" for="kode">Kode : &nbsp;</label>
             <input type="text" id="kode" name="kode" placeholder="Kode Tahun Ajaran" ng-model="currentTahunajaran.kode" required>
@@ -63,12 +62,11 @@
             <input type="text" id="mulai" name="selesai" placeholder="Selesai Tahun Ajaran" ng-model="currentTahunajaran.selesai" required>
             <span ng-show="formEdit.selesai.$error.required" class="help-inline">Harus diisi</span>
         </div>
+        
         <div class="form-actions">
-            <button type="submit" class="btn btn-primary" ng-click="simpan()" ng-disabled="isClean() || formEdit.$invalid">Simpan</button>
-            <button type="edit" class="btn btn-primary" ng-click="edit()" ng-disabled="isClean() || formEdit.$invalid">Ubah</button>
-            <button type="search" class="btn btn-primary" ng-click="search()" ng-disabled="isClean() || formEdit.$invalid">Cari</button>
-            <button type="delete" class="btn btn-primary" ng-click="delete()" ng-disabled="isClean() || formEdit.$invalid">Hapus</button>
+             <button type="submit" class="btn btn-primary" ng-click="simpan()" ng-disabled="isClean() || formEdit.$invalid">Simpan</button>
             <button type="button" class="btn" ng-click="baru()">Batal</button>
+         
         </div>
     </form>
-</div>
+</div>  

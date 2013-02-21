@@ -29,15 +29,15 @@ import org.springframework.web.util.UriTemplate;
  */
 @Controller
 public class PembayaranController {
-    @Autowired
+   @Autowired
     private BelajarRestfulService belajarRestfulService;
     
     @RequestMapping(value="/table/pembayaran", method=RequestMethod.POST)
     @ResponseStatus(HttpStatus.CREATED)
-    public void save(@RequestBody @Valid Pembayaran k, HttpServletRequest request, HttpServletResponse response){
-    belajarRestfulService.save(k);
+    public void save(@RequestBody @Valid Pembayaran p, HttpServletRequest request, HttpServletResponse response){
+    belajarRestfulService.save(p);
     String requestUrl = request.getRequestURL().toString();
-        URI uri = new UriTemplate("{requestUrl}/{id}").expand(requestUrl, k.getId());
+        URI uri = new UriTemplate("{requestUrl}/{id}").expand(requestUrl, p.getId());
         response.setHeader("Location", uri.toASCIIString());
        }
       @RequestMapping(value="/table/pembayaran/{id}", method=RequestMethod.DELETE)
@@ -48,14 +48,14 @@ public class PembayaranController {
     belajarRestfulService.delete(pembayaranDb);
     
        }
-      @RequestMapping(value="/table/Pembayaran/{id}", method=RequestMethod.GET)
+      @RequestMapping(value="/table/pembayaran/{id}", method=RequestMethod.GET)
       @ResponseBody
     public Pembayaran findById(@PathVariable String id){
         return belajarRestfulService.findPembayaranById(id);
     }
-      @RequestMapping(value="/table/Pembayaran", method=RequestMethod.GET)
+      @RequestMapping(value="/table/pembayaran", method=RequestMethod.GET)
       @ResponseBody
-    public Page<Pembayaran> findPembayarans( Pageable pagination){
+    public Page<Pembayaran> findPembayaran( Pageable pagination){
         return belajarRestfulService.findAllPembayaran(pagination);
        }
 }
