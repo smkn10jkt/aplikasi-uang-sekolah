@@ -201,21 +201,21 @@ angular.module('belajar.service', ['ngResource'])
     }])
 .factory('PembayaranService', ['$resource', '$http', function($resource, $http){
         var service = {
-            pembayaran: $resource('master/pembayaran/:id', {}, {
+            pembayaran: $resource('table/pembayaran/:id', {}, {
                 queryPage: {method:'GET', isArray: false}
             }),
             get: function(param, callback){ return this.pembayaran.get(param, callback) }, 
             query: function(p, callback){ return this.pembayaran.queryPage({"page.page": p, "page.size": 10}, callback) },
             save: function(obj){
                 if(obj.id == null){
-                    return $http.post('master/pembayaran', obj);
+                    return $http.post('table/pembayaran', obj);
                 } else {
-                    return $http.put('master/pembayaran/'+obj.id, obj);
+                    return $http.put('table/pembayaran/'+obj.id, obj);
                 }
             }, 
             remove: function(obj){
                 if(obj.id != null){
-                    return $http.delete('master/pembayaran/'+obj.id);
+                    return $http.delete('table/pembayaran/'+obj.id);
                 }
             }
         };

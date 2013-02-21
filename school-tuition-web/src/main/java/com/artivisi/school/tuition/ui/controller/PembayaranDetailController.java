@@ -17,6 +17,7 @@ import javax.validation.Valid;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
@@ -36,65 +37,35 @@ import org.springframework.web.util.UriTemplate;
 @Controller
 public class PembayaranDetailController {
     
-     @Autowired
+       @Autowired
     private BelajarRestfulService belajarRestfulService;
-    private Logger logger = LoggerFactory.getLogger(this.getClass());
-
-    @RequestMapping("/PembayaranDetail/{id}")
-    @ResponseBody
-     public PembayaranDetail findByIdPembayaranDetail(@PathVariable String id) {
-       PembayaranDetail x = belajarRestfulService.findPembayaranDetailById(id);
-        if (x == null) {
-            throw new IllegalStateException();
-        }
-       return null;
-        
-    }
-    @RequestMapping(value = "/pembayaran_detail", method = RequestMethod.POST)
+    
+    @RequestMapping(value="/table/pembayaran_detail", method=RequestMethod.POST)
     @ResponseStatus(HttpStatus.CREATED)
-    public void create(@RequestBody @Valid PembayaranDetail x, HttpServletRequest request, HttpServletResponse response) {
-        belajarRestfulService.save(x);
-        String requestUrl = request.getRequestURL().toString();
-        URI uri = new UriTemplate("{requestUrl}/{id}").expand(requestUrl, x.getId());
+    public void save(@RequestBody @Valid PembayaranDetail pd, HttpServletRequest request, HttpServletResponse response){
+    belajarRestfulService.save(pd);
+    String requestUrl = request.getRequestURL().toString();
+        URI uri = new UriTemplate("{requestUrl}/{id}").expand(requestUrl, pd.getId());
         response.setHeader("Location", uri.toASCIIString());
+       }
+      @RequestMapping(value="/table/pembayaran_detail/{id}", method=RequestMethod.DELETE)
+      @ResponseStatus(HttpStatus.OK)
+    public void delete(@PathVariable String id){
+    PembayaranDetail pembayarandetailDb = belajarRestfulService.findPembayaranDetailById(id);
+    if(pembayarandetailDb !=null)
+    belajarRestfulService.delete(pembayarandetailDb);
+    
+       }
+      @RequestMapping(value="/table/pembayaran_detail/{id}", method=RequestMethod.GET)
+      @ResponseBody
+    public PembayaranDetail findById(@PathVariable String id){
+        return belajarRestfulService.findPembayaranDetailById(id);
     }
-    @RequestMapping(method = RequestMethod.PUT, value = "/pembayaran_detail/{id}")
-    @ResponseStatus(HttpStatus.OK)
-    public void update(@PathVariable String id, @RequestBody @Valid PembayaranDetail x) {
-        PembayaranDetail a = belajarRestfulService.findPembayaranDetailById(id);
-        if (a == null) {
-            logger.warn("PembayaranDetail dengan id [{}] tidak ditemukan", id);
-            throw new IllegalStateException();
-        }
-        x.setId(a.getId());
-        belajarRestfulService.save(x);
-    }
-    @RequestMapping(method = RequestMethod.DELETE, value = "/pembayaran_detail/{id}")
-    @ResponseStatus(HttpStatus.OK)
-    public void delete(@PathVariable String id) {
-        PembayaranDetail a = belajarRestfulService.findPembayaranDetailById(id);
-        if (a == null) {
-            logger.warn("PembayaranDetail dengan id [{}] tidak ditemukan", id);
-            throw new IllegalStateException();
-        }
-        belajarRestfulService.delete(a);
-    }
-       @RequestMapping(value = "/pembayaran_detail", method = RequestMethod.GET)
-    @ResponseBody
-    public List<PembayaranDetail> findAll(
-            Pageable pageable,
-            HttpServletResponse response) {
-        List<PembayaranDetail> hasil = belajarRestfulService.findAllPembayaranDetail(pageable).getContent();
-
-      
-
-        return hasil;
-    }
-       @ResponseStatus(HttpStatus.NOT_FOUND)
-    @ExceptionHandler({IllegalStateException.class})
-    public void handle() {
-        logger.debug("Resource dengan URI tersebut tidak ditemukan");
-    }
+      @RequestMapping(value="/table/pembayaran_detail", method=RequestMethod.GET)
+      @ResponseBody
+    public Page<PembayaranDetail> findPembayaranDetail( Pageable pagination){
+        return belajarRestfulService.findAllPembayaranDetail(pagination);
+       }
 
    
 }
