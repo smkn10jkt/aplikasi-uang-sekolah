@@ -54,7 +54,7 @@ public class KelasController {
     }
       @RequestMapping(value="/table/kelas", method=RequestMethod.GET)
       @ResponseBody
-    public Page<Kelas> findKelases( Pageable pagination){
+    public Page<Kelas> findKelas( Pageable pagination){
         return belajarRestfulService.findAllKelas(pagination);
        }
 }

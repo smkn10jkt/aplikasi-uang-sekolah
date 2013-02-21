@@ -25,15 +25,7 @@ public class Tagihan {
     @Temporal(TemporalType.DATE)
     private Date jatuhTempo;
 
-    @OneToMany(mappedBy = "tagihan", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<TagihanDetail> daftarTagihanDetail = new ArrayList<TagihanDetail>();
-
-    public List<TagihanDetail> getDaftarTagihanDetail() {
-        return daftarTagihanDetail;      
-    }
-      public void setDaftarTagihanDetail(List<TagihanDetail> daftarTagihanDetail) {
-        this.daftarTagihanDetail = daftarTagihanDetail;
-    }
+   
     public String getId() {
         return id;
     }

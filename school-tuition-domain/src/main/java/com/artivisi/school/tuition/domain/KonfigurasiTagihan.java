@@ -31,17 +31,7 @@ public class KonfigurasiTagihan {
     @JoinColumn(name = "id_kelas", nullable = false)
     private Kelas kelas;
 
-    @OneToMany(mappedBy = "konfigurasiTagihan", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<KonfigurasiTagihanDetail> daftarKonfigurasiTagihanDetail
-            = new ArrayList<KonfigurasiTagihanDetail>();
-
-    public List<KonfigurasiTagihanDetail> getDaftarKonfigurasiTagihanDetail() {
-        return daftarKonfigurasiTagihanDetail;
-    }
-
-    public void setDaftarKonfigurasiTagihanDetail(List<KonfigurasiTagihanDetail> daftarKonfigurasiTagihanDetail) {
-        this.daftarKonfigurasiTagihanDetail = daftarKonfigurasiTagihanDetail;
-    }
+   
 
     public String getId() {
         return id;
