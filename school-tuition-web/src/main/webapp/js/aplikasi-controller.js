@@ -474,7 +474,7 @@ angular.module('belajar.controller',['belajar.service'])
         }
     }])
     .controller('KelasController', ['$scope', 'KelasService', function($scope, KelasService){
-        $scope.kelas = KelasService.query();
+        $scope.kelases = KelasService.query();
         $scope.edit = function(x){
             if(x.id == null){
                 return; 
@@ -490,7 +490,7 @@ angular.module('belajar.controller',['belajar.service'])
         $scope.simpan = function(){
             KelasService.save($scope.currentKelas)
             .success(function(){
-                $scope.kelas = KelasService.query();
+                $scope.kelases = KelasService.query();
                 $scope.baru();
             });
         }
@@ -499,7 +499,7 @@ angular.module('belajar.controller',['belajar.service'])
                 return;
             }
             KelasService.remove(x).success(function(){
-                $scope.kelas = KelasService.query();
+                $scope.kelases = KelasService.query();
             });
         }
         $scope.isClean = function(){
@@ -540,7 +540,7 @@ angular.module('belajar.controller',['belajar.service'])
         }
     }])
  .controller('TagihanController', ['$scope', 'TagihanService', function($scope, TagihanService){
-        $scope.tagihan = TagihanService.query();
+        $scope.tagihans = TagihanService.query();
         $scope.edit = function(x){
             if(x.id == null){
                 return; 
@@ -559,7 +559,7 @@ angular.module('belajar.controller',['belajar.service'])
             }
             TagihanService.save($scope.currentTagihan)
             .success(function(){
-                $scope.tagihan = TagihanService.query();
+                $scope.tagihans = TagihanService.query();
                 $scope.baru();
             });
         }
@@ -568,7 +568,7 @@ angular.module('belajar.controller',['belajar.service'])
                 return;
             }
             TagihanService.remove(x).success(function(){
-                $scope.tagihan = TagihanService.query();
+                $scope.tagihans = TagihanService.query();
             });
         }
         $scope.isClean = function(){
@@ -713,7 +713,7 @@ angular.module('belajar.controller',['belajar.service'])
     }])
 
 .controller('TagihanDetailController', ['$scope', 'TagihanDetailService', function($scope, TagihanDetailService){
-        $scope.tagihandetail = TagihanDetailService.query();
+        $scope.tagihan_detail = TagihanDetailService.query();
         $scope.edit = function(x){
             if(x.id == null){
                 return; 
@@ -729,7 +729,7 @@ angular.module('belajar.controller',['belajar.service'])
         $scope.simpan = function(){
             TagihanDetailService.save($scope.currentTagihanDetail)
             .success(function(){
-                $scope.tagihandetail = TagihanDetailService.query();
+                $scope.tagihan_detail = TagihanDetailService.query();
                 $scope.baru();
             });
         }
@@ -738,7 +738,7 @@ angular.module('belajar.controller',['belajar.service'])
                 return;
             }
             TagihanDetailService.remove(x).success(function(){
-                $scope.tagihandetail = TagihanDetailService.query();
+                $scope.tagihan_detail = TagihanDetailService.query();
             });
         }
         $scope.isClean = function(){

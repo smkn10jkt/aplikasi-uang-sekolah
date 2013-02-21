@@ -1,50 +1,55 @@
-<div class="span5 well-large">
-    <img border="0" src="/img/paymentSchoolTagihanDetail.png" alt="Pulpit rock" width="200" height="200"/>
+  <div class="span5 well-large">
+      <img border="0" src="/img/paymentSchoolJenisBiaya.png" alt="Pulpit rock" width="200" height="200"/>
     <h1>Daftar Tagihan Detail</h1>
 
     <a class="btn" ng-click="baru()">
-        <i class="icon-plus-sign"></i>Tambah Tagihan Detail
+        <i class="icon-plus-sign"></i>Tambah Data
     </a>
     <hr>
-    <table class="table table-striped table-bordered table-condensed">
+    <table class="table table-striped table-condensed table-bordered">
         <thead>
-            <tr>
+             <tr>
                 <th>Id</th>
                 <th>Keterangan</th>
                 <th>Nilai Bayar</th>
                 <th>Nilai Tagihan</th>
-                <th>id Jenis Biaya</th>
+                <th>Id Jenis Biaya</th>
+                <th>Id Pembayaran </th>
                 <th>Id Tagihan </th>
+                <th>Lunas </th>
+                <th>Nilai Di Bayar</th>
                 <th></th>
             </tr>
         </thead>
         <tbody>
-            <tr ng-repeat="c in configs">
+            <tr ng-repeat="x in tagihan_detail.content">
                 <td>{{x.id}}</td>
                 <td>{{x.keterangan}}</td>
-                <td>{{x.nilai_dibayar}}</td>
-                <td>{{x.nilai_tagihan}}</td>
+                <td>{{x.nilaiDibayar}}</td>
+                <td>{{x.nilaiTagihan}}</td>
+                <td>{{x.id_jenis_biaya}}</td>
                 <td>{{x.id_pembayaran}}</td>
-                <td>{{x.id_tagihan_detail}}</td>
+                <td>{{x.id_tagihan}}</td>
+                 <td>{{x.lunas}}</td>
+                <td>{{x.nilaiDibayar}}</td>
                 <td>
-                    <a ng-click="edit(c)"><i class="icon-edit"></i></a>
-                    <a ng-click="remove(c)"><i class="icon-remove"></i></a>
+                    <a ng-click="edit(x)"><i class="icon-edit"></i></a>
+                    <a ng-click="remove(x)"><i class="icon-remove"></i></a>
                 </td>
             </tr>
         </tbody>
     </table>
-
-</div>
-
+</div>  
 <div class="span5 well-large">
     <h1>Form Tagihan Detail</h1>
     <form class="form-horizontal" name="formEdit">
-        <div class="control-group" ng-class="{error: formEdit.id.$invalid}">
-            <label class="control-label" for="id">Id : &nbsp;</label>
-            <input type="text" id="id" name="id" placeholder="Id Siswa" ng-model="currentSiswa.id" required>
-            <span ng-show="formEdit.id.$error.required" class="help-inline">Harus diisi</span>
-        </div>
-        <div class="control-group" ng-class="{error: formEdit.keterangan.$invalid}">
+         <form class="form-horizontal" name="formEdit">
+            <div class="control-group" ng-class="{error: formEdit.id.$invalid}">
+                <label class="control-label" for="label">Id : &nbsp;</label>
+                <input type="text" id="id" name="id" placeholder="Id Tagihan Detail" ng-model="currentTagihanDetail.id" required>
+                <span ng-show="formEdit.id.$error.required" class="help-inline">Harus diisi</span>
+            </div>
+           <div class="control-group" ng-class="{error: formEdit.keterangan.$invalid}">
             <label class="control-label" for="value">Keterangan : &nbsp;</label>
             <input type="text" 
                    id="keterangan" 
@@ -54,47 +59,49 @@
                    required>
             <span ng-show="formEdit.value.$error.required" class="help-inline">Harus diisi</span>
         </div>
-         <div class="control-group" ng-class="{error: formEdit.nilai.$invalid}">
-            <label class="control-label" for="nilai">Nilai Bayar : &nbsp;</label>
-            <input type="text" 
-                   id="nilai" 
-                   name="nilai" 
-                   placeholder="Nilai Bayar" 
-                   ng-model="currentNilai.Nilai"
-                   required>
-            <span ng-show="formEdit.nilai.$error.required" class="help-inline">Harus diisi</span>
-        </div>
-        <div class="control-group" ng-class="{error: formEdit.tagihan.$invalid}">
-            <label class="control-label" for="tagihan">Nilai Tagihan : &nbsp;</label>
-            <input type="text" 
-                   id="tagihan" 
-                   name="tagihan" 
-                   placeholder="Nilai Tagihan" 
-                   ng-model="currentTagihan.Tagihan"
-                   required>
-            <span ng-show="formEdit.tagihan.$error.required" class="help-inline">Harus diisi</span>
-        </div>
+         <div class="control-group" ng-class="{error: formEdit.nilai_bayar.$invalid}">
+                <label class="control-label" for="nilai_bayar">Nilai Tagihan : &nbsp;</label>
+                <input type="text" id="nilai_bayar" name="nilai_bayar" placeholder="Nilai Bayar" ng-model="currentTagihanDetail.nilai_bayar" required>
+                <span ng-show="formEdit.nilai_bayar.$error.required" class="help-inline">Harus diisi</span>
+            </div>
+        <div class="control-group" ng-class="{error: formEdit.nilai_tagihan.$invalid}">
+                <label class="control-label" for="nilai_tagihan">Nilai Tagihan : &nbsp;</label>
+                <input type="text" id="kode" name="nilai_tagihan" placeholder="Nilai Tagihan" ng-model="currentTagihanDetail.nilai_tagihan" required>
+                <span ng-show="formEdit.nilai_tagihan.$error.required" class="help-inline">Harus diisi</span>
+            </div>
         <div class="control-group" ng-class="{error: formEdit.id_jenis_biaya.$invalid}">
                 <label class="control-label" for="id_jenis_biaya">Id Jenis Biaya : &nbsp;</label>
-                <select ui-select2 ng-model="currentId_jenis_biaya.id_jenis_biaya.id_jenis_biaya" data-placeholder="-- Select One --">
-                    <option></option>
-                    <option ng-repeat="id_jenis_biaya in id_jenis_biayaSelection" value="{{id_jenis_biaya.id_jenis_biaya}}">{{id_jenis_biaya.label}}</option>
-                </select>
+                <input type="text" id="level" name="id_jenis_biaya" placeholder="Id Jenis Biaya" ng-model="currentTagihanDetail.id_jenis_biaya" required>
+                <span ng-show="formEdit.id_jenis_biaya.$error.required" class="help-inline">Harus diisi</span>
             </div>
-       <div class="control-group">
+             <div class="control-group" ng-class="{error: formEdit.id_pembayaran.$invalid}">
+                <label class="control-label" for="id_pembayaran">Id Pembayaran : &nbsp;</label>
+                <input type="text" id="level" name="id_pembayaran" placeholder="Id Pembayaran" ng-model="currentTagihanDetail.id_pembayaran" required>
+                <span ng-show="formEdit.id_pembayaran.$error.required" class="help-inline">Harus diisi</span>
+            </div>
+       <div class="control-group" ng-class="{error: formEdit.id_tagihan.$invalid}">
                 <label class="control-label" for="id_tagihan">Id Tagihan : &nbsp;</label>
-                <select ui-select2 ng-model="currentId_tagihan.id_tagihan.id_tagihan" data-placeholder="-- Select One --">
-                    <option></option>
-                    <option ng-repeat="id_tagihan in id_tagihanSelection" value="{{id_tagihan_detail.id_tagihan}}">{{id_tagihan.label}}</option>
-                </select>
+                <input type="text" id="level" name="id_tagihan" placeholder="Id Tagihan" ng-model="currentTagihanDetail.id_tagihan" required>
+                <span ng-show="formEdit.id_tagihan.$error.required" class="help-inline">Harus diisi</span>
             </div>
-       
-        <div class="form-actions">
-            <button type="submit" class="btn btn-primary" ng-click="simpan()" ng-disabled="isClean() || formEdit.$invalid">Simpan</button>
-            <button type="edit" class="btn btn-primary" ng-click="edit()" ng-disabled="isClean() || formEdit.$invalid">Ubah</button>
-            <button type="search" class="btn btn-primary" ng-click="search()" ng-disabled="isClean() || formEdit.$invalid">Cari</button>
-            <button type="submit" class="btn btn-primary" ng-click="simpan()" ng-disabled="isClean() || formEdit.$invalid">Simpan</button>
-            <button type="button" class="btn" ng-click="baru()">Batal</button>
-        </div>
-    </form>
-</div>
+              <div class="control-group" ng-class="{error: formEdit.lunas.$invalid}">
+                <label class="control-label" for="lunas">Nilai Tagihan : &nbsp;</label>
+                <input type="text" id="nilai_bayar" name="lunas" placeholder="Lunas" ng-model="currentTagihanDetail.lunas" required>
+                <span ng-show="formEdit.lunas.$error.required" class="help-inline">Harus diisi</span>
+            </div>
+              <div class="control-group" ng-class="{error: formEdit.nilai_dibayar.$invalid}">
+                <label class="control-label" for="nilai_dibayar">Nilai Di Bayar : &nbsp;</label>
+                <input type="text" id="nilai_bayar" name="nilai_dibayar" placeholder="Nilai Bayar" ng-model="currentTagihanDetail.nilai_dibayar" required>
+                <span ng-show="formEdit.nilai_dibayar.$error.required" class="help-inline">Harus diisi</span>
+            </div>
+            <div class="form-actions">
+                <button type="submit" class="btn btn-primary" ng-click="simpan()" ng-disabled="isClean() || formEdit.$invalid">Simpan</button>
+                <button type="edit" class="btn btn-primary" ng-click="edit()" ng-disabled="isClean() || formEdit.$invalid">Ubah</button>
+                <button type="search" class="btn btn-primary" ng-click="search()" ng-disabled="isClean() || formEdit.$invalid">Cari</button>
+                <button type="delete" class="btn btn-primary" ng-click="delete()" ng-disabled="isClean() || formEdit.$invalid">Hapus</button>
+                <button type="button" class="btn" ng-click="baru()">Batal</button>
+            </div>
+        </form>
+    </div>
+
+

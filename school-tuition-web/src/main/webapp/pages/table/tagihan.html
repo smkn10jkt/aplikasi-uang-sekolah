@@ -1,51 +1,54 @@
- <div class="span5 well-large">
-    
-        <h1>Daftar Tagihan</h1>
-        <a class="btn" ng-click="baru()">
-            <i class="icon-plus-sign"></i>Tambah Data
-        </a>
-        <hr>
-        <table class="table table-striped table-bordered table-condensed">
-            <thead>
-                <tr>
+  <div class="span5 well-large">
+      <img border="0" src="/img/paymentSchoolJenisBiaya.png" alt="Pulpit rock" width="200" height="200"/>
+    <h1>Daftar Tagihan</h1>
+
+    <a class="btn" ng-click="baru()">
+        <i class="icon-plus-sign"></i>Tambah Data
+    </a>
+    <hr>
+    <table class="table table-striped table-condensed table-bordered">
+        <thead>
+            <tr>
+                 <tr>
                     <th>Id</th>
                     <th>Jatuh Tempo</th>
                     <th>Periode Tagihan</th>
                     <th></th>
                 </tr>
-            </thead>
-            <tbody>
-                <tr ng-repeat="x in tagihan.content">
-                    <td>{{x.id}}</td>
-                    <td>{{x.jatuhtempo}}</td>
-                    <td>{{x.periodtagihan}}</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="x in tagihans.content">
+                <td>{{x.id}}</td>
+                    <td>{{x.jatuhTempo}}</td>
+                    <td>{{x.periodeTagihan}}</td>
                     <td>
-                        <a ng-click="edit(c)"><i class="icon-edit"></i></a>
-                        <a ng-click="remove(c)"><i class="icon-remove"></i></a>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
- </div>
-    <div class="span10 well-large">
-        <h1>Form Tagihan</h1>
-        <form class="form-horizontal" name="formEdit">
+                    <a ng-click="edit(x)"><i class="icon-edit"></i></a>
+                    <a ng-click="remove(x)"><i class="icon-remove"></i></a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>  
+<div class="span5 well-large">
+    <h1>Form Tagihan</h1>
+    <form class="form-horizontal" name="formEdit">
+         <form class="form-horizontal" name="formEdit">
             <div class="control-group" ng-class="{error: formEdit.id.$invalid}">
-                <label class="control-label" for="id">Id : &nbsp;</label>
+                <label class="control-label" for="label">Id : &nbsp;</label>
                 <input type="text" id="id" name="id" placeholder="Id Tagihan" ng-model="currentTagihan.id" required>
                 <span ng-show="formEdit.id.$error.required" class="help-inline">Harus diisi</span>
             </div>
-            <div class="control-group" ng-class="{error: formEdit.jatuhtempo.$invalid}">
-                <label class="control-label" for="jatuhtempo">Jatuh Tempo : &nbsp;</label>
-               <input id="jatuhtempo" type="date" value="auto"/>
+           <div class="control-group" ng-class="{error: formEdit.jatuhTempo.$invalid}">
+                <label class="control-label" for="jatuhTempo">Jatuh Tempo : &nbsp;</label>
+               <input id="jatuhTempo" type="date" value="auto"/>
             </div>
-            <div class="control-group" ng-class="{error: formEdit.periodtagihan.$invalid}">
-                <label class="control-label" for="periodtagihan">Periode Tagihan : &nbsp;</label>
-               <input id="periodtagihan" type="date" value="auto"/>
+            <div class="control-group" ng-class="{error: formEdit.periodeTagihan.$invalid}">
+                <label class="control-label" for="periodeTagihan">Periode Tagihan : &nbsp;</label>
+               <input id="periodeTagihan" type="date" value="auto"/>
             </div>
-          
             <div class="form-actions">
-                <button type="save" class="btn btn-primary" ng-click="save()" ng-disabled="isClean() || formEdit.$invalid">Simpan</button>
+                <button type="submit" class="btn btn-primary" ng-click="simpan()" ng-disabled="isClean() || formEdit.$invalid">Simpan</button>
                 <button type="edit" class="btn btn-primary" ng-click="edit()" ng-disabled="isClean() || formEdit.$invalid">Ubah</button>
                 <button type="search" class="btn btn-primary" ng-click="search()" ng-disabled="isClean() || formEdit.$invalid">Cari</button>
                 <button type="delete" class="btn btn-primary" ng-click="delete()" ng-disabled="isClean() || formEdit.$invalid">Hapus</button>
@@ -53,3 +56,5 @@
             </div>
         </form>
     </div>
+
+
