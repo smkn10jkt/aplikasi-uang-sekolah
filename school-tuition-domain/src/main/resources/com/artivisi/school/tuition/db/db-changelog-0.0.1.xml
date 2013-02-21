@@ -327,14 +327,14 @@
             referencedColumnNames="id"
         />
         
-<!--        <addForeignKeyConstraint
-            constraintName="fk_kelas_tahunAjaran"
-            baseColumnNames="id_tahun_ajaran"
-            baseTableName="t_kelas"
-            referencedTableName="t_tahun_ajaran"
+<!--       <addForeignKeyConstraint
+            constraintName="fk_kelas_konfigurasitagihan"
+            baseColumnNames="id_kelas"
+            baseTableName="m_konfigurasi_tagihan"
+            referencedTableName="t_kelas"
             referencedColumnNames="id"
-        />
-        -->
+        />-->
+        
     </changeSet>
     <changeSet id="3" author="endy">
         <loadData tableName="c_security_menu" file="com/artivisi/school/tuition/db/data/menu.csv">

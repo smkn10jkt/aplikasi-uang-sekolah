@@ -5,7 +5,7 @@
     <form class="form-horizontal" name="formEdit">
         <div class="control-group" ng-class="{error: formEdit.id.$invalid}">
             <label class="control-label" for="id">Id : &nbsp;</label>
-            <input type="text" id="konfigurasitagihan_detail" 
+            <input type="text" id="konfigurasitagihandetail" 
                    name="id" 
                    placeholder="Id Konfigurasi" 
                    ng-model="currentId.id"
@@ -65,7 +65,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr ng-repeat="x in payments.content">
+            <tr ng-repeat="x in konfigurasitagihan_detail.content">
                 <td>{{x.id}}</td>
                 <td>{{x.nilai}}</td>
                 <td>

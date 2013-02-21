@@ -248,7 +248,7 @@ angular.module('belajar.service', ['ngResource'])
     }])
 .factory('KonfigurasiTagihanService', ['$resource', '$http', function($resource, $http){
         var service = {
-           konfigurasitagihan: $resource('table/konfigurasitagihan/:id', {},{
+           konfigurasitagihan: $resource('master/konfigurasitagihan/:id', {},{
                 queryPage: {method:'GET', isArray:false}
             }),
             get: function(param, callback){ return this.konfigurasitagihan.get(param, callback) }, 
@@ -273,21 +273,21 @@ angular.module('belajar.service', ['ngResource'])
 
 .factory('KonfigurasiTagihanDetailService', ['$resource', '$http', function($resource, $http){
         var service = {
-           konfigurasitagihandetail: $resource('table/konfigurasitagihandetail/:id', {},{
+           konfigurasitagihandetail: $resource('master/konfigurasitagihan_detail/:id', {},{
                 queryPage: {method:'GET', isArray:false}
             }),
             get: function(param, callback){ return this.konfigurasitagihandetail.get(param, callback) }, 
             query: function(p, callback){ return this.konfigurasitagihandetail.queryPage({"page.page": p, "page.size": 10}, callback) },
             save: function(obj){
                 if(obj.id == null){
-                    return $http.post('master/konfigurasitagihandetail', obj);
+                    return $http.post('master/konfigurasitagihan_detail', obj);
                 } else {
-                    return $http.put('master/konfigurasitagihandetail/'+obj.id, obj);
+                    return $http.put('master/konfigurasitagihan_detail/'+obj.id, obj);
                 }
             }, 
             remove: function(obj){
                 if(obj.id != null){
-                    return $http.delete('master/konfigurasitagihandetail/'+obj.id);
+                    return $http.delete('master/konfigurasitagihan_detail/'+obj.id);
                 }
             }
             
@@ -298,7 +298,7 @@ angular.module('belajar.service', ['ngResource'])
 
 .factory('TagihanDetailService', ['$resource', '$http', function($resource, $http){
         var service = {
-            tagihandetail: $resource('master/tagihan_detail/:id', {}, {
+            tagihandetail: $resource('table/tagihan_detail/:id', {}, {
                 queryPage: {method:'GET', isArray: false}
             }),
             get: function(param, callback){ return this.tagihandetail.get(param, callback) }, 

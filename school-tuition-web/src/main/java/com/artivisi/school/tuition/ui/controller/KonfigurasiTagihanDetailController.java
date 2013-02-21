@@ -4,7 +4,6 @@
  */
 package com.artivisi.school.tuition.ui.controller;
 
-import com.artivisi.school.tuition.domain.JenisBiaya;
 import com.artivisi.school.tuition.service.BelajarRestfulService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -14,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import com.artivisi.school.tuition.domain.Kelas;
-import com.artivisi.school.tuition.domain.KonfigurasiTagihan;
+import com.artivisi.school.tuition.domain.KonfigurasiTagihanDetail;
 import java.net.URI;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -26,38 +25,38 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.util.UriTemplate;
 /**
  *
- * @author KonfigurasiTagihan
+ * @author konfigurasitagihandetail
  */
 @Controller
-public class KonfigurasiTagihanController {
+public class KonfigurasiTagihanDetailController {
     @Autowired
     private BelajarRestfulService belajarRestfulService;
     
-    @RequestMapping(value="/master/konfigurasitagihan", method=RequestMethod.POST)
+    @RequestMapping(value="/master/konfigurasitagihan_detail", method=RequestMethod.POST)
     @ResponseStatus(HttpStatus.CREATED)
-    public void save(@RequestBody @Valid KonfigurasiTagihan kt, HttpServletRequest request, HttpServletResponse response){
-    belajarRestfulService.save(kt);
+    public void save(@RequestBody @Valid KonfigurasiTagihanDetail ktd, HttpServletRequest request, HttpServletResponse response){
+    belajarRestfulService.save(ktd);
     String requestUrl = request.getRequestURL().toString();
-        URI uri = new UriTemplate("{requestUrl}/{id}").expand(requestUrl, kt.getId());
+        URI uri = new UriTemplate("{requestUrl}/{id}").expand(requestUrl, ktd.getId());
         response.setHeader("Location", uri.toASCIIString());
        }
-      @RequestMapping(value="/master/konfigurasitagihan/{id}", method=RequestMethod.DELETE)
+      @RequestMapping(value="/master/konfigurasitagihan_detail/{id}", method=RequestMethod.DELETE)
       @ResponseStatus(HttpStatus.OK)
     public void delete(@PathVariable String id){
-    KonfigurasiTagihan konfigurasitagihanDb = belajarRestfulService.findKonfigurasiTagihanById(id);
-    if(konfigurasitagihanDb !=null)
-    belajarRestfulService.delete(konfigurasitagihanDb);
+    KonfigurasiTagihanDetail konfigurasitagihandetailDb = belajarRestfulService.findKonfigurasiTagihanDetailById(id);
+    if(konfigurasitagihandetailDb !=null)
+    belajarRestfulService.delete(konfigurasitagihandetailDb);
     
        }
-      @RequestMapping(value="/master/konfigurasitagihan/{id}", method=RequestMethod.GET)
+      @RequestMapping(value="/master/konfigurasitagihan_detail/{id}", method=RequestMethod.GET)
       @ResponseBody
-    public KonfigurasiTagihan findById(@PathVariable String id){
-        return belajarRestfulService.findKonfigurasiTagihanById(id);
+    public KonfigurasiTagihanDetail findById(@PathVariable String id){
+        return belajarRestfulService.findKonfigurasiTagihanDetailById(id);
     }
-      @RequestMapping(value="/master/konfigurasitagihan", method=RequestMethod.GET)
+      @RequestMapping(value="/master/konfigurasitagihan_detail", method=RequestMethod.GET)
       @ResponseBody
-    public Page<KonfigurasiTagihan> findKonfigurasiTagihan( Pageable pagination){
-        return belajarRestfulService.findAllKonfigurasiTagihan(pagination);
+    public Page<KonfigurasiTagihanDetail> findKonfigurasiTagihanDetail( Pageable pagination){
+        return belajarRestfulService.findAllKonfigurasiTagihanDetail(pagination);
        }
 }
 
