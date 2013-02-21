@@ -2,15 +2,12 @@ package com.artivisi.school.tuition.ui.controller;
 
 import com.artivisi.school.tuition.domain.Kelas;
 import com.artivisi.school.tuition.domain.User;
-import com.artivisi.school.tuition.domain.Role;
 import com.artivisi.school.tuition.domain.TahunAjaran;
 import static com.jayway.restassured.RestAssured.given;
 import static com.jayway.restassured.RestAssured.with;
 import com.jayway.restassured.authentication.FormAuthConfig;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.hasItems;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
