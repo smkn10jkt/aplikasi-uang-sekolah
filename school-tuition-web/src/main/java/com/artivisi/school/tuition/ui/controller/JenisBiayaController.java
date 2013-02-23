@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseStatus;
-import com.artivisi.school.tuition.domain.Kelas;
 import java.net.URI;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -29,34 +28,47 @@ import org.springframework.web.util.UriTemplate;
  */
 @Controller
 public class JenisBiayaController {
-    @Autowired
-    private BelajarRestfulService belajarRestfulService;
+       @Autowired private BelajarRestfulService belajarRestfulService;
     
     @RequestMapping(value="/master/jenisbiaya", method=RequestMethod.POST)
     @ResponseStatus(HttpStatus.CREATED)
-    public void save(@RequestBody @Valid JenisBiaya jb, HttpServletRequest request, HttpServletResponse response){
-    belajarRestfulService.save(jb);
-    String requestUrl = request.getRequestURL().toString();
-        URI uri = new UriTemplate("{requestUrl}/{id}").expand(requestUrl, jb.getId());
+    public void save(@RequestBody @Valid JenisBiaya t, HttpServletRequest request, HttpServletResponse response){
+        belajarRestfulService.save(t);
+        String requestUrl = request.getRequestURL().toString();
+        URI uri = new UriTemplate("{requestUrl}/{id}").expand(requestUrl, t.getId());
         response.setHeader("Location", uri.toASCIIString());
-       }
-      @RequestMapping(value="/master/jenisbiaya/{id}", method=RequestMethod.DELETE)
-      @ResponseStatus(HttpStatus.OK)
-    public void delete(@PathVariable String id){
-    JenisBiaya jenisbiayaDb = belajarRestfulService.findJenisBiayaById(id);
-    if(jenisbiayaDb !=null)
-    belajarRestfulService.delete(jenisbiayaDb);
+    }
     
-       }
-      @RequestMapping(value="/master/jenisbiaya/{id}", method=RequestMethod.GET)
-      @ResponseBody
+    @RequestMapping(value="/master/jenisbiaya/{id}", method=RequestMethod.PUT)
+    @ResponseStatus(HttpStatus.OK)
+    public void update(@PathVariable String id, @RequestBody @Valid JenisBiaya t){
+        JenisBiaya jenisbiayaDb = belajarRestfulService.findJenisBiayaById(id);
+        if(jenisbiayaDb == null){
+            throw  new IllegalStateException();
+        }
+        t.setId(jenisbiayaDb.getId());
+        belajarRestfulService.save(t);
+    }
+    
+    @RequestMapping(value="/master/jenisbiaya/{id}", method= RequestMethod.DELETE)
+    @ResponseStatus(HttpStatus.OK)
+    public void delete(@PathVariable String id){
+        JenisBiaya jenisbiayaDb = belajarRestfulService.findJenisBiayaById(id);
+        if(jenisbiayaDb == null){
+            throw new IllegalStateException();
+        }
+        belajarRestfulService.delete(jenisbiayaDb);
+    }
+    
+    @RequestMapping(value="/master/jenisbiaya/{id}", method=RequestMethod.GET)
+    @ResponseBody
     public JenisBiaya findById(@PathVariable String id){
         return belajarRestfulService.findJenisBiayaById(id);
     }
-      @RequestMapping(value="/master/jenisbiaya", method=RequestMethod.GET)
-      @ResponseBody
-    public Page<JenisBiaya> findJenisBiaya( Pageable pagination){
+    
+    @RequestMapping(value="/master/jenisbiaya", method=RequestMethod.GET)
+    @ResponseBody
+    public Page<JenisBiaya> findJenisBiaya(Pageable pagination){
         return belajarRestfulService.findAllJenisBiaya(pagination);
-       }
+    }
 }
-

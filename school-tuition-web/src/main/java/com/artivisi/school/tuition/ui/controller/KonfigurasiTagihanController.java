@@ -3,8 +3,6 @@
  * and open the template in the editor.
  */
 package com.artivisi.school.tuition.ui.controller;
-
-import com.artivisi.school.tuition.domain.JenisBiaya;
 import com.artivisi.school.tuition.service.BelajarRestfulService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -13,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseStatus;
-import com.artivisi.school.tuition.domain.Kelas;
 import com.artivisi.school.tuition.domain.KonfigurasiTagihan;
 import java.net.URI;
 import javax.servlet.http.HttpServletRequest;

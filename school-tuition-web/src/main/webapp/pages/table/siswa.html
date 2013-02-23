@@ -40,10 +40,14 @@
                 <span ng-show="formEdit.id.$error.required" class="help-inline">Harus diisi</span>
             </div>
             <div class="control-group" ng-class="{error: formEdit.nama.$invalid}">
-                <label class="control-label" for="label">Nama: &nbsp;</label>
-                <input type="text" id="nama" name="name" placeholder="Nama Siswa" ng-model="currentSiswa.nama" required>
-                <span ng-show="formEdit.nama.$error.required" class="help-inline">Harus diisi</span>
-            </div>
+            <label class="control-label" for="nama">Nama : &nbsp;</label>
+            <input type="text" id="nama" 
+                   name="nama" 
+                   placeholder="Siswa Nama" 
+                   ng-model="currentSiswa.nama"
+                   required>
+            <span ng-show="formEdit.nama.$error.required" class="help-inline">Required</span>
+        </div>
         <div class="control-group" ng-class="{error: formEdit.nomor.$invalid}">
             <label class="control-label" for="nomor">Nomer : &nbsp;</label>
             <input type="text" id="nomor" name="nomor" placeholder="Nomor Siswa" ng-model="currentSiswa.nomor" required>

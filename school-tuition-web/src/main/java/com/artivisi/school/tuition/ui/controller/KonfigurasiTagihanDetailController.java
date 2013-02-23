@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseStatus;
-import com.artivisi.school.tuition.domain.Kelas;
 import com.artivisi.school.tuition.domain.KonfigurasiTagihanDetail;
 import java.net.URI;
 import javax.servlet.http.HttpServletRequest;

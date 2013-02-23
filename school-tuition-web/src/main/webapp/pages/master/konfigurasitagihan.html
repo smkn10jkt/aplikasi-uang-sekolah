@@ -3,7 +3,7 @@
     <h1>Daftar Konfigurasi Tagihan</h1>
 
     <a class="btn" ng-click="baru()">
-        <i class="icon-plus-sign"></i>Tambah Konfigurasi Tagihan Baru
+        <i class="icon-plus-sign"></i>Tambah Data
     </a>
     <hr>
     <table class="table table-striped table-condensed table-bordered">
@@ -18,11 +18,11 @@
             </tr>
         </thead>
         <tbody>
-            <tr ng-repeat="x in konfigurasitagihan">
+            <tr ng-repeat="x in konfigurasitagihan.content">
                 <td>{{x.id}}</td>
                 <td>{{x.kode}}</td>
                 <td>{{x.nama}}</td>
-                <td>{{x.idkelas}}</td>
+                <td>{{x.id_kelas}}</td>
               
                 <td>
                     <a ng-click="edit(x)"><i class="icon-edit"></i></a>
@@ -46,28 +46,27 @@
                    required>
             <span ng-show="formEdit.id.$error.required" class="help-inline">Required</span>
         </div>
-        <div class="control-group" ng-class="{error: formEdit.kode.$invalid}">
+       <div class="control-group" ng-class="{error: formEdit.kode.$invalid}">
             <label class="control-label" for="kode">Kode : &nbsp;</label>
-            <input type="text" 
-                   id="kode" 
-                   nama="kode" 
-                   placeholder="Jenis Biaya Kode" 
-                   ng-model="currentKonfigurasiTagihan.kode"
-                   required
-                   ui-validate="{permissionValueAvailable: isPermissionValueAvailable}">
+            <input type="text" id="kode" 
+                   name="kode" 
+                   placeholder="Konfigurasi Tagihan Kode" 
+                   ng-model="currentKonfiguasiTagihan.kode"
+                   required>
             <span ng-show="formEdit.kode.$error.required" class="help-inline">Required</span>
-           
         </div>
-          <div class="control-group">
-                <label class="control-label" for="nama">Nama : &nbsp;</label>
-                <select ui-select2 ng-model="currentNama.nama.id" data-placeholder="-- Select One --">
-                    <option></option>
-                    <option ng-repeat="nama in namas" value="{{nama.id}}">{{nama.name}}</option>
-              </select>
-            </div>
+         <div class="control-group" ng-class="{error: formEdit.nama.$invalid}">
+            <label class="control-label" for="nama">Nama : &nbsp;</label>
+            <input type="text" id="nama" 
+                   name="nama" 
+                   placeholder="Konfigurasi Tagihan Nama" 
+                   ng-model="currentKonfigurasiTagihan.nama"
+                   required>
+            <span ng-show="formEdit.nama.$error.required" class="help-inline">Required</span>
+        </div>
            <div class="control-group">
                 <label class="control-label" for="id_kelas">Id Kelas : &nbsp;</label>
-                <select ui-select2 ng-model="currentNama.id_kelas.id" data-placeholder="-- Select One --">
+                <select ui-select2 ng-model="currentKonfigurasiTagihan.id_kelas" data-placeholder="-- Select One --">
                     <option></option>
                     <option ng-repeat="id in ids" value="{{id.id}}">{{id.id}}</option>
               </select>

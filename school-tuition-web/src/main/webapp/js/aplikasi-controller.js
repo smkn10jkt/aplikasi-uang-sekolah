@@ -651,7 +651,7 @@ angular.module('belajar.controller',['belajar.service'])
             if(x.id == null){
                 return; 
             }
-            $scope.currentKOnfigurasiTagihan = KonfigurasiTagihanService.get({id: x.id}, function(data){
+            $scope.currentKonfigurasiTagihan = KonfigurasiTagihanService.get({id: x.id}, function(data){
                 $scope.original = angular.copy(data);
             });
         };
@@ -704,14 +704,13 @@ angular.module('belajar.controller',['belajar.service'])
                 return;
             }
             JenisBiayaService.remove(x).success(function(){
-                $scope.jenisbiya = JenisBiyaService.query();
+                $scope.jenisbiaya = JenisBiayaService.query();
             });
         }
         $scope.isClean = function(){
             return angular.equals($scope.original, $scope.currentJenisBiaya);
         }
     }])
-
 .controller('TagihanDetailController', ['$scope', 'TagihanDetailService', function($scope, TagihanDetailService){
         $scope.tagihan_detail = TagihanDetailService.query();
         $scope.edit = function(x){

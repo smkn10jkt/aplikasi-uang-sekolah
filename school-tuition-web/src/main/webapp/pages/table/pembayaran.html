@@ -14,7 +14,6 @@
                 <th>Penerima</th>
                 <th>Waktu Pembayaran</th>
                 <th>Id Siswa</th>
-                <th></th>
             </tr>
         </thead>
         <tbody>
@@ -25,8 +24,8 @@
                 <td>{{x.waktu_pembayaran}}</td>
                 <td>{{x.id_siswa}}</td>
                 <td>
-                    <a ng-click="edit(c)"><i class="icon-edit"></i></a>
-                    <a ng-click="remove(c)"><i class="icon-remove"></i></a>
+                    <a ng-click="edit(x)"><i class="icon-edit"></i></a>
+                    <a ng-click="remove(x)"><i class="icon-remove"></i></a>
                 </td>
             </tr>
         </tbody>
@@ -45,7 +44,7 @@
         </div>
         <div class="control-group" ng-class="{error: formEdit.keterangan.$invalid}">
             <label class="control-label" for="keterangan">Keterangan : &nbsp;</label>
-             <input type="text" id="keterangan" name="keterangan" placeholder="Penerima Pembayaran" ng-model="currentPembayaran.penerima" required>
+             <input type="text" id="keterangan" name="keterangan" placeholder="Keterangan Pembayaran" ng-model="currentPembayaran.keterangan" required>
             <span ng-show="formEdit.id.$error.required" class="help-inline">Harus diisi</span>
         </div>
          <div class="control-group" ng-class="{error: formEdit.penerima.$invalid}">
@@ -54,7 +53,7 @@
                    id="penerima" 
                    name="penerima" 
                    placeholder="Penerima" 
-                   ng-model="currentPenerima.Penerima"
+                   ng-model="currentPembayaran.Penerima"
                    required>
             <span ng-show="formEdit.penerima.$error.required" class="help-inline">Harus diisi</span>
         </div>
@@ -62,12 +61,11 @@
                 <label class="control-label" for="waktu_pembayaran">Waktu Pembayaran : &nbsp;</label>
                <input id="waktu_pembayaran" type="date" value="auto"/>
             </div>
-       <div class="control-group">
-                <label class="control-label" for="id_siswa">Id Siswa : &nbsp;</label>
-                <input type="text" id="id_siswa" name="id_siswa" placeholder="Id_siswa Pembayaran" ng-model="currentPembayaran.id_siswa" required>
+        <div class="control-group" ng-class="{error: formEdit.id.$invalid}">
+            <label class="control-label" for="id">Id Siswa: &nbsp;</label>
+            <input type="text" id="id" name="id" placeholder="Id Siswa" ng-model="currentPembayaran.id" required>
             <span ng-show="formEdit.id.$error.required" class="help-inline">Harus diisi</span>
-            </div>
-       
+        </div>
         <div class="form-actions">
             <button type="delete" class="btn btn-primary" ng-click="hapus()" ng-disabled="isClean() || formEdit.$invalid">Hapus</button>
             <button type="edit" class="btn btn-primary" ng-click="edit()" ng-disabled="isClean() || formEdit.$invalid">Ubah</button>
