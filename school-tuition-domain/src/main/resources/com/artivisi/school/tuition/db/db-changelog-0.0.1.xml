@@ -334,13 +334,13 @@
             referencedColumnNames="id"
         />
         
-<!--       <addForeignKeyConstraint
+           <addForeignKeyConstraint
             constraintName="fk_kelas_konfigurasitagihan"
             baseColumnNames="id_kelas"
             baseTableName="m_konfigurasi_tagihan"
             referencedTableName="t_kelas"
             referencedColumnNames="id"
-        />-->
+        />
         
     </changeSet>
     <changeSet id="3" author="endy">
