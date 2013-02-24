@@ -334,6 +334,8 @@
             referencedColumnNames="id"
         />
         
+        
+        
 <!--       <addForeignKeyConstraint
             constraintName="fk_kelas_konfigurasitagihan"
             baseColumnNames="id_kelas"

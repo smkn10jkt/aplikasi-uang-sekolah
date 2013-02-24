@@ -29,34 +29,48 @@ import org.springframework.web.util.UriTemplate;
  */
 @Controller
 public class PembayaranController {
-   @Autowired
-    private BelajarRestfulService belajarRestfulService;
+   @Autowired private BelajarRestfulService belajarRestfulService;
     
     @RequestMapping(value="/table/pembayaran", method=RequestMethod.POST)
     @ResponseStatus(HttpStatus.CREATED)
     public void save(@RequestBody @Valid Pembayaran p, HttpServletRequest request, HttpServletResponse response){
-    belajarRestfulService.save(p);
-    String requestUrl = request.getRequestURL().toString();
+        belajarRestfulService.save(p);
+        String requestUrl = request.getRequestURL().toString();
         URI uri = new UriTemplate("{requestUrl}/{id}").expand(requestUrl, p.getId());
         response.setHeader("Location", uri.toASCIIString());
-       }
-      @RequestMapping(value="/table/pembayaran/{id}", method=RequestMethod.DELETE)
-      @ResponseStatus(HttpStatus.OK)
-    public void delete(@PathVariable String id){
-    Pembayaran pembayaranDb = belajarRestfulService.findPembayaranById(id);
-    if(pembayaranDb !=null)
-    belajarRestfulService.delete(pembayaranDb);
+    }
     
-       }
-      @RequestMapping(value="/table/pembayaran/{id}", method=RequestMethod.GET)
-      @ResponseBody
+    @RequestMapping(value="/table/pembayaran/{id}", method=RequestMethod.PUT)
+    @ResponseStatus(HttpStatus.OK)
+    public void update(@PathVariable String id, @RequestBody @Valid Pembayaran p){
+        Pembayaran pembayaranDb = belajarRestfulService.findPembayaranById(id);
+        if(pembayaranDb == null){
+            throw  new IllegalStateException();
+        }
+        p.setId(pembayaranDb.getId());
+        belajarRestfulService.save(p);
+    }
+    
+    @RequestMapping(value="/table/pembayaran/{id}", method= RequestMethod.DELETE)
+    @ResponseStatus(HttpStatus.OK)
+    public void delete(@PathVariable String id){
+        Pembayaran pembayaranDb = belajarRestfulService.findPembayaranById(id);
+        if(pembayaranDb == null){
+            throw new IllegalStateException();
+        }
+        belajarRestfulService.delete(pembayaranDb);
+    }
+    
+    @RequestMapping(value="/table/pembayaran/{id}", method=RequestMethod.GET)
+    @ResponseBody
     public Pembayaran findById(@PathVariable String id){
         return belajarRestfulService.findPembayaranById(id);
     }
-      @RequestMapping(value="/table/pembayaran", method=RequestMethod.GET)
-      @ResponseBody
-    public Page<Pembayaran> findPembayaran( Pageable pagination){
+    
+    @RequestMapping(value="/table/pembayaran", method=RequestMethod.GET)
+    @ResponseBody
+    public Page<Pembayaran> findPembayaran(Pageable pagination){
         return belajarRestfulService.findAllPembayaran(pagination);
-       }
+    }
 }
 

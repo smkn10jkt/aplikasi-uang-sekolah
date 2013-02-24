@@ -32,33 +32,47 @@ public class TahunAjaranController {
     @Autowired
     private BelajarRestfulService belajarRestfulService;
     
+    
     @RequestMapping(value="/table/tahun_ajaran", method=RequestMethod.POST)
     @ResponseStatus(HttpStatus.CREATED)
     public void save(@RequestBody @Valid TahunAjaran ta, HttpServletRequest request, HttpServletResponse response){
-    belajarRestfulService.save(ta);
-    String requestUrl = request.getRequestURL().toString();
+        belajarRestfulService.save(ta);
+        String requestUrl = request.getRequestURL().toString();
         URI uri = new UriTemplate("{requestUrl}/{id}").expand(requestUrl, ta.getId());
         response.setHeader("Location", uri.toASCIIString());
-       }
-      @RequestMapping(value="/table/tahun_ajaran/{id}", method=RequestMethod.DELETE)
-      @ResponseStatus(HttpStatus.OK)
-    public void delete(@PathVariable String id){
-    TahunAjaran tahun_ajaranDb = belajarRestfulService.findTahunAjaranById(id);
-    if(tahun_ajaranDb ==null){
-        throw new IllegalStateException();
     }
-    belajarRestfulService.delete(tahun_ajaranDb);
     
-       }
-      @RequestMapping(value="/table/tahun_ajaran/{id}", method=RequestMethod.GET)
-      @ResponseBody
+    @RequestMapping(value="/table/tahun_ajaran/{id}", method=RequestMethod.PUT)
+    @ResponseStatus(HttpStatus.OK)
+    public void update(@PathVariable String id, @RequestBody @Valid TahunAjaran ta){
+        TahunAjaran tahun_ajaranDb = belajarRestfulService.findTahunAjaranById(id);
+        if(tahun_ajaranDb == null){
+            throw  new IllegalStateException();
+        }
+        ta.setId(tahun_ajaranDb.getId());
+        belajarRestfulService.save(ta);
+    }
+    
+    @RequestMapping(value="/table/tahun_ajaran/{id}", method= RequestMethod.DELETE)
+    @ResponseStatus(HttpStatus.OK)
+    public void delete(@PathVariable String id){
+        TahunAjaran tahun_ajaranDb = belajarRestfulService.findTahunAjaranById(id);
+        if(tahun_ajaranDb == null){
+            throw new IllegalStateException();
+        }
+        belajarRestfulService.delete(tahun_ajaranDb);
+    }
+    
+    @RequestMapping(value="/table/tahun_ajaran/{id}", method=RequestMethod.GET)
+    @ResponseBody
     public TahunAjaran findById(@PathVariable String id){
         return belajarRestfulService.findTahunAjaranById(id);
     }
-      @RequestMapping(value="/table/tahun_ajaran", method=RequestMethod.GET)
-      @ResponseBody
-    public Page<TahunAjaran> findTahunAjarans(Pageable pagination){
+    
+    @RequestMapping(value="/table/tahun_ajaran", method=RequestMethod.GET)
+    @ResponseBody
+    public Page<TahunAjaran> findTahunAjaran(Pageable pagination){
         return belajarRestfulService.findAllTahunAjaran(pagination);
-       }
+    }
 }
 

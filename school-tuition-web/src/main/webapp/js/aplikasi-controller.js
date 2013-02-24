@@ -532,7 +532,7 @@ angular.module('belajar.controller',['belajar.service'])
                 return;
             }
             TahunAjaranService.remove(x).success(function(){
-                $scope.tahun_ajaran = TahunAjaranService.query();
+                $scope.tahunajaran = TahunAjaranService.query();
             });
         }
         $scope.isClean = function(){
@@ -644,7 +644,6 @@ angular.module('belajar.controller',['belajar.service'])
             return angular.equals($scope.original, $scope.currentPembayaran);
         }
     }])
-
 .controller('KonfigurasiTagihanController', ['$scope', 'KonfigurasiTagihanService', function($scope, KonfigurasiTagihanService){
         $scope.konfigurasitagihan = KonfigurasiTagihanService.query();
         $scope.edit = function(x){

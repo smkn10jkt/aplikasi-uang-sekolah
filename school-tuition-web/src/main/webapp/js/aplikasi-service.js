@@ -182,10 +182,11 @@ angular.module('belajar.service', ['ngResource'])
                 queryPage: {method:'GET', isArray: false}
             }),
             get: function(param, callback){ return this.tahun_ajaran.get(param, callback) }, 
-            query: function(p, callback){ return this.tahun_ajaran.queryPage ({"page.page": p, "page.size": 10}, callback)},
+            query: function(p, callback){ return this.tahun_ajaran.queryPage({"page.page": p, "page.size": 10}, callback) },
             save: function(obj){
-                if(obj.id == null){
-                    return $http.post('table/tahun_ajaran', obj);
+                    
+                  if(obj.id == null){
+                    return $http.post('table/tahun_ajaran/', obj);
                 } else {
                     return $http.put('table/tahun_ajaran/'+obj.id, obj);
                 }
@@ -207,11 +208,10 @@ angular.module('belajar.service', ['ngResource'])
             get: function(param, callback){ return this.pembayaran.get(param, callback) }, 
             query: function(p, callback){ return this.pembayaran.queryPage({"page.page": p, "page.size": 10}, callback) },
             save: function(obj){
-                if(obj.id == null){
+                    
                     return $http.post('table/pembayaran', obj);
-                } else {
-                    return $http.put('table/pembayaran/'+obj.id, obj);
-                }
+                
+                   
             }, 
             remove: function(obj){
                 if(obj.id != null){
