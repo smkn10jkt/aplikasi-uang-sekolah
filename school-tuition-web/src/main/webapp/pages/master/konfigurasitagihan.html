@@ -1,5 +1,5 @@
 <div class="span5 well-large">
-    <img border="0" src="/img/paymentSchoolKonfigurasiTagihan.png" alt="Pulpit rock" width="200" height="200"/>
+      <img border="0" src="/img/paymentSchoolKonfigurasiTagihan.png" alt="Pulpit rock" width="200" height="200"/>
     <h1>Daftar Konfigurasi Tagihan</h1>
 
     <a class="btn" ng-click="baru()">
@@ -11,9 +11,8 @@
             <tr>
                 <th>Id</th>
                 <th>Kode</th>
-                <th>Nama</th>
-                <th>Id Kelas</th>
-         
+                 <th>Nama</th>
+                 <th>Id Kelas</th>
                 <th></th>
             </tr>
         </thead>
@@ -23,7 +22,6 @@
                 <td>{{x.kode}}</td>
                 <td>{{x.nama}}</td>
                 <td>{{x.id_kelas}}</td>
-              
                 <td>
                     <a ng-click="edit(x)"><i class="icon-edit"></i></a>
                     <a ng-click="remove(x)"><i class="icon-remove"></i></a>
@@ -31,12 +29,10 @@
             </tr>
         </tbody>
     </table>
-</div>
-
-    <div class="span5 well-large">
+</div>  
+<div class="span5 well-large">
     <h1>Form Konfigurasi Tagihan</h1>
-   
-      <form class="form-horizontal" name="formEdit">
+    <form class="form-horizontal" name="formEdit">
         <div class="control-group" ng-class="{error: formEdit.id.$invalid}">
             <label class="control-label" for="id">Id : &nbsp;</label>
             <input type="text" id="id" 
@@ -46,12 +42,12 @@
                    required>
             <span ng-show="formEdit.id.$error.required" class="help-inline">Required</span>
         </div>
-       <div class="control-group" ng-class="{error: formEdit.kode.$invalid}">
+         <div class="control-group" ng-class="{error: formEdit.kode.$invalid}">
             <label class="control-label" for="kode">Kode : &nbsp;</label>
             <input type="text" id="kode" 
                    name="kode" 
                    placeholder="Konfigurasi Tagihan Kode" 
-                   ng-model="currentKonfiguasiTagihan.kode"
+                   ng-model="currentKonfigurasiTagihan.kode"
                    required>
             <span ng-show="formEdit.kode.$error.required" class="help-inline">Required</span>
         </div>

@@ -27,34 +27,47 @@ import org.springframework.web.util.UriTemplate;
  */
 @Controller
 public class KonfigurasiTagihanController {
-    @Autowired
-    private BelajarRestfulService belajarRestfulService;
+     @Autowired private BelajarRestfulService belajarRestfulService;
     
     @RequestMapping(value="/master/konfigurasitagihan", method=RequestMethod.POST)
     @ResponseStatus(HttpStatus.CREATED)
-    public void save(@RequestBody @Valid KonfigurasiTagihan kt, HttpServletRequest request, HttpServletResponse response){
-    belajarRestfulService.save(kt);
-    String requestUrl = request.getRequestURL().toString();
-        URI uri = new UriTemplate("{requestUrl}/{id}").expand(requestUrl, kt.getId());
+    public void save(@RequestBody @Valid KonfigurasiTagihan t, HttpServletRequest request, HttpServletResponse response){
+        belajarRestfulService.save(t);
+        String requestUrl = request.getRequestURL().toString();
+        URI uri = new UriTemplate("{requestUrl}/{id}").expand(requestUrl, t.getId());
         response.setHeader("Location", uri.toASCIIString());
-       }
-      @RequestMapping(value="/master/konfigurasitagihan/{id}", method=RequestMethod.DELETE)
-      @ResponseStatus(HttpStatus.OK)
-    public void delete(@PathVariable String id){
-    KonfigurasiTagihan konfigurasitagihanDb = belajarRestfulService.findKonfigurasiTagihanById(id);
-    if(konfigurasitagihanDb !=null)
-    belajarRestfulService.delete(konfigurasitagihanDb);
+    }
     
-       }
-      @RequestMapping(value="/master/konfigurasitagihan/{id}", method=RequestMethod.GET)
-      @ResponseBody
+    @RequestMapping(value="/master/konfigurasitagihan/{id}", method=RequestMethod.PUT)
+    @ResponseStatus(HttpStatus.OK)
+    public void update(@PathVariable String id, @RequestBody @Valid KonfigurasiTagihan t){
+        KonfigurasiTagihan konfigurasitagihanDb = belajarRestfulService.findKonfigurasiTagihanById(id);
+        if(konfigurasitagihanDb == null){
+            throw  new IllegalStateException();
+        }
+        t.setId(konfigurasitagihanDb.getId());
+        belajarRestfulService.save(t);
+    }
+    
+    @RequestMapping(value="/master/konfigurasitagihan/{id}", method= RequestMethod.DELETE)
+    @ResponseStatus(HttpStatus.OK)
+    public void delete(@PathVariable String id){
+        KonfigurasiTagihan konfigurasitagihanDb= belajarRestfulService.findKonfigurasiTagihanById(id);
+        if(konfigurasitagihanDb == null){
+            throw new IllegalStateException();
+        }
+        belajarRestfulService.delete(konfigurasitagihanDb);
+    }
+    
+    @RequestMapping(value="/master/konfigurasitagihan/{id}", method=RequestMethod.GET)
+    @ResponseBody
     public KonfigurasiTagihan findById(@PathVariable String id){
         return belajarRestfulService.findKonfigurasiTagihanById(id);
     }
-      @RequestMapping(value="/master/konfigurasitagihan", method=RequestMethod.GET)
-      @ResponseBody
-    public Page<KonfigurasiTagihan> findKonfigurasiTagihan( Pageable pagination){
+    
+    @RequestMapping(value="/master/konfigurasitagihan", method=RequestMethod.GET)
+    @ResponseBody
+    public Page<KonfigurasiTagihan> findKonfigurasiTagihan(Pageable pagination){
         return belajarRestfulService.findAllKonfigurasiTagihan(pagination);
-       }
+    }
 }
-
