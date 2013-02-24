@@ -614,7 +614,6 @@ angular.module('belajar.controller',['belajar.service'])
     }])
 .controller('PembayaranController', ['$scope', 'PembayaranService', function($scope, PembayaranService){
         $scope.pembayaran = PembayaranService.query();
-        $scope.siswa = SiswaService.query();
         $scope.edit = function(x){
             if(x.id == null){
                 return; 

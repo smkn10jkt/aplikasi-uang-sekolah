@@ -473,9 +473,8 @@ angular.module('belajar.controller',['belajar.service'])
             return angular.equals($scope.original, $scope.currentPayments);
         }
     }])
-    .controller('KelasController', ['$scope', 'KelasService','TahunAjaranService', function($scope, KelasService, TahunAjaranService){
+    .controller('KelasController', ['$scope', 'KelasService', function($scope, KelasService){
         $scope.kelases = KelasService.query();
-        $scope.tahun_ajaran = TahunAjaranService.query();
         $scope.edit = function(x){
             if(x.id == null){
                 return; 
@@ -614,7 +613,6 @@ angular.module('belajar.controller',['belajar.service'])
     }])
 .controller('PembayaranController', ['$scope', 'PembayaranService', function($scope, PembayaranService){
         $scope.pembayaran = PembayaranService.query();
-        $scope.siswa = SiswaService.query();
         $scope.edit = function(x){
             if(x.id == null){
                 return; 
@@ -646,9 +644,8 @@ angular.module('belajar.controller',['belajar.service'])
             return angular.equals($scope.original, $scope.currentPembayaran);
         }
     }])
-.controller('KonfigurasiTagihanController', ['$scope', 'KonfigurasiTagihanService','KelasService', function($scope, KonfigurasiTagihanService, KelasService){
+.controller('KonfigurasiTagihanController', ['$scope', 'KonfigurasiTagihanService', function($scope, KonfigurasiTagihanService){
         $scope.konfigurasitagihan = KonfigurasiTagihanService.query();
-        $scope.kelases = KelasService.query();
         $scope.edit = function(x){
             if(x.id == null){
                 return; 
@@ -781,10 +778,8 @@ angular.module('belajar.controller',['belajar.service'])
         }
     }])
 
-.controller('KonfigurasiTagihanDetailController', ['$scope', 'KonfigurasiTagihanDetailService','JenisBiayaService','KonfigurasiTagihanService', function($scope, KonfigurasiTagihanDetailService, JenisBiayaService, KonfigurasiTagihanService){
+.controller('KonfigurasiTagihanDetailController', ['$scope', 'KonfigurasiTagihanDetailService', function($scope, KonfigurasiTagihanDetailService){
         $scope.konfigurasitagihandetail = KonfigurasiTagihanDetailService.query();
-         $scope.jenisbiaya = JenisBiayaService.query();
-         $scope.konfigurasitagihan = JenisBiayaService.query();
         $scope.edit = function(x){
             if(x.id == null){
                 return; 

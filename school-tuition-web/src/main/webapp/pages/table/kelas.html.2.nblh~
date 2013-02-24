@@ -31,7 +31,6 @@
     </table>
 </div>  
 <div class="span5 well-large">
-    
     <h1>Form Kelas</h1>
     <form class="form-horizontal" name="formEdit">
          <form class="form-horizontal" name="formEdit">
@@ -50,12 +49,13 @@
                 <input type="text" id="level" name="nama" placeholder="Nama" ng-model="currentKelas.nama" required>
                 <span ng-show="formEdit.nama.$error.required" class="help-inline">Harus diisi</span>
             </div>
-           <div class="control-group">
+             <div class="control-group" ng-class="{error: formEdit.id_tahun_ajaran.$invalid}">
                 <label class="control-label" for="id_tahun_ajaran">Id Tahun Ajaran : &nbsp;</label>
                 <select ui-select2 ng-model="currentKelas.tahun_ajaran.id" data-placeholder="-- Select One --">
                     <option></option>
-                    <option ng-repeat="tahun_ajaran in tahun_ajaran.content" value="{{tahun_ajaran.id}}">{{tahun_ajaran.id}}</option>
-              </select>
+                    <option ng-repeat="tahun_ajaran in tahun_ajaran" value="{{tahuna_jaran.id}}">{{tahun_ajaran.id}}</option>
+                    </select>
+                <span ng-show="formEdit.id_tahun_ajaran.$error.required" class="help-inline">Harus diisi</span>   
             </div>
             
             <div class="form-actions">

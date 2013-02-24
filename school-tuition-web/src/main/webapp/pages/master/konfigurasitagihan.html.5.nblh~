@@ -64,7 +64,7 @@
                 <label class="control-label" for="id_kelas">Id Kelas : &nbsp;</label>
                 <select ui-select2 ng-model="currentKonfigurasiTagihan.kelas.id" data-placeholder="-- Select One --">
                     <option></option>
-                    <option ng-repeat="kelas in kelases.content" value="{{kelas.id}}">{{kelas.id}}</option>
+                    <option ng-repeat="kelas in kelases.content" value="{{kelas.id}}">{{kelas.nama}}</option>
               </select>
             </div>
         <div class="form-actions">

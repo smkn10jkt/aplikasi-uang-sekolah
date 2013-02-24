@@ -614,7 +614,6 @@ angular.module('belajar.controller',['belajar.service'])
     }])
 .controller('PembayaranController', ['$scope', 'PembayaranService', function($scope, PembayaranService){
         $scope.pembayaran = PembayaranService.query();
-        $scope.siswa = SiswaService.query();
         $scope.edit = function(x){
             if(x.id == null){
                 return; 
@@ -783,8 +782,8 @@ angular.module('belajar.controller',['belajar.service'])
 
 .controller('KonfigurasiTagihanDetailController', ['$scope', 'KonfigurasiTagihanDetailService','JenisBiayaService','KonfigurasiTagihanService', function($scope, KonfigurasiTagihanDetailService, JenisBiayaService, KonfigurasiTagihanService){
         $scope.konfigurasitagihandetail = KonfigurasiTagihanDetailService.query();
-         $scope.jenisbiaya = JenisBiayaService.query();
-         $scope.konfigurasitagihan = JenisBiayaService.query();
+         $scope.jenisbiaya = KelasService.query();
+         $scope.konfigurasitagihan = KelasService.query();
         $scope.edit = function(x){
             if(x.id == null){
                 return; 

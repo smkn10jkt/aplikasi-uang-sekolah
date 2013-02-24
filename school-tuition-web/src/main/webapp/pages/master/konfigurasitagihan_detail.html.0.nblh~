@@ -16,7 +16,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr ng-repeat="x in konfigurasitagihandetail.content">
+            <tr ng-repeat="x in konfigurasitagihan_detail.content">
                 <td>{{x.id}}</td>
                 <td>{{x.nilai}}</td>
                 <td>{{x.jenisbiaya.id}}</td>

@@ -22,7 +22,7 @@
                 <td>{{x.keterangan}}</td>
                 <td>{{x.penerima}}</td>
                 <td>{{x.waktu_pembayaran}}</td>
-                <td>{{x.siswa.id}}</td>
+                <td>{{x.id_siswa}}</td>
                 <td>
                     <a ng-click="edit(x)"><i class="icon-edit"></i></a>
                     <a ng-click="remove(x)"><i class="icon-remove"></i></a>
@@ -61,13 +61,11 @@
                 <label class="control-label" for="waktu_pembayaran">Waktu Pembayaran : &nbsp;</label>
                <input id="waktu_pembayaran" type="date" value="auto"/>
             </div>
-       <div class="control-group">
-                <label class="control-label" for="id_siswa">Id Siswa : &nbsp;</label>
-                <select ui-select2 ng-model="currentPembayaran.siswa.id" data-placeholder="-- Select One --">
-                    <option></option>
-                    <option ng-repeat="siswa in siswa.content" value="{{siswa.id}}">{{siswa.id}}</option>
-              </select>
-            </div>
+        <div class="control-group" ng-class="{error: formEdit.id.$invalid}">
+            <label class="control-label" for="id">Id Siswa: &nbsp;</label>
+            <input type="text" id="id" name="id" placeholder="Id Siswa" ng-model="currentPembayaran.id" required>
+            <span ng-show="formEdit.id.$error.required" class="help-inline">Harus diisi</span>
+        </div>
         <div class="form-actions">
             <button type="delete" class="btn btn-primary" ng-click="hapus()" ng-disabled="isClean() || formEdit.$invalid">Hapus</button>
             <button type="edit" class="btn btn-primary" ng-click="edit()" ng-disabled="isClean() || formEdit.$invalid">Ubah</button>

@@ -333,13 +333,31 @@
             referencedTableName="t_kelas"
             referencedColumnNames="id"
         />
-        
-
+       
            <addForeignKeyConstraint
-            constraintName="fk_kelas_konfigurasitagihan"
+            constraintName="fk_konfigurasitagihan_kelas"
             baseColumnNames="id_kelas"
             baseTableName="m_konfigurasi_tagihan"
             referencedTableName="t_kelas"
+            referencedColumnNames="id"
+        />
+        
+<!--        <addForeignKeyConstraint
+            constraintName="fk_konfigurasitagihandetail_jenisbiaya_konfigurasitagihan"
+            baseColumnNames="id_jenis_biaya"
+            baseColumnNames="id_konfigurasi_tagihan"
+            baseTableName="m_konfigurasi_tagihan_detail"
+            referencedTableName="m_jenis_biaya"
+            referencedTableName="m_konfigurasi_tagihan"
+            referencedColumnNames="id"
+            referencedColumnNames="id"
+        />-->
+        
+         <addForeignKeyConstraint
+            constraintName="fk_pembayaran_siswa"
+            baseColumnNames="id_siswa"
+            baseTableName="t_pembayaran"
+            referencedTableName="t_siswa"
             referencedColumnNames="id"
         />
         
