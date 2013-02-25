@@ -75,7 +75,9 @@
         <div class="form-actions">
              <button type="submit" class="btn btn-primary" ng-click="simpan()" ng-disabled="isClean() || formEdit.$invalid">Simpan</button>
             <button type="button" class="btn" ng-click="baru()">Batal</button>
-         
+        <button type="edit" class="btn btn-primary" ng-click="edit()" ng-disabled="isClean() || formEdit.$invalid">Ubah</button>
+            <button type="search" class="btn btn-primary" ng-click="search()" ng-disabled="isClean() || formEdit.$invalid">Cari</button>
+            
         </div>
     </form>
 </div> 
