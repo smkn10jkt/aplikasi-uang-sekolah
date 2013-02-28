@@ -9,7 +9,6 @@
     <table class="table table-striped table condensed table-bordered">
         <thead>
             <tr>
-                <th>Id</th>
                 <th>Keterangan</th>
                 <th>Nilai</th>
                 <th>id Pembayaran</th>
@@ -19,7 +18,6 @@
         </thead>
         <tbody>
             <tr ng-repeat="x in pembayarandetail.content">
-                <td>{{x.id}}</td>
                 <td>{{x.keterangan}}</td>
                 <td>{{x.nilai}}</td>
                 <td>{{x.id_pembayaran}}</td>
@@ -37,11 +35,6 @@
 <div class="span5 well-large">
     <h1>Form Pembayaran</h1>
     <form class="form-horizontal" name="formEdit">
-        <div class="control-group" ng-class="{error: formEdit.id.$invalid}">
-            <label class="control-label" for="id">Id : &nbsp;</label>
-            <input type="text" id="id" name="id" placeholder="Id Siswa" ng-model="currentSiswa.id" required ui-validate="{siswaIdAvailable: isSiswaIdAvailable}">
-            <span ng-show="formEdit.id.$error.required" class="help-inline">Harus diisi</span>
-        </div>
         <div class="control-group" ng-class="{error: formEdit.value.$invalid}">
             <label class="control-label" for="value">Keterangan : &nbsp;</label>
             <input type="text" 

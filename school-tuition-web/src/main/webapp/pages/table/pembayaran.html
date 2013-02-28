@@ -37,11 +37,6 @@
     <h1>Form Pembayaran</h1>
     
     <form class="form-horizontal" name="formEdit">
-        <div class="control-group" ng-class="{error: formEdit.id.$invalid}">
-            <label class="control-label" for="id">Id : &nbsp;</label>
-            <input type="text" id="id" name="id" placeholder="Id Pembayaran" ng-model="currentPembayaran.id" required>
-            <span ng-show="formEdit.id.$error.required" class="help-inline">Harus diisi</span>
-        </div>
         <div class="control-group" ng-class="{error: formEdit.keterangan.$invalid}">
             <label class="control-label" for="keterangan">Keterangan : &nbsp;</label>
              <input type="text" id="keterangan" name="keterangan" placeholder="Keterangan Pembayaran" ng-model="currentPembayaran.keterangan" required>

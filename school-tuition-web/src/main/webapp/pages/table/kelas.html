@@ -9,7 +9,6 @@
     <table class="table table-striped table-condensed table-bordered">
         <thead>
             <tr>
-                <th>Id</th>
                     <th>Kode</th>
                     <th>Nama</th>
                     <th>Id Tahun Ajaran</th>
@@ -18,7 +17,6 @@
         </thead>
         <tbody>
             <tr ng-repeat="x in kelases.content">
-                <td>{{x.id}}</td>
                  <td>{{x.kode}}</td>
                  <td>{{x.nama}}</td>
                  <td>{{x.tahun_ajaran.id}}</td>
@@ -35,11 +33,6 @@
     <h1>Form Kelas</h1>
     <form class="form-horizontal" name="formEdit">
          <form class="form-horizontal" name="formEdit">
-            <div class="control-group" ng-class="{error: formEdit.id.$invalid}">
-                <label class="control-label" for="label">Id : &nbsp;</label>
-                <input type="text" id="id" name="id" placeholder="Id Kelas" ng-model="currentKelas.id" required>
-                <span ng-show="formEdit.id.$error.required" class="help-inline">Harus diisi</span>
-            </div>
             <div class="control-group" ng-class="{error: formEdit.kode.$invalid}">
                 <label class="control-label" for="kode">Kode : &nbsp;</label>
                 <input type="text" id="kode" name="kode" placeholder="Kode Kelas" ng-model="currentKelas.kode" required>
@@ -59,8 +52,12 @@
             </div>
             
             <div class="form-actions">
+<<<<<<< HEAD
                 <button type="save" class="btn btn-primary" ng-click="save()" ng-disabled="isClean() || formEdit.$invalid">Simpan</button>
              
+=======
+                <button type="submit" class="btn btn-primary" ng-click="simpan()" ng-disabled="isClean() || formEdit.$invalid">Simpan</button>
+>>>>>>> 037e10e21fe2a1c62a5c3ce84f087a5baba4617a
                 <button type="button" class="btn" ng-click="baru()">Batal</button>
             </div>
         </form>

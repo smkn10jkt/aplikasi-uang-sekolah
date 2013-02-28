@@ -10,7 +10,6 @@
         <thead>
             <tr>
                  <tr>
-                    <th>Id</th>
                     <th>Jatuh Tempo</th>
                     <th>Periode Tagihan</th>
                     <th></th>
@@ -19,7 +18,6 @@
         </thead>
         <tbody>
             <tr ng-repeat="x in tagihans.content">
-                <td>{{x.id}}</td>
                     <td>{{x.jatuhTempo}}</td>
                     <td>{{x.periodeTagihan}}</td>
                     <td>
@@ -34,11 +32,6 @@
     <h1>Form Tagihan</h1>
     <form class="form-horizontal" name="formEdit">
          <form class="form-horizontal" name="formEdit">
-            <div class="control-group" ng-class="{error: formEdit.id.$invalid}">
-                <label class="control-label" for="label">Id : &nbsp;</label>
-                <input type="text" id="id" name="id" placeholder="Id Tagihan" ng-model="currentTagihan.id" required>
-                <span ng-show="formEdit.id.$error.required" class="help-inline">Harus diisi</span>
-            </div>
            <div class="control-group" ng-class="{error: formEdit.jatuhTempo.$invalid}">
                 <label class="control-label" for="jatuhTempo">Jatuh Tempo : &nbsp;</label>
                <input id="jatuhTempo" type="date" value="auto"/>
