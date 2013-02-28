@@ -9,7 +9,6 @@
     <table class="table table-striped table-condensed table-bordered">
         <thead>
              <tr>
-                <th>Id</th>
                 <th>Keterangan</th>
                 <th>Nilai Bayar</th>
                 <th>Nilai Tagihan</th>
@@ -23,7 +22,6 @@
         </thead>
         <tbody>
             <tr ng-repeat="x in tagihan_detail.content">
-                <td>{{x.id}}</td>
                 <td>{{x.keterangan}}</td>
                 <td>{{x.nilaiDibayar}}</td>
                 <td>{{x.nilaiTagihan}}</td>
@@ -44,11 +42,6 @@
     <h1>Form Tagihan Detail</h1>
     <form class="form-horizontal" name="formEdit">
          <form class="form-horizontal" name="formEdit">
-            <div class="control-group" ng-class="{error: formEdit.id.$invalid}">
-                <label class="control-label" for="label">Id : &nbsp;</label>
-                <input type="text" id="id" name="id" placeholder="Id Tagihan Detail" ng-model="currentTagihanDetail.id" required>
-                <span ng-show="formEdit.id.$error.required" class="help-inline">Harus diisi</span>
-            </div>
            <div class="control-group" ng-class="{error: formEdit.keterangan.$invalid}">
             <label class="control-label" for="value">Keterangan : &nbsp;</label>
             <input type="text" 
