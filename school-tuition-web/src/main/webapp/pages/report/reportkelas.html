@@ -1,0 +1,46 @@
+
+<div class="span5 well-large">
+    <center><h1>Report Kelas</h1></center>
+<div class="span5 well-large">
+    
+     <div class="control-group" ng-class="{error: formEdit.kode.$invalid}">
+            <label class="control-label" for="id">Kode : &nbsp;
+            <input type="text" 
+                   id="kode" 
+                   name="kode" 
+                   placeholder="Kode" 
+                   ng-model="currentId.kode"
+                   required
+                   ui-validate="{permissionIdAvailable: isPermissionIdAvailable}">
+            <span ng-show="formEdit.id.$error.permissionIdAvailable" class="help-inline"></span>
+            <button type="search" class="btn btn-primary" ng-click="cari()" ng-disabled="isSearch() || formEdit.$invalid">Cari</button>
+            </label>
+    </div>
+    
+<hr>
+    <table class="table table-striped table-condensed table-bordered">
+        <thead>
+            <tr>
+                <th>Kode</th>
+                <th>Nama</th>
+                <th>Id Tahun Ajaran</th>
+                
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="x in permissions">
+                <td>{{x.kode}}</td>
+                <td>{{x.nama}}</td>
+                <td>{{x.Id tahun ajaran}}</td>
+               
+                <td>
+                    <a ng-click="edit(x)"><i class="icon-edit"></i></a>
+                    <a ng-click="remove(x)"><i class="icon-remove"></i></a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+</div>
+</div>
