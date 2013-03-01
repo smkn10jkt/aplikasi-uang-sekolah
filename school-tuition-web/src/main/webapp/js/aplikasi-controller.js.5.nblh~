@@ -474,8 +474,14 @@ angular.module('belajar.controller',['belajar.service'])
         }
     }])
     .controller('KelasController', ['$scope', 'KelasService','TahunAjaranService', function($scope, KelasService, TahunAjaranService){
+<<<<<<< HEAD
         $scope.kelases = KelasService.query();  
         $scope.tahun_ajarans = TahunAjaranService.query();
+=======
+        $scope.kelases = KelasService.query();
+        
+        $scope.tahun_ajaran = TahunAjaranService.query();
+>>>>>>> 22132bf438b429b8d4fc8d2e816af5a3aeb3e475
         $scope.edit = function(x){
             if(x.id == null){
                 return; 
@@ -488,7 +494,11 @@ angular.module('belajar.controller',['belajar.service'])
             $scope.currentKelas = null;
             $scope.original = null;
         }
+<<<<<<< HEAD
          $scope.save = function(){
+=======
+         $scope.simpan = function(){
+>>>>>>> 22132bf438b429b8d4fc8d2e816af5a3aeb3e475
             KelasService.save($scope.currentKelas)
             .success(function(){
                 $scope.kelases = KelasService.query();
@@ -508,7 +518,11 @@ angular.module('belajar.controller',['belajar.service'])
         }
     }])
 .controller('TahunAjaranController', ['$scope', 'TahunAjaranService', function($scope, TahunAjaranService){
+<<<<<<< HEAD
         $scope.tahun_ajarans = TahunAjaranService.query();
+=======
+        $scope.tahun_ajaran = TahunAjaranService.query();
+>>>>>>> 22132bf438b429b8d4fc8d2e816af5a3aeb3e475
         $scope.edit = function(x){
             if(x.id == null){
                 return; 
@@ -524,7 +538,11 @@ angular.module('belajar.controller',['belajar.service'])
         $scope.simpan = function(){
             TahunAjaranService.save($scope.currentTahunAjaran)
             .success(function(){
+<<<<<<< HEAD
                 $scope.tahun_ajarans = TahunAjaranService.query();
+=======
+                $scope.tahun_ajaran = TahunAjaranService.query();
+>>>>>>> 22132bf438b429b8d4fc8d2e816af5a3aeb3e475
                 $scope.baru();
             });
         }
@@ -533,7 +551,11 @@ angular.module('belajar.controller',['belajar.service'])
                 return;
             }
             TahunAjaranService.remove(x).success(function(){
+<<<<<<< HEAD
                 $scope.tahunajarans = TahunAjaranService.query();
+=======
+                $scope.tahunajaran = TahunAjaranService.query();
+>>>>>>> 22132bf438b429b8d4fc8d2e816af5a3aeb3e475
             });
         }
         $scope.isClean = function(){
@@ -747,10 +769,15 @@ angular.module('belajar.controller',['belajar.service'])
         }
     }])
 
+<<<<<<< HEAD
 .controller('PembayaranDetailController', ['$scope', 'PembayaranDetailService','PembayaranService','TagihanDetailService', function($scope, PembayaranDetailService,PembayaranService,TagihanDetail){
         $scope.pembayarandetails = PembayaranDetailService.query();
         $scope.pembayarans = PembayaranService.query();
         $scope.tagihanDetails = TagihanDetailService.query();
+=======
+.controller('PembayaranDetailController', ['$scope', 'PembayaranDetailService', function($scope, PembayaranDetailService){
+        $scope.pembayarandetail = PembayaranDetailService.query();
+>>>>>>> 22132bf438b429b8d4fc8d2e816af5a3aeb3e475
         $scope.edit = function(x){
             if(x.id == null){
                 return; 
