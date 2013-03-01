@@ -475,6 +475,7 @@ angular.module('belajar.controller',['belajar.service'])
     }])
     .controller('KelasController', ['$scope', 'KelasService','TahunAjaranService', function($scope, KelasService, TahunAjaranService){
         $scope.kelases = KelasService.query();
+        
         $scope.tahun_ajaran = TahunAjaranService.query();
         $scope.edit = function(x){
             if(x.id == null){
@@ -488,7 +489,7 @@ angular.module('belajar.controller',['belajar.service'])
             $scope.currentKelas = null;
             $scope.original = null;
         }
-        $scope.simpan = function(){
+         $scope.simpan = function(){
             KelasService.save($scope.currentKelas)
             .success(function(){
                 $scope.kelases = KelasService.query();

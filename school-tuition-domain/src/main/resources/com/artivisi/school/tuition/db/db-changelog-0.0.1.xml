@@ -341,6 +341,13 @@
             referencedTableName="t_kelas"
             referencedColumnNames="id"
         />
+           <addForeignKeyConstraint 
+               baseTableName="t_kelas" 
+               baseColumnNames="id_tahun_ajaran" 
+               constraintName="fk_kelas_tahun_ajaran" 
+               referencedTableName="t_tahun_ajaran" 
+               referencedColumnNames="id"
+/>
         
 <!--        <addForeignKeyConstraint
             constraintName="fk_konfigurasitagihandetail_jenisbiaya_konfigurasitagihan"

@@ -117,9 +117,7 @@ angular.module('belajar.service', ['ngResource'])
             save: function(obj){
                 if(obj.id == null){
                     return $http.post('table/kelas/', obj);
-                } else {
-                    return $http.put('table/kelas/'+obj.id, obj);
-                }
+                } 
             }, 
             remove: function(obj){
                 if(obj.id != null){

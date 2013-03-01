@@ -45,14 +45,19 @@
             </div>
            <div class="control-group">
                 <label class="control-label" for="id_tahun_ajaran">Id Tahun Ajaran : &nbsp;</label>
-                <select ui-select2 ng-model="currentKelas.tahun_ajaran.id" data-placeholder="-- Select One --">
+                <select ui-select2 id="id_tahun_ajaran" name="id_tahun_ajaran" ng-model="currentKelas.tahun_ajaran.id" data-placeholder="-- Select One --">
                     <option></option>
                     <option ng-repeat="tahun_ajaran in tahun_ajaran.content" value="{{tahun_ajaran.id}}">{{tahun_ajaran.id}}</option>
               </select>
             </div>
             
             <div class="form-actions">
+<<<<<<< HEAD
+                <button type="save" class="btn btn-primary" ng-click="save()" ng-disabled="isClean() || formEdit.$invalid">Simpan</button>
+             
+=======
                 <button type="submit" class="btn btn-primary" ng-click="simpan()" ng-disabled="isClean() || formEdit.$invalid">Simpan</button>
+>>>>>>> 037e10e21fe2a1c62a5c3ce84f087a5baba4617a
                 <button type="button" class="btn" ng-click="baru()">Batal</button>
             </div>
         </form>
