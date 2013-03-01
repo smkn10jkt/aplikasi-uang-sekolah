@@ -44,17 +44,23 @@
                 <span ng-show="formEdit.nama.$error.required" class="help-inline">Harus diisi</span>
             </div>
            <div class="control-group">
-                <label class="control-label" for="id_tahun_ajaran">Id Tahun Ajaran : &nbsp;</label>
-                <select ui-select2 id="id_tahun_ajaran" name="id_tahun_ajaran" ng-model="currentKelas.tahun_ajaran.id" data-placeholder="-- Select One --">
+                <label class="control-label" for="id_tahun_ajaran">Id Kelas : &nbsp;</label>
+                <select ui-select2 ng-model="currentKelas.tahun_ajaran.id" data-placeholder="-- Select One --">
                     <option></option>
-                    <option ng-repeat="tahun_ajaran in tahun_ajaran.content" value="{{tahun_ajaran.id}}">{{tahun_ajaran.id}}</option>
+                    <option ng-repeat="tahun_ajaran in tahun_ajarans.content" value="{{tahun_ajaran.id}}">{{tahun_ajaran.id}}</option>
               </select>
             </div>
             
             <div class="form-actions">
+<<<<<<< HEAD
                 <button type="save" class="btn btn-primary" ng-click="save()" ng-disabled="isClean() || formEdit.$invalid">Simpan</button>
 
                 <button type="button" class="btn" ng-click="baru()">Batal</button>
+=======
+
+ <button type="submit" class="btn btn-primary" ng-click="save()" ng-disabled="isClean() || formEdit.$invalid">Simpan</button>
+ <button type="button" class="btn" ng-click="baru()">Batal</button>
+>>>>>>> 5c6274828aed269c171601b42dca02297b0e3be5
             </div>
         </form>
     </div>
