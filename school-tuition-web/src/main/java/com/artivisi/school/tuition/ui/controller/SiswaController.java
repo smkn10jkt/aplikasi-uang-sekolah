@@ -29,34 +29,48 @@ import org.springframework.web.util.UriTemplate;
  */
 @Controller
 public class SiswaController {
-    @Autowired
-    private BelajarRestfulService belajarRestfulService;
+       @Autowired private BelajarRestfulService belajarRestfulService;
     
     @RequestMapping(value="/table/siswa", method=RequestMethod.POST)
     @ResponseStatus(HttpStatus.CREATED)
-    public void save(@RequestBody @Valid Siswa s, HttpServletRequest request, HttpServletResponse response){
-    belajarRestfulService.save(s);
-    String requestUrl = request.getRequestURL().toString();
-        URI uri = new UriTemplate("{requestUrl}/{id}").expand(requestUrl, s.getId());
+    public void save(@RequestBody @Valid Siswa t, HttpServletRequest request, HttpServletResponse response){
+        belajarRestfulService.save(t);
+        String requestUrl = request.getRequestURL().toString();
+        URI uri = new UriTemplate("{requestUrl}/{id}").expand(requestUrl, t.getId());
         response.setHeader("Location", uri.toASCIIString());
-       }
-      @RequestMapping(value="/table/siswa/{id}", method=RequestMethod.DELETE)
-      @ResponseStatus(HttpStatus.OK)
-    public void delete(@PathVariable String id){
-    Siswa siswaDb = belajarRestfulService.findSiswaById(id);
-    if(siswaDb !=null)
-    belajarRestfulService.delete(siswaDb);
+    }
     
-       }
-      @RequestMapping(value="/table/siswa/{id}", method=RequestMethod.GET)
-      @ResponseBody
+    @RequestMapping(value="/table/siswa/{id}", method=RequestMethod.PUT)
+    @ResponseStatus(HttpStatus.OK)
+    public void update(@PathVariable String id, @RequestBody @Valid Siswa t){
+        Siswa siswaDb = belajarRestfulService.findSiswaById(id);
+        if(siswaDb == null){
+            throw  new IllegalStateException();
+        }
+        t.setId(siswaDb.getId());
+        belajarRestfulService.save(t);
+    }
+    
+    @RequestMapping(value="/table/siswa/{id}", method= RequestMethod.DELETE)
+    @ResponseStatus(HttpStatus.OK)
+    public void delete(@PathVariable String id){
+        Siswa siswaDb = belajarRestfulService.findSiswaById(id);
+        if(siswaDb == null){
+            throw new IllegalStateException();
+        }
+        belajarRestfulService.delete(siswaDb);
+    }
+    
+    @RequestMapping(value="/table/siswa/{id}", method=RequestMethod.GET)
+    @ResponseBody
     public Siswa findById(@PathVariable String id){
         return belajarRestfulService.findSiswaById(id);
     }
-      @RequestMapping(value="/table/siswa", method=RequestMethod.GET)
-      @ResponseBody
-    public Page<Siswa> findSiswa( Pageable pagination){
+    
+    @RequestMapping(value="/table/siswa", method=RequestMethod.GET)
+    @ResponseBody
+    public Page<Siswa> findKSiswas(Pageable pagination){
         return belajarRestfulService.findAllSiswa(pagination);
-       }
+    }
 }
 

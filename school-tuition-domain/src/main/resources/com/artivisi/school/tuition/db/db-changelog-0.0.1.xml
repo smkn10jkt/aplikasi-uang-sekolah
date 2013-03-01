@@ -327,7 +327,7 @@
             referencedColumnNames="id"
         />
         <addForeignKeyConstraint
-            constraintName="fk_kelas_siswa"
+            constraintName="fk_siswa_kelas"
             baseColumnNames="id_kelas"
             baseTableName="t_siswa"
             referencedTableName="t_kelas"
@@ -341,13 +341,13 @@
             referencedTableName="t_kelas"
             referencedColumnNames="id"
         />
-           <addForeignKeyConstraint 
-               baseTableName="t_kelas" 
-               baseColumnNames="id_tahun_ajaran" 
-               constraintName="fk_kelas_tahun_ajaran" 
-               referencedTableName="t_tahun_ajaran" 
-               referencedColumnNames="id"
-/>
+<!--          <addForeignKeyConstraint
+            constraintName="fk_kelas_tahunajaran"
+            baseColumnNames="id_tahun_ajaran"
+            baseTableName="t_kelas"
+            referencedTableName="t_tahun_ajaran"
+            referencedColumnNames="id"
+        />-->
         
 <!--        <addForeignKeyConstraint
             constraintName="fk_konfigurasitagihandetail_jenisbiaya_konfigurasitagihan"
