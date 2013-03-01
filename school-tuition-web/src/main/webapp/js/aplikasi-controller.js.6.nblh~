@@ -749,8 +749,8 @@ angular.module('belajar.controller',['belajar.service'])
 
 .controller('PembayaranDetailController', ['$scope', 'PembayaranDetailService','PembayaranService','TagihanDetailService', function($scope, PembayaranDetailService,PembayaranService,TagihanDetailService){
         $scope.pembayarandetails = PembayaranDetailService.query();
-        $scope.pembayaran = PembayaranService.query();
-        $scope.tagihan_detail = TagihanDetailService.query();
+        $scope.pembayarans = PembayaranService.query();
+        $scope.tagihanDetails = TagihanDetailService.query();
         $scope.edit = function(x){
             if(x.id == null){
                 return; 

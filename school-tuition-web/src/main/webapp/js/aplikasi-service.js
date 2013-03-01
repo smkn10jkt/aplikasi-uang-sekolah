@@ -322,11 +322,10 @@ angular.module('belajar.service', ['ngResource'])
             get: function(param, callback){ return this.pembayarandetail.get(param, callback) }, 
             query: function(p, callback){ return this.pembayarandetail.queryPage({"page.page": p, "page.size": 10}, callback) },
             save: function(obj){
-                if(obj.id == null){
+                    
                     return $http.post('table/pembayaran_detail', obj);
-                } else {
-                    return $http.put('table/pembayaran_detail/'+obj.id, obj);
-                }
+                
+                   
             }, 
             remove: function(obj){
                 if(obj.id != null){

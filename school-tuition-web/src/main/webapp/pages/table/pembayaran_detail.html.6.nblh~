@@ -66,7 +66,7 @@
                 <label class="control-label" for="id_tagihan_detail">Id Tagihanl Detail : &nbsp;</label>
                 <select ui-select2 ng-model="currentPembayaranDetail.tagihanDetail.id" data-placeholder="-- Select One --">
                     <option></option>
-                    <option ng-repeat="tagihanDetail in tagihan_detail.content" value="{{tagihanDetail.id}}">{{tagihanDetail.id}}</option>
+                    <option ng-repeat="tagihanDetail in tagihanDetail.content" value="{{tagihanDetail.id}}">{{tagihanDetail.id}}</option>
                 </select>
             </div>
        

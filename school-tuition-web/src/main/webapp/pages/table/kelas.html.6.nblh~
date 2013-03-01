@@ -19,7 +19,7 @@
             <tr ng-repeat="x in kelases.content">
                  <td>{{x.kode}}</td>
                  <td>{{x.nama}}</td>
-                 <td>{{x.tahunAjaran.id}}</td>
+                 <td>{{x.tahun_ajaran.id}}</td>
                 <td>
                     <a ng-click="edit(x)"><i class="icon-edit"></i></a>
                     <a ng-click="remove(x)"><i class="icon-remove"></i></a>

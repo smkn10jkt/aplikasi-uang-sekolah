@@ -17,11 +17,11 @@
             </tr>
         </thead>
         <tbody>
-            <tr ng-repeat="x in pembayarandetails.content">
+            <tr ng-repeat="x in pembayarandetail.content">
                 <td>{{x.keterangan}}</td>
                 <td>{{x.nilai}}</td>
                 <td>{{x.pembayaran.id}}</td>
-                <td>{{x.tagihanDetail.id}}</td>
+                <td>{{x.tagihanDetail.id_tagihan_detail}}</td>
                 <td>
                     <a ng-click="edit(x)"><i class="icon-edit"></i></a>
                     <a ng-click="remove(x)"><i class="icon-remove"></i></a>
@@ -57,16 +57,16 @@
         </div>
         <div class="control-group">
                 <label class="control-label" for="idpembayaran">Id Pembayaran : &nbsp;</label>
-                <select ui-select2 ng-model="currentPembayaranDetail.pembayaran.id" data-placeholder="-- Select One --">
+                <select ui-select2 ng-model="currentPembayaranDetail.idpembayaran" data-placeholder="-- Select One --">
                     <option></option>
-                    <option ng-repeat="pembayaran in pembayaran.content" value="{{pembayaran.id}}">{{pembayaran.id}}</option>
+                    <option ng-repeat="id_pembayaran in id_pembayaranSelection" value="{{id_pembayaran.id_pembayaran}}">{{id_pembayaran.label}}</option>
                 </select>
             </div>
        <div class="control-group">
-                <label class="control-label" for="id_tagihan_detail">Id Tagihanl Detail : &nbsp;</label>
-                <select ui-select2 ng-model="currentPembayaranDetail.tagihanDetail.id" data-placeholder="-- Select One --">
+                <label class="control-label" for="id_tagihan_detail">Id Tagihan Detail : &nbsp;</label>
+                <select ui-select2 ng-model="currentPembayaranDetail.id_tagihan_detail.id_tagihan_detail" data-placeholder="-- Select One --">
                     <option></option>
-                    <option ng-repeat="tagihanDetail in tagihan_detail.content" value="{{tagihanDetail.id}}">{{tagihanDetail.id}}</option>
+                    <option ng-repeat="id_tagihan_detail in id_tagihan_detailSelection" value="{{id_tagihan_detail.id_tagihan_detail}}">{{id_tagihan_detail.label}}</option>
                 </select>
             </div>
        
