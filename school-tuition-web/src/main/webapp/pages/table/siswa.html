@@ -1,38 +1,46 @@
 <div class="span5 well-large">
-    <img border="0" src="/img/paymentSchoolSiswa.png" alt="Pulpit rock" width="200" height="200"/>
+      <img border="0" src="/img/paymentSchoolSiswa.png" alt="Pulpit rock" width="200" height="200"/>
     <h1>Daftar Siswa</h1>
 
     <a class="btn" ng-click="baru()">
         <i class="icon-plus-sign"></i>Tambah Data
     </a>
     <hr>
-    <table class="table table-striped table-bordered table-condense">
+    <table class="table table-striped table-condensed table-bordered">
         <thead>
             <tr>
-                <th>Nama</th>
                 <th>Nomer</th>
-                <th>Id Kelas</th>
+                 <th>Nama</th>
+                 <th>Id Kelas</th>
                 <th></th>
             </tr>
         </thead>
         <tbody>
             <tr ng-repeat="x in siswa.content">
-                <td>{{x.nama}}</td>
                 <td>{{x.nomer}}</td>
-                <td>{{x.id_kelas}}</td>
+                <td>{{x.nama}}</td>
+                <td>{{x.kelas.id}}</td>
                 <td>
-                    <a ng-click="edit(c)"><i class="icon-edit"></i></a>
-                    <a ng-click="remove(c)"><i class="icon-remove"></i></a>
+                    <a ng-click="edit(x)"><i class="icon-edit"></i></a>
+                    <a ng-click="remove(x)"><i class="icon-remove"></i></a>
                 </td>
             </tr>
         </tbody>
     </table>
-
-</div>
+</div>  
 <div class="span5 well-large">
     <h1>Form Siswa</h1>
     <form class="form-horizontal" name="formEdit">
-            <div class="control-group" ng-class="{error: formEdit.nama.$invalid}">
+         <div class="control-group" ng-class="{error: formEdit.nomer.$invalid}">
+            <label class="control-label" for="nomer">Nomer : &nbsp;</label>
+            <input type="text" id="nomer" 
+                   name="nomer" 
+                   placeholder="Siswa Nomer" 
+                   ng-model="currentSiswa.nomer"
+                   required>
+            <span ng-show="formEdit.nomer.$error.required" class="help-inline">Required</span>
+        </div>
+         <div class="control-group" ng-class="{error: formEdit.nama.$invalid}">
             <label class="control-label" for="nama">Nama : &nbsp;</label>
             <input type="text" id="nama" 
                    name="nama" 
@@ -41,23 +49,16 @@
                    required>
             <span ng-show="formEdit.nama.$error.required" class="help-inline">Required</span>
         </div>
-        <div class="control-group" ng-class="{error: formEdit.nomor.$invalid}">
-            <label class="control-label" for="nomor">Nomer : &nbsp;</label>
-            <input type="text" id="nomor" name="nomor" placeholder="Nomor Siswa" ng-model="currentSiswa.nomor" required>
-            <span ng-show="formEdit.nomor.$error.required" class="help-inline">Harus diisi</span>
-        </div>
-        <div class="control-group" ng-class="{error: formEdit.id_kelas.$invalid}">
+           <div class="control-group">
                 <label class="control-label" for="id_kelas">Id Kelas : &nbsp;</label>
-                <select ui-select2 ng-model="currentId_kelas.id_kelas.id_kelas" data-placeholder="-- Select One --">
+                <select ui-select2 ng-model="currentSiswa.kelas.id" data-placeholder="-- Select One --">
                     <option></option>
-                    <option ng-repeat="id_kelas in id_kelasSelection" value="{{id_kelas.id_kelas}}">{{id_kelas.label}}</option>
-                </select>
-                <span ng-show="formEdit.id_kelas.$error.required" class="help-inline">Harus diisi</span>
+                    <option ng-repeat="kelas in kelases.content" value="{{kelas.id}}">{{kelas.id}}</option>
+              </select>
             </div>
         <div class="form-actions">
-             <button type="submit" class="btn btn-primary" ng-click="simpan()" ng-disabled="isClean() || formEdit.$invalid">Simpan</button>
-               
-                <button type="button" class="btn" ng-click="baru()">Batal</button>
+            <button type="submit" class="btn btn-primary" ng-click="simpan()" ng-disabled="isClean() || formEdit.$invalid">Simpan</button>
+            <button type="button" class="btn" ng-click="baru()">Batal</button>
         </div>
-    </form>
+      </form>
 </div>
