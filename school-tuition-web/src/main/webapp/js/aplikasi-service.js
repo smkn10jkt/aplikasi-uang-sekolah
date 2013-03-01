@@ -159,11 +159,10 @@ angular.module('belajar.service', ['ngResource'])
             get: function(param, callback){ return this.tagihan.get(param, callback) }, 
             query: function(p, callback){ return this.tagihan.queryPage({"page.page": p, "page.size": 10}, callback) },
             save: function(obj){
-                if(obj.id == null){
-                    return $http.post('table/tagihan/', obj);
-                } else {
-                    return $http.put('table/tagihan/'+obj.id, obj);
-                }
+                    
+                    return $http.post('table/tagihan', obj);
+                
+                   
             }, 
             remove: function(obj){
                 if(obj.id != null){
