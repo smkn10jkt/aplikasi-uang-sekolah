@@ -342,9 +342,10 @@
             referencedColumnNames="id"
         />
            <addForeignKeyConstraint 
-               baseTableName="t_kelas" 
-               baseColumnNames="id_tahun_ajaran" 
                constraintName="fk_kelas_tahun_ajaran" 
+               baseColumnNames="id_tahun_ajaran" 
+                 baseTableName="t_kelas" 
+
                referencedTableName="t_tahun_ajaran" 
                referencedColumnNames="id"
 />
