@@ -50,7 +50,7 @@
             </div>
           <div class="control-group">
                 <label class="control-label" for="idkonfigurasitagihan">Id Konfigurasi Tagihan : &nbsp;</label>
-                <select ui-select2 ng-model="currentKonfigurasiTagihanDetail.konfigurasiTagihan.id" data-placeholder="-- Select One --">
+                <select ui-select2 ng-model="currentKonfigurasiTagihanDetail.konfigurasitagihan.id" data-placeholder="-- Select One --">
                     <option></option>
                     <option ng-repeat="konfigurasiTagihan in konfigurasitagihan.content" value="{{konfigurasiTagihan.id}}">{{konfigurasiTagihan.id}}</option>
               </select>

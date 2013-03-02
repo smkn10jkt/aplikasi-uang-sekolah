@@ -17,8 +17,8 @@
         <tbody>
             <tr ng-repeat="x in konfigurasitagihandetail.content">
                 <td>{{x.nilai}}</td>
-                <td>{{x.jenisBiaya.id}}</td>
-                <td>{{x.konfigurasiTagihan.id}}</td>
+                <td>{{x.jenisbiaya.id}}</td>
+                <td>{{x.konfigurasitagihan.id}}</td>
                 <td>
                     <a ng-click="edit(x)"><i class="icon-edit"></i></a>
                     <a ng-click="remove(x)"><i class="icon-remove"></i></a>
@@ -31,6 +31,15 @@
 <div class="span5 well-large">
     <h1>Form Konfigurasi Tagihan Detail</h1>
     <form class="form-horizontal" name="formEdit">
+        <div class="control-group" ng-class="{error: formEdit.id.$invalid}">
+            <label class="control-label" for="id">Id : &nbsp;</label>
+            <input type="text" id="id" 
+                   name="id" 
+                   placeholder="Id Konfigurasi Tagihan Detail" 
+                   ng-model="currentKonfigurasiTagihanDetail.id"
+                   required>
+            <span ng-show="formEdit.id.$error.required" class="help-inline">Required</span>
+        </div>
         <div class="control-group" ng-class="{error: formEdit.nilai.$invalid}">
             <label class="control-label" for="nilai">Nilai : &nbsp;</label>
             <input type="text" 
@@ -43,16 +52,16 @@
         </div>
           <div class="control-group">
                 <label class="control-label" for="id_jenis_biaya">Id Jenis Biaya : &nbsp;</label>
-                <select ui-select2 ng-model="currentKonfigurasiTagihanDetail.jenisBiaya.id" data-placeholder="-- Select One --">
+                <select ui-select2 ng-model="currentKonfigurasiTagihanDetail.jenisbiaya.id" data-placeholder="-- Select One --">
                     <option></option>
-                    <option ng-repeat="jenisBiaya in jenisbiaya.content" value="{{jenisBiaya.id}}">{{jenisBiaya.id}}</option>
+                    <option ng-repeat="jenisbiaya in jenisbiaya" value="{{jenisbiaya.id}}">{{jenisbiaya.id}}</option>
               </select>
             </div>
           <div class="control-group">
-                <label class="control-label" for="idkonfigurasitagihan">Id Konfigurasi Tagihan : &nbsp;</label>
-                <select ui-select2 ng-model="currentKonfigurasiTagihanDetail.konfigurasiTagihan.id" data-placeholder="-- Select One --">
+                <label class="control-label" for="id_konfigurasi_tagihan">Id Konfigurasi Tagihan : &nbsp;</label>
+                <select ui-select2 ng-model="currentKonfigurasiTagihanDetail.konfigurasitagihan.id" data-placeholder="-- Select One --">
                     <option></option>
-                    <option ng-repeat="konfigurasiTagihan in konfigurasitagihan.content" value="{{konfigurasiTagihan.id}}">{{konfigurasiTagihan.id}}</option>
+                    <option ng-repeat="konfigurasitagihan in konfigurasitagihan" value="{{konfigurasitagihan.id}}">{{konfigurasitagihan.id}}</option>
               </select>
             </div>
         <div class="form-actions">

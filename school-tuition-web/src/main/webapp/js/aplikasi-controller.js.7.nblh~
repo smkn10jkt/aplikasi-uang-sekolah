@@ -782,7 +782,7 @@ angular.module('belajar.controller',['belajar.service'])
 .controller('KonfigurasiTagihanDetailController', ['$scope', 'KonfigurasiTagihanDetailService','JenisBiayaService','KonfigurasiTagihanService', function($scope, KonfigurasiTagihanDetailService, JenisBiayaService, KonfigurasiTagihanService){
         $scope.konfigurasitagihandetail = KonfigurasiTagihanDetailService.query();
          $scope.jenisbiaya = JenisBiayaService.query();
-         $scope.konfigurasitagihan = KonfigurasiTagihanService.query();
+         $scope.konfigurasitagihan = JenisBiayaService.query();
         $scope.edit = function(x){
             if(x.id == null){
                 return; 

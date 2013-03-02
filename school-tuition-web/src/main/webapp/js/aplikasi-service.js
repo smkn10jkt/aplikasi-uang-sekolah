@@ -272,11 +272,9 @@ angular.module('belajar.service', ['ngResource'])
             get: function(param, callback){ return this.konfigurasitagihandetail.get(param, callback) }, 
             query: function(p, callback){ return this.konfigurasitagihandetail.queryPage({"page.page": p, "page.size": 10}, callback) },
             save: function(obj){
-                if(obj.id == null){
+                
                     return $http.post('master/konfigurasitagihan_detail', obj);
-                } else {
-                    return $http.put('master/konfigurasitagihan_detail/'+obj.id, obj);
-                }
+               
             }, 
             remove: function(obj){
                 if(obj.id != null){
