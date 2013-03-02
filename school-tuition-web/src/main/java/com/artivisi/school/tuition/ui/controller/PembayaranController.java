@@ -51,6 +51,7 @@ public class PembayaranController {
         belajarRestfulService.save(p);
     }
     
+    
     @RequestMapping(value="/table/pembayaran/{id}", method= RequestMethod.DELETE)
     @ResponseStatus(HttpStatus.OK)
     public void delete(@PathVariable String id){
@@ -60,6 +61,7 @@ public class PembayaranController {
         }
         belajarRestfulService.delete(pembayaranDb);
     }
+    
     
     @RequestMapping(value="/table/pembayaran/{id}", method=RequestMethod.GET)
     @ResponseBody

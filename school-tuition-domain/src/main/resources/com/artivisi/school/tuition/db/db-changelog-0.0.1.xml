@@ -158,7 +158,7 @@
             <constraints nullable="false"/>
             </column>
             
-            <column name="waktu_pembayaran" type="datetime">
+            <column name="waktu_pembayaran" type="date">
                  <constraints nullable="false"/>
             </column>
             
@@ -341,33 +341,7 @@
             referencedTableName="t_kelas"
             referencedColumnNames="id"
         />
-<<<<<<< HEAD
-<!--           <addForeignKeyConstraint 
-=======
-<<<<<<< HEAD
-<!--          <addForeignKeyConstraint
-            constraintName="fk_kelas_tahunajaran"
-            baseColumnNames="id_tahun_ajaran"
-            baseTableName="t_kelas"
-            referencedTableName="t_tahun_ajaran"
-            referencedColumnNames="id"
-        />-->
-=======
-           <addForeignKeyConstraint 
->>>>>>> 22132bf438b429b8d4fc8d2e816af5a3aeb3e475
-               constraintName="fk_kelas_tahun_ajaran" 
-               baseColumnNames="id_tahun_ajaran" 
-                 baseTableName="t_kelas" 
 
-               referencedTableName="t_tahun_ajaran" 
-               referencedColumnNames="id"
-<<<<<<< HEAD
-/>-->
-=======
-/>
->>>>>>> 5c6274828aed269c171601b42dca02297b0e3be5
->>>>>>> 22132bf438b429b8d4fc8d2e816af5a3aeb3e475
-        
 <!--        <addForeignKeyConstraint
             constraintName="fk_konfigurasitagihandetail_jenisbiaya_konfigurasitagihan"
             baseColumnNames="id_jenis_biaya"

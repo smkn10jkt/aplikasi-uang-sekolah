@@ -608,7 +608,7 @@ angular.module('belajar.controller',['belajar.service'])
             return angular.equals($scope.original, $scope.currentSiswa);
         }
     }])
-.controller('PembayaranController', ['$scope', 'PembayaranService', function($scope, PembayaranService){
+.controller('PembayaranController', ['$scope', 'PembayaranService', 'SiswaService', function($scope, PembayaranService, SiswaService){
         $scope.pembayaran = PembayaranService.query();
         $scope.siswa = SiswaService.query();
         $scope.edit = function(x){
@@ -618,7 +618,7 @@ angular.module('belajar.controller',['belajar.service'])
             $scope.currentPembayaran = PembayaranService.get({id: x.id}, function(data){
                 $scope.original = angular.copy(data);
             });
-        };
+        }
         $scope.baru = function(){
             $scope.currentPembayaran = null;
             $scope.original = null;

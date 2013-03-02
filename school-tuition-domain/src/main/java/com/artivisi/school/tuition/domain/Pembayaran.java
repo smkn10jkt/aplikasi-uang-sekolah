@@ -24,8 +24,9 @@ public class Pembayaran {
 
     @NotNull
     @Column(name = "waktu_pembayaran", nullable = false)
-    @Temporal(TemporalType.TIMESTAMP)
+    @Temporal(TemporalType.DATE)
     private Date waktuPembayaran = new Date();
+    
 
     @NotNull
     @NotEmpty
