@@ -62,9 +62,9 @@
      
          <div class="control-group">
                 <label class="control-label" for="idtahunajaran">Id Tahun Ajaran: &nbsp;</label>
-                <select ui-select2 ng-model="currentKelas.tahunAjaran.id" data-placeholder="-- Select One --">
+                <select ui-select2 ng-model="currentKelas.tahun_ajaran.id" data-placeholder="-- Select One --">
                     <option></option>
-                    <option ng-repeat="tahun_ajaran in tahun_ajaran.content" value="{{tahun_ajaran.id}}">{{tahun_ajaran.id}}</option>
+                    <option ng-repeat="tahun_ajaran in tahun_ajarans.content" value="{{tahun_ajaran.id}}">{{tahun_ajaran.id}}</option>
               </select>
             </div>
         

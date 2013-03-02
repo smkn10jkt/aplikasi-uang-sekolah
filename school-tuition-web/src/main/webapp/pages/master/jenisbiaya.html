@@ -1,23 +1,39 @@
-  <div class="span5 well-large">
-      <img border="0" src="/img/paymentSchoolJenisBiaya.png" alt="Pulpit rock" width="200" height="200"/>
+<center>
+<div class="row">
+  <div class="span11">
+      <hr>
+      <center>
+    <div class="well">
+        <h1>Aplication School Payment</h1>
+        <hr>
+    <img border="0" src="/img/paymentSchoolJenisBiaya.png" alt="Pulpit rock" width="100" height="100"/>
+    </div>
+    <hr>
+    </center>
+    <div class="footer">
+       
     <h1>Daftar Jenis Biaya</h1>
-
-    <a class="btn" ng-click="baru()">
+    <div class="row">
+      <div class="span6">
+          <div class="span5 well-large">
+     <a class="btn" ng-click="baru()">
         <i class="icon-plus-sign"></i>Tambah Data
     </a>
-    <hr>
+              <hr>
+ 
     <table class="table table-striped table-condensed table-bordered">
         <thead>
             <tr>
+              
                 <th>Kode</th>
                  <th>Nama</th>
-                <th></th>
             </tr>
         </thead>
         <tbody>
             <tr ng-repeat="x in jenisbiaya.content">
                 <td>{{x.kode}}</td>
                 <td>{{x.nama}}</td>
+                
                 <td>
                     <a ng-click="edit(x)"><i class="icon-edit"></i></a>
                     <a ng-click="remove(x)"><i class="icon-remove"></i></a>
@@ -26,33 +42,36 @@
         </tbody>
     </table>
 </div>  
-<div class="span5 well-large">
+      </div>
+      <div class="span3">
+          <div class="span5 well-large">
     <h1>Form Jenis Biaya</h1>
     <form class="form-horizontal" name="formEdit">
          <div class="control-group" ng-class="{error: formEdit.kode.$invalid}">
             <label class="control-label" for="kode">Kode : &nbsp;</label>
-            <input type="text" id="kode" 
-                   name="kode" 
-                   placeholder="Jenis Biaya Kode" 
-                   ng-model="currentJenisBiaya.kode"
-                   required>
-            <span ng-show="formEdit.kode.$error.required" class="help-inline">Required</span>
+            <input type="text" id="kode" name="kode" placeholder="Kode Jenis Biaya" ng-model="currentJenisBiaya.kode" required>
+            <span ng-show="formEdit.kode.$error.required" class="help-inline">Harus diisi</span>
         </div>
+     
          <div class="control-group" ng-class="{error: formEdit.nama.$invalid}">
-            <label class="control-label" for="nama">Nama : &nbsp;</label>
-            <input type="text" id="nama" 
-                   name="nama" 
-                   placeholder="Jenis Biaya Nama" 
-                   ng-model="currentJenisBiaya.nama"
-                   required>
-            <span ng-show="formEdit.nama.$error.required" class="help-inline">Required</span>
-        </div>
+                <label class="control-label" for="nama">Nama : &nbsp;</label>
+                    <input type="text" id="nama" name="nama" placeholder="Nama Jenis Biaya" ng-model="currentJenisBiaya.nama" required>
+                <span ng-show="formEdit.nama.$error.required" class="help-inline">Harus diisi</span>   
+            </div>
+        
         <div class="form-actions">
              <button type="submit" class="btn btn-primary" ng-click="simpan()" ng-disabled="isClean() || formEdit.$invalid">Simpan</button>
             <button type="button" class="btn" ng-click="baru()">Batal</button>
-         
+  
         </div>
     </form>
-</div>    
+        </div> 
+      </div>
+        </div>
+      </div>
+</div> 
+  </div>
+</center>
 
 
+ 

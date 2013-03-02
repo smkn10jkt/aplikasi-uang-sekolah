@@ -473,9 +473,9 @@ angular.module('belajar.controller',['belajar.service'])
             return angular.equals($scope.original, $scope.currentPayments);
         }
     }])
-    .controller('KelasController', ['$scope', 'KelasService','TahunAjaranService', function($scope, KelasService, TahunAjaranService){
-        $scope.kelases = KelasService.query();  
-        $scope.tahun_ajarans = TahunAjaranService.query();
+    .controller('KelasController', ['$scope', 'KelasService', 'TahunAjaranService', function($scope, KelasService, TahunAjaranService){
+        $scope.kelases = KelasService.query();
+        $scope.tahun_ajaran = TahunAjaranService.query();
         $scope.edit = function(x){
             if(x.id == null){
                 return; 
@@ -488,7 +488,7 @@ angular.module('belajar.controller',['belajar.service'])
             $scope.currentKelas = null;
             $scope.original = null;
         }
-         $scope.save = function(){
+        $scope.simpan = function(){
             KelasService.save($scope.currentKelas)
             .success(function(){
                 $scope.kelases = KelasService.query();
@@ -507,8 +507,8 @@ angular.module('belajar.controller',['belajar.service'])
             return angular.equals($scope.original, $scope.currentKelas);
         }
     }])
-.controller('TahunAjaranController', ['$scope', 'TahunAjaranService', function($scope, TahunAjaranService){
-        $scope.tahun_ajarans = TahunAjaranService.query();
+ .controller('TahunAjaranController', ['$scope', 'TahunAjaranService', function($scope, TahunAjaranService){
+        $scope.tahun_ajaran = TahunAjaranService.query();
         $scope.edit = function(x){
             if(x.id == null){
                 return; 
@@ -524,7 +524,7 @@ angular.module('belajar.controller',['belajar.service'])
         $scope.simpan = function(){
             TahunAjaranService.save($scope.currentTahunAjaran)
             .success(function(){
-                $scope.tahun_ajarans = TahunAjaranService.query();
+                $scope.tahun_ajaran = TahunAjaranService.query();
                 $scope.baru();
             });
         }
@@ -532,8 +532,8 @@ angular.module('belajar.controller',['belajar.service'])
             if(x.id == null){
                 return;
             }
-            TahunAjaranService.remove(x).success(function(){
-                $scope.tahunajarans = TahunAjaranService.query();
+           TahunAjaranService.remove(x).success(function(){
+                $scope.tahun_ajaran = TahunAjaranService.query();
             });
         }
         $scope.isClean = function(){

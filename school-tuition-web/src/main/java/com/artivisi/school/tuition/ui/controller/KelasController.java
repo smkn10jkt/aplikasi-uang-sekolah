@@ -3,8 +3,6 @@
  * and open the template in the editor.
  */
 package com.artivisi.school.tuition.ui.controller;
-
-import com.artivisi.school.tuition.domain.JenisBiaya;
 import com.artivisi.school.tuition.service.BelajarRestfulService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -29,28 +27,27 @@ import org.springframework.web.util.UriTemplate;
  */
 @Controller
 public class KelasController {
-    @Autowired
-    private BelajarRestfulService belajarRestfulService;
+   @Autowired private BelajarRestfulService belajarRestfulService;
     
     @RequestMapping(value="/table/kelas", method=RequestMethod.POST)
     @ResponseStatus(HttpStatus.CREATED)
-    public void save(@RequestBody @Valid Kelas k, HttpServletRequest request, HttpServletResponse response){
-        belajarRestfulService.save(k);
+    public void save(@RequestBody @Valid Kelas t, HttpServletRequest request, HttpServletResponse response){
+        belajarRestfulService.save(t);
         String requestUrl = request.getRequestURL().toString();
-        URI uri = new UriTemplate("{requestUrl}/{id}").expand(requestUrl, k.getId());
+        URI uri = new UriTemplate("{requestUrl}/{id}").expand(requestUrl, t.getId());
         response.setHeader("Location", uri.toASCIIString());
     }
-//    
-//    @RequestMapping(value="/table/kelas/{id}", method=RequestMethod.PUT)
-//    @ResponseStatus(HttpStatus.OK)
-//    public void update(@PathVariable String id, @RequestBody @Valid Kelas k){
-//        Kelas kelasDb = belajarRestfulService.findKelasById(id);
-//        if(kelasDb == null){
-//            throw  new IllegalStateException();
-//        }
-//        k.setId(kelasDb.getId());
-//        belajarRestfulService.save(k);
-//    }
+    
+    @RequestMapping(value="/table/kelas/{id}", method=RequestMethod.PUT)
+    @ResponseStatus(HttpStatus.OK)
+    public void update(@PathVariable String id, @RequestBody @Valid Kelas t){
+        Kelas kelasDb = belajarRestfulService.findKelasById(id);
+        if(kelasDb == null){
+            throw  new IllegalStateException();
+        }
+        t.setId(kelasDb.getId());
+        belajarRestfulService.save(t);
+    }
     
     @RequestMapping(value="/table/kelas/{id}", method= RequestMethod.DELETE)
     @ResponseStatus(HttpStatus.OK)
@@ -70,8 +67,7 @@ public class KelasController {
     
     @RequestMapping(value="/table/kelas", method=RequestMethod.GET)
     @ResponseBody
-    public Page<Kelas> findKelas(Pageable pagination){
+    public Page<Kelas> findKelases(Pageable pagination){
         return belajarRestfulService.findAllKelas(pagination);
     }
 }
-
